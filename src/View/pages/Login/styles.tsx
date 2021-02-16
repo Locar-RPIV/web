@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-import DashboardIllustration from "../../assets/vehicle.svg";
+import DashboardIllustration from "../../../assets/vehicle.svg";
 
 const vh = window.innerHeight * 0.01;
 document.documentElement.style.setProperty("--vh", `${vh}px`);
