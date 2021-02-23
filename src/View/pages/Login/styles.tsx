@@ -17,7 +17,7 @@ export const Container = styled.body`
   min-height: calc(var(--vh, 1vh) * 100);
   @media (min-width: 1280px) {
     display: grid;
-    grid-template-columns: 70% 30%;
+    grid-template-columns: 60% 40%;
     grid-template-rows: 1fr;
   }
   @media (max-width: 1280px) {
