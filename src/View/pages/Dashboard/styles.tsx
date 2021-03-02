@@ -139,7 +139,7 @@ export const Input = styled.input`
   margin-top: 20px;
   height: 64px;
   font-size: 18px;
-  padding-left: 10px;
+  padding-left: 16px;
   border-radius: 5px;
   border: 1px solid #f5f5f5;
   background-color: #f5f5f5;
@@ -149,27 +149,34 @@ export const Input = styled.input`
 export const Subtitle = styled.div`
   font-size: 20px;
   color: #eb8712;
-  height: 20px;
+  height: 24px;
   position: relative;
+  display: inline;
+  vertical-align: middle;
 
   input[type="checkbox"]::before {
     content: " ";
-    width: inherit;
-    height: inherit;
+    width: 2em;
+    height: 2em;
     position: absolute;
     background-color: #fff;
     border: 1px solid #eb8712;
+    top: 0px;
   }
+
+  input[type="checkbox"]:hover {
+    cursor: pointer;
+  }
+
   input[type="checkbox"]:checked::after {
     content: " ";
-    width: 0.2rem;
-    height: 0.5rem;
-    margin-left: 0.3rem;
-    border-color: #eb8712;
-    border-style: solid;
-    border-width: 0 3px 3px 0;
+    width: 1.5em;
+    height: 1.5em;
+    background-color: #eb8712;
+    border: none;
     position: absolute;
-    transform: rotate(45deg);
+    top: 0.35em;
+    left: 0.35em;
   }
 `;
 

@@ -83,6 +83,17 @@ const Dashboard: React.FC = () => {
                     }}
                   />
                 </div>
+                <br />
+                <br />
+                <div style={{ whiteSpace: "nowrap" }}>
+                  <Subtitle>
+                    <label>
+                      <input type="checkbox" name="Customer" />
+                    </label>
+                    &nbsp;&nbsp;&nbsp;
+                    Veículo de cliente parceiro
+                  </Subtitle>
+                </div>
               </div>
               <div style={{ display: "flex", justifyContent: "flex-end" }}>
                 <Button type="submit">CADASTRAR</Button>
@@ -94,10 +105,7 @@ const Dashboard: React.FC = () => {
         <section id="second">
           <Card>
             <Title>
-              <MdPerson
-              className="title-icon"
-                size={"1.3em"}
-              />
+              <MdPerson className="title-icon" size={"1.3em"} />
               Clientes
             </Title>
             <Column1>
@@ -158,8 +166,10 @@ const Dashboard: React.FC = () => {
               <div>
                 <Subtitle>
                   <label>
-                    <input type="checkbox" name="Customer" /> Cliente parceiro ?
+                    <input type="checkbox" name="Customer" />
                   </label>
+                  &nbsp;&nbsp;&nbsp;
+                  Cliente parceiro ?
                 </Subtitle>
                 <div className="two-inputs">
                   <Input
@@ -175,7 +185,7 @@ const Dashboard: React.FC = () => {
                     placeholder="Agência"
                   />
                 </div>
-                <div className="oen-input">
+                <div className="one-input">
                   <Input
                     id="standard-basic"
                     name="password"
