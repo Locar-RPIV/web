@@ -9,35 +9,17 @@ window.addEventListener("resize", () => {
 });
 
 export const Container = styled.div`
-  nav a {
-    font-size: 40px;
-    color: #fff;
-    text-decoration: none;
-    padding: 20px;
-    text-align: center;
-  }
-
-  nav {
-    position: fixed;
-    left: 0;
-    z-index: 50;
-    display: flex;
-    justify-content: space-around;
-    flex-direction: column;
-    height: 100vh;
-    background: #369;
-  }
-
   section {
     position: absolute;
     top: 0;
-    height: 100vh;
+    min-height: calc(var(--vh, 1vh) * 100);
     width: 0;
     opacity: 0;
     transition: all ease-in 0.5s;
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-left: 50px;
   }
 
   section h1 {
@@ -92,7 +74,7 @@ export const Card = styled.div`
   display: grid;
   grid-template-rows: 100px 1fr;
   grid-template-columns: 1fr 1fr;
-  grid-gap: 0px 40px;
+  grid-gap: 0px 72px;
   border-radius: 15px;
   -webkit-box-shadow: 0 5px 6px -6px #777;
   -moz-box-shadow: 0 5px 6px -6px #777;
@@ -105,12 +87,40 @@ export const Card = styled.div`
   -webkit-box-shadow: 0 5px 6px -6px #777;
   -moz-box-shadow: 0 5px 6px -6px #777;
   box-shadow: 0 5px 6px -6px #777;
+
+  .one-input {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-gap: 32px;
+    margin: 24px 0px;
+  }
+
+  .two-inputs {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 32px;
+    margin: 24px 0px;
+  }
+
+  .three-inputs {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 32px;
+    margin: 24px 0px;
+  }
 `;
 
 export const Title = styled.span`
   grid-column: span 2;
   color: #369;
-  font-size: 25px;
+  font-size: 24px;
+  font-weight: lighter;
+
+  .title-icon {
+    display: inline;
+    vertical-align: bottom;
+    margin-right: 20px;
+  }
 `;
 
 export const Column1 = styled.div`
@@ -126,9 +136,8 @@ export const Column2 = styled.div`
 `;
 
 export const Input = styled.input`
-  margin-right: 10px;
   margin-top: 20px;
-  height: 56px;
+  height: 64px;
   font-size: 18px;
   padding-left: 10px;
   border-radius: 5px;
