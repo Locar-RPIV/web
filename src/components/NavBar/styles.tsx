@@ -19,11 +19,18 @@ export const StyledNavBar = styled.nav`
   background: #369;
   width: 100px;
 
-  a {
-    font-size: 40px;
-    color: #fff;
-    text-decoration: none;
-    padding: 20px;
-    text-align: center;
+  .options {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 200px;
+
+    a {
+      font-size: 40px;
+      color: #fff;
+      text-decoration: none;
+      padding: 20px;
+      text-align: center;
+    }
   }
 `;

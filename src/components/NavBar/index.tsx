@@ -8,6 +8,7 @@ import { AiFillPieChart } from "react-icons/ai";
 const NavBar: React.FC = () => {
   return (
     <StyledNavBar>
+      <div className="options">
         <a href="#first">
           <i>
             <IoMdCar />
@@ -23,6 +24,7 @@ const NavBar: React.FC = () => {
             <AiFillPieChart />
           </i>
         </a>
+        </div>
     </StyledNavBar>
   );
 };
