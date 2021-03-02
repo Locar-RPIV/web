@@ -15,7 +15,6 @@ export const Container = styled.div`
     min-height: calc(var(--vh, 1vh) * 100);
     width: 0;
     opacity: 0;
-    transition: all ease-in 0.5s;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -25,7 +24,6 @@ export const Container = styled.div`
   section h1 {
     color: #fff;
     font-size: 50px;
-    text-transform: uppercase;
     opacity: 0;
   }
 
@@ -68,7 +66,7 @@ export const Container = styled.div`
 
 export const Card = styled.div`
   background-color: #fff;
-  width: 80%;
+  width: 70%;
   height: 70%;
   padding: 40px;
   display: grid;
@@ -110,6 +108,138 @@ export const Card = styled.div`
   }
 `;
 
+export const VehicleTypeCard = styled.div`
+  background-color: #fff;
+  width: 70%;
+  height: 70%;
+  padding: 40px;
+  display: grid;
+  grid-template-rows: 100px 1fr;
+  grid-template-columns: 1fr;
+  grid-gap: 0px 72px;
+  border-radius: 15px;
+  -webkit-box-shadow: 0 5px 6px -6px #777;
+  -moz-box-shadow: 0 5px 6px -6px #777;
+  box-shadow: 0 5px 6px -6px #777;
+
+  @media (max-width: 768px) {
+    //padding: 10px;
+  }
+
+  -webkit-box-shadow: 0 5px 6px -6px #777;
+  -moz-box-shadow: 0 5px 6px -6px #777;
+  box-shadow: 0 5px 6px -6px #777;
+
+  .vehicle-type {
+    color: #444;
+    font-weight: lighter;
+  }
+
+  .one-input {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-gap: 32px;
+    margin: 24px 0px;
+  }
+
+  .two-inputs {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 32px;
+    margin: 24px 0px;
+  }
+
+  .three-inputs {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 32px;
+    margin: 24px 0px;
+  }
+
+  .band {
+    width: 80%;
+    margin: 0 auto;
+
+    display: grid;
+
+    align-items: center;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+    grid-gap: 20px;
+  }
+
+  @media only screen and (min-width: 500px) {
+    .band {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  @media only screen and (min-width: 850px) {
+    .band {
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+    }
+  }
+
+  .card {
+    background: var(--white-color);
+    text-decoration: none;
+    color: #444;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    min-height: 200px;
+
+    border-radius: 0.5vw;
+
+    position: relative;
+    top: 0;
+    transition: all 0.1s ease-in;
+  }
+
+  .card:hover {
+    top: -2px;
+    box-shadow: 0 4px 5px rgba(0, 0, 0, 0.2);
+  }
+
+  .card article {
+    padding: 20px;
+  }
+
+  .card .thumb {
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    height: 100px;
+    color: #369;
+  }
+
+  .card h1 {
+    font-size: 20px;
+    font-weight: 300;
+    margin-bottom: 1vh;
+    color: #369;
+    text-align: center;
+  }
+
+  .card p {
+    line-height: 1.4;
+    font-weight: 300;
+  }
+
+  .card article {
+    padding: 20px;
+    flex: 1;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .card p {
+    flex: 1;
+    line-height: 1.4;
+  }
+`;
+
 export const Title = styled.span`
   grid-column: span 2;
   color: #369;
@@ -139,11 +269,19 @@ export const Input = styled.input`
   margin-top: 20px;
   height: 64px;
   font-size: 18px;
+  font-weight: lighter;
   padding-left: 16px;
   border-radius: 5px;
-  border: 1px solid #f5f5f5;
+  border: 1px dashed #f5f5f5;
   background-color: #f5f5f5;
   color: #aaaaaa;
+  width: 100%;
+
+  :hover {
+    border-bottom: 1px solid #369;
+    cursor: pointer;
+    transition: linear 1s;
+  }
 `;
 
 export const Subtitle = styled.div`

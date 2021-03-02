@@ -8,18 +8,19 @@ import {
   Column2,
   Input,
   Button,
+  VehicleTypeCard,
 } from "./styles";
 
 import NavBar from "../../../components/NavBar";
 
-import { MdPerson } from "react-icons/md";
+import { MdPerson, MdDirectionsBus, MdDirectionsBike } from "react-icons/md";
 import { IoMdCar } from "react-icons/io";
+import {FaMotorcycle} from "react-icons/fa";
 
 const Dashboard: React.FC = () => {
   return (
     <Container>
       <NavBar />
-
       <div className="container">
         <section id="first">
           <Card>
@@ -90,8 +91,7 @@ const Dashboard: React.FC = () => {
                     <label>
                       <input type="checkbox" name="Customer" />
                     </label>
-                    &nbsp;&nbsp;&nbsp;
-                    Veículo de cliente parceiro
+                    &nbsp;&nbsp;&nbsp; Veículo de cliente parceiro
                   </Subtitle>
                 </div>
               </div>
@@ -168,8 +168,7 @@ const Dashboard: React.FC = () => {
                   <label>
                     <input type="checkbox" name="Customer" />
                   </label>
-                  &nbsp;&nbsp;&nbsp;
-                  Cliente parceiro ?
+                  &nbsp;&nbsp;&nbsp; Cliente parceiro ?
                 </Subtitle>
                 <div className="two-inputs">
                   <Input
@@ -205,7 +204,47 @@ const Dashboard: React.FC = () => {
         </section>
 
         <section id="third">
-          <h1>Third</h1>
+          <VehicleTypeCard style={{ padding: "80px" }}>
+            <div>
+              <Title>Qual tipo de véiculo você deseja cadastrar ?</Title> <br />
+              <br />
+              <Subtitle className="vehicle-type">Aceitamos vários tipos</Subtitle>
+            </div>
+            <div className="band">
+              <div className="item-1">
+                <div className="card">
+                  <div className="thumb"><IoMdCar size={"3em"} /></div>
+                  <article>
+                    <h1>Carros</h1>
+                  </article>
+                </div>
+              </div>
+              <div className="item-2">
+                <div className="card">
+                  <div className="thumb"><MdDirectionsBus size={"3em"} /></div>
+                  <article>
+                    <h1>Ônibus</h1>
+                  </article>
+                </div>
+              </div>
+              <div className="item-3">
+                <div className="card">
+                  <div className="thumb"><MdDirectionsBike size={"3em"} /></div>
+                  <article>
+                    <h1>Bicicleta</h1>
+                  </article>
+                </div>
+              </div>
+              <div className="item-4">
+                <div className="card">
+                  <div className="thumb"><FaMotorcycle size={"3em"} /></div>
+                  <article>
+                    <h1>Motocicleta</h1>
+                  </article>
+                </div>
+              </div>
+            </div>
+          </VehicleTypeCard>
         </section>
       </div>
     </Container>
