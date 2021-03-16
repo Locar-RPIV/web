@@ -1,7 +1,6 @@
 import React, { Fragment } from "react";
 import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
-import { ModalContainer } from "react-router-modal";
-import "react-router-modal/css/react-router-modal.css";
+
 
 import { isAuthenticated } from "../services/auth";
 
@@ -31,7 +30,6 @@ const Routes = () => (
         <PrivateRoute path="/Dashboard" component={Dashboard} />
         <Route path="*" component={() => <h1>Page not found</h1>} />
       </Switch>
-      <ModalContainer />
     </Fragment>
   </BrowserRouter>
 );

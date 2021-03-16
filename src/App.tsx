@@ -1,6 +1,11 @@
 import React from "react";
 import Routes from "./routes/routes";
-import "./styles/GlobalStyles";
+import GlobalStyles from "./styles/GlobalStyles";
 
-const App = () => <Routes />;
+const App = () => (
+  <>
+    <Routes />
+    <GlobalStyles />
+  </>
+);
 export default App;
