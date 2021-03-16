@@ -11,13 +11,62 @@ import {
   VehicleTypeCard,
 } from "./styles";
 
-import NavBar from "../../../components/NavBar";
+import NavBar from "../../components/NavBar";
 
 import { MdPerson, MdDirectionsBus, MdDirectionsBike } from "react-icons/md";
 import { IoMdCar } from "react-icons/io";
 import {FaMotorcycle} from "react-icons/fa";
 
+import Api from "../../services/api";
+
 const Dashboard: React.FC = () => {
+
+  const state = {
+    client_name: "",
+    client_birthDate: "",
+    client_telephone: "",
+    client_cpf: "",
+    client_cnh: "",
+    client_rg: ""
+  };
+  
+
+  const handleSubmit = async (e: { preventDefault: () => void; }) => {
+    e.preventDefault();
+
+    try {
+      const { client_name, client_birthDate, client_telephone, client_cpf, client_cnh, client_rg } = state;
+
+      console.log(client_name)
+      console.log(client_birthDate)
+      console.log(client_telephone)
+      console.log(client_cpf)
+      console.log(client_cnh)
+      console.log(client_rg)
+      
+      if (!client_name || !client_birthDate || !client_telephone || !client_cpf || !client_cnh || !client_rg) {
+        alert("Preencha todos os campos")  
+        return;
+      }
+
+      const {
+        data: { id }
+      } = await Api.post("/client", {
+        client_name,
+        client_birthDate,
+        client_telephone,
+        client_cpf,
+        client_cnh,
+        client_rg
+      });
+
+      await Api.post(`/client/${id}`);
+      alert("entrou aq")
+    } catch (err) {
+      alert("Ocorreu algum erro ao adicionar o imóvel")
+    }
+  };
+
   return (
     <Container>
       <NavBar />
@@ -35,13 +84,13 @@ const Dashboard: React.FC = () => {
                   <Input
                     type="text"
                     id="standard-basic"
-                    name="name"
+                    name="vehicle_marca"
                     placeholder="Marca"
                   />
                   <Input
                     type="text"
                     id="standard-basic"
-                    name="name"
+                    name="vehicle_modelo"
                     placeholder="Modelo"
                   />
                 </div>
@@ -49,21 +98,21 @@ const Dashboard: React.FC = () => {
                   <Input
                     type="text"
                     id="standard-basic"
-                    name="name"
+                    name="vehicle_ano"
                     placeholder="Ano"
                   />
                   <Input
                     id="standard-basic"
-                    name="password"
-                    type="date"
+                    name="vehicle_kilometragem"
+                    type="text"
                     placeholder="Kilometragem"
                   />
                 </div>
                 <div className="one-input">
                   <Input
                     id="standard-basic"
-                    name="password"
-                    type="date"
+                    name="vehicle_renavam"
+                    type="text"
                     placeholder="Renavam"
                     style={{ width: "100%" }}
                   />
@@ -77,7 +126,7 @@ const Dashboard: React.FC = () => {
                   <Input
                     type="text"
                     id="standard-basic"
-                    name="name"
+                    name="vehicle_diaria"
                     placeholder="Valor da diária"
                     style={{
                       width: "100%",
@@ -109,13 +158,17 @@ const Dashboard: React.FC = () => {
               Clientes
             </Title>
             <Column1>
+
+                    <form onSubmit= {handleSubmit} > 
+
               <div>
                 <Subtitle>Dados do cliente</Subtitle>
                 <div className="one-input">
                   <Input
                     type="text"
                     id="standard-basic"
-                    name="name"
+                    name="client_name"
+                    onChange={e => ({ name: e.target.value})}
                     placeholder="Nome completo"
                     style={{
                       width: "100%",
@@ -124,15 +177,17 @@ const Dashboard: React.FC = () => {
                 </div>
                 <div className="two-inputs">
                   <Input
-                    type="text"
+                    type="date"
                     id="standard-basic"
-                    name="name"
+                    name="client_birthDate"
+                    onChange={e => ({ birthDate: e.target.value})}
                     placeholder="Data de nascimento"
                   />
                   <Input
                     id="standard-basic"
-                    name="password"
-                    type="date"
+                    name="client_telephone"
+                    type="text"
+                    onChange={e => ({ telephone: e.target.value})}
                     placeholder="Telefone"
                   />
                 </div>
@@ -144,23 +199,28 @@ const Dashboard: React.FC = () => {
                   <Input
                     type="text"
                     id="standard-basic"
-                    name="name"
+                    name="client_cpf"
+                    onChange={e => ({ cpf: e.target.value})}
                     placeholder="CPF"
                   />
                   <Input
                     id="standard-basic"
-                    name="password"
-                    type="date"
+                    name="client_cnh"
+                    type="text"
+                    onChange={e => ({ cnh: e.target.value})}
                     placeholder="CNH"
                   />
                   <Input
                     id="standard-basic"
-                    name="password"
-                    type="date"
+                    name="client_rg"
+                    type="text"
+                    onChange={e => ({ rg: e.target.value})}
                     placeholder="RG"
                   />
                 </div>
               </div>
+              <Button type= "submit">CADASTRAR</Button>
+              </form>
             </Column1>
             <Column2>
               <div>
@@ -174,21 +234,21 @@ const Dashboard: React.FC = () => {
                   <Input
                     type="text"
                     id="standard-basic"
-                    name="name"
+                    name="client_banco"
                     placeholder="Banco"
                   />
                   <Input
                     type="text"
                     id="standard-basic"
-                    name="name"
+                    name="client_agencia"
                     placeholder="Agência"
                   />
                 </div>
                 <div className="one-input">
                   <Input
                     id="standard-basic"
-                    name="password"
-                    type="date"
+                    name="client_contaDv"
+                    type="text"
                     placeholder="Conta com DV"
                     style={{
                       width: "100%",
@@ -197,7 +257,7 @@ const Dashboard: React.FC = () => {
                 </div>
               </div>
               <div style={{ display: "flex", justifyContent: "flex-end" }}>
-                <Button type="submit">CADASTRAR</Button>
+                
               </div>
             </Column2>
           </Card>
