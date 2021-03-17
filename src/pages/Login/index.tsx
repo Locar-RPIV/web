@@ -1,52 +1,55 @@
-import React, { Component } from "react";
-import { Container, MainImage, LoginContainer, Form, Input } from "./styles";
-
+import React, { useState } from "react";
+import { useHistory } from 'react-router-dom'
 import Api from "../../services/api";
+import { login } from "../../services/auth";
+import { Container, Form, Input, LoginContainer, MainImage } from "./styles";
 
-class Login extends Component {
-  state = {
-    email: "",
-    password: "",
-    error: "",
-  };
 
-  handleSignIn = async (e: { preventDefault: () => void }) => {
+const Login: React.FC = () => {
+
+  const [email, setEmail] = useState("")
+  const [password, setPassword] = useState("")
+  const [error, setError] = useState("")
+
+  const history = useHistory();
+
+  const handleSignIn = async e => {
     e.preventDefault();
-    const { email, password } = this.state;
 
     if (!email || !password) {
-      this.setState({ error: "Preencha e-mail e senha para continuar!" });
+      setError("Preencha e-mail e senha para continuar!");
       console.log("Preencha e-mail e senha para continuar!");
     } else {
       try {
+        console.log("entrou aqui")
         const response = await Api.post("/auth", { email, password });
-        response.request("/Dashboard");
+        console.log("entrou aqui")
+        login(response.data.token)
+        // eslint-disable-next-line no-restricted-globals
+        history.push('/Dashboard')
       } catch (err) {
-        this.setState({
-          error:
-            "Houve um problema com o login, verifique suas credenciais. T.T",
-        });
+        setError('Houve um problema com o login, verifique suas credenciais. T.T')
+        console.log("error")
       }
     }
   };
 
-  render() {
     return (
       <Container>
         <MainImage />
         <LoginContainer>
-          <Form onSubmit={this.handleSignIn}>
+          <Form onSubmit={handleSignIn}>
             <span className="title">LOCAR</span>
             <span className="subtitle"></span>
             <Input
               type="text"
               placeholder="Usuário"
-              onChange={(e) => this.setState({ email: e.target.value })}
+              onChange={(e) => setEmail(e.target.value)}
             />
             <Input
               type="password"
               placeholder="Senha"
-              onChange={(e) => this.setState({ password: e.target.value })}
+              onChange={(e) => setPassword(e.target.value)}
             />
             <button
               type="submit"
@@ -64,6 +67,6 @@ class Login extends Component {
       </Container>
     );
   }
-}
+
 
 export default Login;
