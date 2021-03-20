@@ -8,14 +8,16 @@ import {
   Column2,
   Input,
   Button,
-  VehicleTypeCard,
+  FeedbackCard,
 } from "./styles";
 
 import NavBar from "../../components/NavBar";
 
 import { MdPerson, MdDirectionsBus, MdDirectionsBike } from "react-icons/md";
 import { IoMdCar } from "react-icons/io";
-import {FaMotorcycle} from "react-icons/fa";
+import { FaMotorcycle } from "react-icons/fa";
+import vehicleFeedback from "../../assets/vehicleFeedback.svg";
+import {Link} from "react-router-dom"
 
 import Api from "../../services/api";
 
@@ -29,7 +31,7 @@ const Dashboard: React.FC = () => {
     client_cnh: "",
     client_rg: ""
   };
-  
+
 
   const handleSubmit = async (e: { preventDefault: () => void; }) => {
     e.preventDefault();
@@ -43,25 +45,25 @@ const Dashboard: React.FC = () => {
       console.log(client_cpf)
       console.log(client_cnh)
       console.log(client_rg)
-      
+
       if (!client_name || !client_birthDate || !client_telephone || !client_cpf || !client_cnh || !client_rg) {
-        alert("Preencha todos os campos")  
+        alert("Preencha todos os campos")
         return;
+      } else {
+        const {
+          data: { id }
+        } = await Api.post("/client", {
+          client_name,
+          client_birthDate,
+          client_telephone,
+          client_cpf,
+          client_cnh,
+          client_rg
+        });
+
+        await Api.post(`/client/${id}`);
+        alert("entrou aq")
       }
-
-      const {
-        data: { id }
-      } = await Api.post("/client", {
-        client_name,
-        client_birthDate,
-        client_telephone,
-        client_cpf,
-        client_cnh,
-        client_rg
-      });
-
-      await Api.post(`/client/${id}`);
-      alert("entrou aq")
     } catch (err) {
       alert("Ocorreu algum erro ao adicionar o imóvel")
     }
@@ -94,7 +96,7 @@ const Dashboard: React.FC = () => {
                     placeholder="Modelo"
                   />
                 </div>
-                <div className="two-inputs">
+                <div className="three-inputs">
                   <Input
                     type="text"
                     id="standard-basic"
@@ -106,6 +108,12 @@ const Dashboard: React.FC = () => {
                     name="vehicle_kilometragem"
                     type="text"
                     placeholder="Kilometragem"
+                  />
+                  <Input
+                    id="standard-basic"
+                    name="vehicle_potencia"
+                    type="text"
+                    placeholder="Potencia"
                   />
                 </div>
                 <div className="one-input">
@@ -122,15 +130,18 @@ const Dashboard: React.FC = () => {
             <Column2>
               <div>
                 <Subtitle>Dados para locação</Subtitle>
-                <div className="one-input">
+                <div className="two-inputs">
                   <Input
                     type="text"
                     id="standard-basic"
                     name="vehicle_diaria"
                     placeholder="Valor da diária"
-                    style={{
-                      width: "100%",
-                    }}
+                  />
+                  <Input
+                    id="standard-basic"
+                    type="text"
+                    name="vehicle_filial"
+                    placeholder="Filial de origem"
                   />
                 </div>
                 <br />
@@ -145,7 +156,7 @@ const Dashboard: React.FC = () => {
                 </div>
               </div>
               <div style={{ display: "flex", justifyContent: "flex-end" }}>
-                <Button type="submit">CADASTRAR</Button>
+                <Button type="submit">CADASTRAR </Button>
               </div>
             </Column2>
           </Card>
@@ -159,67 +170,67 @@ const Dashboard: React.FC = () => {
             </Title>
             <Column1>
 
-                    <form onSubmit= {handleSubmit} > 
+              <form onSubmit={handleSubmit} >
 
-              <div>
-                <Subtitle>Dados do cliente</Subtitle>
-                <div className="one-input">
-                  <Input
-                    type="text"
-                    id="standard-basic"
-                    name="client_name"
-                    onChange={e => ({ name: e.target.value})}
-                    placeholder="Nome completo"
-                    style={{
-                      width: "100%",
-                    }}
-                  />
+                <div>
+                  <Subtitle>Dados do cliente</Subtitle>
+                  <div className="one-input">
+                    <Input
+                      type="text"
+                      id="standard-basic"
+                      name="client_name"
+                      onChange={e => ({ name: e.target.value })}
+                      placeholder="Nome completo"
+                      style={{
+                        width: "100%",
+                      }}
+                    />
+                  </div>
+                  <div className="two-inputs">
+                    <Input
+                      type="date"
+                      id="standard-basic"
+                      name="client_birthDate"
+                      onChange={e => ({ birthDate: e.target.value })}
+                      placeholder="Data de nascimento"
+                    />
+                    <Input
+                      id="standard-basic"
+                      name="client_telephone"
+                      type="text"
+                      onChange={e => ({ telephone: e.target.value })}
+                      placeholder="Telefone"
+                    />
+                  </div>
                 </div>
-                <div className="two-inputs">
-                  <Input
-                    type="date"
-                    id="standard-basic"
-                    name="client_birthDate"
-                    onChange={e => ({ birthDate: e.target.value})}
-                    placeholder="Data de nascimento"
-                  />
-                  <Input
-                    id="standard-basic"
-                    name="client_telephone"
-                    type="text"
-                    onChange={e => ({ telephone: e.target.value})}
-                    placeholder="Telefone"
-                  />
+                <br />
+                <div style={{ whiteSpace: "nowrap" }}>
+                  <Subtitle>Documentos</Subtitle>
+                  <div className="three-inputs">
+                    <Input
+                      type="text"
+                      id="standard-basic"
+                      name="client_cpf"
+                      onChange={e => ({ cpf: e.target.value })}
+                      placeholder="CPF"
+                    />
+                    <Input
+                      id="standard-basic"
+                      name="client_cnh"
+                      type="text"
+                      onChange={e => ({ cnh: e.target.value })}
+                      placeholder="CNH"
+                    />
+                    <Input
+                      id="standard-basic"
+                      name="client_rg"
+                      type="text"
+                      onChange={e => ({ rg: e.target.value })}
+                      placeholder="RG"
+                    />
+                  </div>
                 </div>
-              </div>
-              <br />
-              <div style={{ whiteSpace: "nowrap" }}>
-                <Subtitle>Documentos</Subtitle>
-                <div className="three-inputs">
-                  <Input
-                    type="text"
-                    id="standard-basic"
-                    name="client_cpf"
-                    onChange={e => ({ cpf: e.target.value})}
-                    placeholder="CPF"
-                  />
-                  <Input
-                    id="standard-basic"
-                    name="client_cnh"
-                    type="text"
-                    onChange={e => ({ cnh: e.target.value})}
-                    placeholder="CNH"
-                  />
-                  <Input
-                    id="standard-basic"
-                    name="client_rg"
-                    type="text"
-                    onChange={e => ({ rg: e.target.value})}
-                    placeholder="RG"
-                  />
-                </div>
-              </div>
-              <Button type= "submit">CADASTRAR</Button>
+                <Button type="submit">CADASTRAR</Button>
               </form>
             </Column1>
             <Column2>
@@ -257,14 +268,14 @@ const Dashboard: React.FC = () => {
                 </div>
               </div>
               <div style={{ display: "flex", justifyContent: "flex-end" }}>
-                
+
               </div>
             </Column2>
           </Card>
         </section>
 
         <section id="third">
-          <VehicleTypeCard style={{ padding: "80px" }}>
+          {/* <VehicleTypeCard style={{ padding: "80px" }}>
             <div>
               <Title>Qual tipo de véiculo você deseja cadastrar ?</Title> <br />
               <br />
@@ -304,7 +315,48 @@ const Dashboard: React.FC = () => {
                 </div>
               </div>
             </div>
-          </VehicleTypeCard>
+          </VehicleTypeCard> */}
+          <FeedbackCard>
+            <div className="column1">
+              <Title >
+                Veículo cadastrado com sucesso
+              </Title>
+              <Subtitle>
+                O que deseja fazer agora ?
+              </Subtitle>
+              <br />
+              <div>
+                <br />
+                <button 
+                type="submit"
+                style={{
+                  backgroundColor: "#FFFAFA",
+                  color: "#000000",
+                  font: "arial"
+              }}>
+                  Cadastrar outro
+                </button>
+              </div>
+              <br />
+              <br />
+              <hr />
+              <br />
+              <div>
+                <button 
+                type="submit"
+                style={{
+                  backgroundColor: "#FFFAFA",
+                  color: "#000000",
+                  font: "arial"
+              }}>
+                  Voltar ao inicio
+                </button>
+              </div>
+            {/* <Link to= {} /> */}
+            </div>
+            <div className="column2"><img src={vehicleFeedback} alt="" /></div>
+          </FeedbackCard>
+
         </section>
       </div>
     </Container>

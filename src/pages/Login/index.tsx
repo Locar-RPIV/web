@@ -66,7 +66,7 @@ const Login: React.FC = () => {
         </LoginContainer>
       </Container>
     );
-  }
+}
 
 
 export default Login;

@@ -327,3 +327,44 @@ export const Button = styled.button`
   font-size: 18px;
   color: #fff;
 `;
+
+
+export const FeedbackCard = styled.div`
+  background-color: #fff;
+  width: 70%;
+  height: 70%;
+  padding: 40px;
+  display: grid;
+  grid-template-rows: 1fr;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 0px 72px;
+  border-radius: 15px;
+  -webkit-box-shadow: 0 5px 6px -6px #777;
+  -moz-box-shadow: 0 5px 6px -6px #777;
+  box-shadow: 0 5px 6px -6px #777;
+
+  @media (max-width: 768px) {
+    //padding: 10px;
+  }
+
+  -webkit-box-shadow: 0 5px 6px -6px #777;
+  -moz-box-shadow: 0 5px 6px -6px #777;
+  box-shadow: 0 5px 6px -6px #777;
+
+
+  .column1 {
+    width: 150%;
+    height: 50%;
+    padding: 180px;
+    display: grid;
+    align-items: center;
+  }
+
+  .column2 {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+`;
