@@ -7,6 +7,9 @@ import { isAuthenticated } from "../services/auth";
 // import SignUp from "./pages/SignUp";
 import Login from "../pages/Login";
 import Dashboard from "../pages/Dashboard";
+import VehicleRegistration from "../pages/VehicleResgistration"
+import FeedbackVehicle from "../pages/FeedbackVehicle/index";
+import FeedbackClient from "../pages/FeedbackClient/index";
 
 const PrivateRoute = ({ component: Component, ...rest }) => (
   <Route
@@ -28,6 +31,10 @@ const Routes = () => (
         <Route exact path="/" component={Login} />
         {/* <Route path="/signup" component={SignUp} /> */}
         <PrivateRoute path="/Dashboard" component={Dashboard} />
+        <Route path="/VehicleRegistration" component={VehicleRegistration} />
+        <Route path="/FeedbackVehicle" component={FeedbackVehicle} />
+        <Route path="/FeedbackClient" component={FeedbackClient} />
+
         <Route path="*" component={() => <h1>Page not found</h1>} />
       </Switch>
     </Fragment>

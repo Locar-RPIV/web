@@ -9,6 +9,7 @@ import {
   Input,
   Button,
   FeedbackCard,
+  VehicleTypeCard,
 } from "./styles";
 
 import NavBar from "../../components/NavBar";
@@ -23,143 +24,52 @@ import Api from "../../services/api";
 
 const Dashboard: React.FC = () => {
 
-  const state = {
-    client_name: "",
-    client_birthDate: "",
-    client_telephone: "",
-    client_cpf: "",
-    client_cnh: "",
-    client_rg: ""
-  };
-
-
-  const handleSubmit = async (e: { preventDefault: () => void; }) => {
-    e.preventDefault();
-
-    try {
-      const { client_name, client_birthDate, client_telephone, client_cpf, client_cnh, client_rg } = state;
-
-      console.log(client_name)
-      console.log(client_birthDate)
-      console.log(client_telephone)
-      console.log(client_cpf)
-      console.log(client_cnh)
-      console.log(client_rg)
-
-      if (!client_name || !client_birthDate || !client_telephone || !client_cpf || !client_cnh || !client_rg) {
-        alert("Preencha todos os campos")
-        return;
-      } else {
-        const {
-          data: { id }
-        } = await Api.post("/client", {
-          client_name,
-          client_birthDate,
-          client_telephone,
-          client_cpf,
-          client_cnh,
-          client_rg
-        });
-
-        await Api.post(`/client/${id}`);
-        alert("entrou aq")
-      }
-    } catch (err) {
-      alert("Ocorreu algum erro ao adicionar o imóvel")
-    }
-  };
-
   return (
     <Container>
       <NavBar />
       <div className="container">
         <section id="first">
-          <Card>
-            <Title>
-              <IoMdCar className="title-icon" size={"1.3em"} />
-              Veículos
-            </Title>
-            <Column1>
-              <div>
-                <Subtitle>Dados do veículo</Subtitle>
-                <div className="two-inputs">
-                  <Input
-                    type="text"
-                    id="standard-basic"
-                    name="vehicle_marca"
-                    placeholder="Marca"
-                  />
-                  <Input
-                    type="text"
-                    id="standard-basic"
-                    name="vehicle_modelo"
-                    placeholder="Modelo"
-                  />
-                </div>
-                <div className="three-inputs">
-                  <Input
-                    type="text"
-                    id="standard-basic"
-                    name="vehicle_ano"
-                    placeholder="Ano"
-                  />
-                  <Input
-                    id="standard-basic"
-                    name="vehicle_kilometragem"
-                    type="text"
-                    placeholder="Kilometragem"
-                  />
-                  <Input
-                    id="standard-basic"
-                    name="vehicle_potencia"
-                    type="text"
-                    placeholder="Potencia"
-                  />
-                </div>
-                <div className="one-input">
-                  <Input
-                    id="standard-basic"
-                    name="vehicle_renavam"
-                    type="text"
-                    placeholder="Renavam"
-                    style={{ width: "100%" }}
-                  />
+        <VehicleTypeCard style={{ padding: "80px" }}>
+            <div>
+              <Title>Qual tipo de véiculo você deseja cadastrar ?</Title> <br />
+              <br />
+              <Subtitle className="vehicle-type">Aceitamos vários tipos</Subtitle>
+            </div>
+            <div className="band">
+              <div className="item-1">
+                <div className="card">
+                  <div className="thumb"><IoMdCar size={"3em"} /></div>
+                  <article>
+                    <h1><Link to="/VehicleRegistration">Carros </Link></h1>
+                  </article>
                 </div>
               </div>
-            </Column1>
-            <Column2>
-              <div>
-                <Subtitle>Dados para locação</Subtitle>
-                <div className="two-inputs">
-                  <Input
-                    type="text"
-                    id="standard-basic"
-                    name="vehicle_diaria"
-                    placeholder="Valor da diária"
-                  />
-                  <Input
-                    id="standard-basic"
-                    type="text"
-                    name="vehicle_filial"
-                    placeholder="Filial de origem"
-                  />
-                </div>
-                <br />
-                <br />
-                <div style={{ whiteSpace: "nowrap" }}>
-                  <Subtitle>
-                    <label>
-                      <input type="checkbox" name="Customer" />
-                    </label>
-                    &nbsp;&nbsp;&nbsp; Veículo de cliente parceiro
-                  </Subtitle>
+              <div className="item-2">
+                <div className="card">
+                  <div className="thumb"><MdDirectionsBus size={"3em"} /></div>
+                  <article>
+                    <h1><Link to="/VehicleRegistration">Ônibus </Link></h1>
+                  </article>
                 </div>
               </div>
-              <div style={{ display: "flex", justifyContent: "flex-end" }}>
-                <Button type="submit">CADASTRAR </Button>
+              <div className="item-3">
+                <div className="card">
+                  <div className="thumb"><MdDirectionsBike size={"3em"} /></div>
+                  <article>
+                    <h1><Link to="/VehicleRegistration">Bicicleta </Link></h1>
+                  </article>
+                </div>
               </div>
-            </Column2>
-          </Card>
+              <div className="item-4">
+                <div className="card">
+                  <div className="thumb"><FaMotorcycle size={"3em"} /></div>
+                  <article>
+                    <h1><Link to="/VehicleRegistration">Motocicleta </Link></h1>
+                  </article>
+                </div>
+              </div>
+            </div>
+          </VehicleTypeCard>
         </section>
 
         <section id="second">
@@ -170,7 +80,7 @@ const Dashboard: React.FC = () => {
             </Title>
             <Column1>
 
-              <form onSubmit={handleSubmit} >
+              <form>
 
                 <div>
                   <Subtitle>Dados do cliente</Subtitle>
@@ -230,7 +140,7 @@ const Dashboard: React.FC = () => {
                     />
                   </div>
                 </div>
-                <Button type="submit">CADASTRAR</Button>
+                <Button type="submit"><Link to="/FeedbackClient">CADASTRAR</Link></Button>
               </form>
             </Column1>
             <Column2>
@@ -316,47 +226,6 @@ const Dashboard: React.FC = () => {
               </div>
             </div>
           </VehicleTypeCard> */}
-          <FeedbackCard>
-            <div className="column1">
-              <Title >
-                Veículo cadastrado com sucesso
-              </Title>
-              <Subtitle>
-                O que deseja fazer agora ?
-              </Subtitle>
-              <br />
-              <div>
-                <br />
-                <button 
-                type="submit"
-                style={{
-                  backgroundColor: "#FFFAFA",
-                  color: "#000000",
-                  font: "arial"
-              }}>
-                  Cadastrar outro
-                </button>
-              </div>
-              <br />
-              <br />
-              <hr />
-              <br />
-              <div>
-                <button 
-                type="submit"
-                style={{
-                  backgroundColor: "#FFFAFA",
-                  color: "#000000",
-                  font: "arial"
-              }}>
-                  Voltar ao inicio
-                </button>
-              </div>
-            {/* <Link to= {} /> */}
-            </div>
-            <div className="column2"><img src={vehicleFeedback} alt="" /></div>
-          </FeedbackCard>
-
         </section>
       </div>
     </Container>
