@@ -3,12 +3,12 @@ import { useHistory } from 'react-router-dom'
 import Api from "../../services/api";
 import { login } from "../../services/auth";
 import { Container, Form, Input, LoginContainer, MainImage } from "./styles";
-
+import bcrypt from "bcryptjs";
 
 const Login: React.FC = () => {
 
   const [email, setEmail] = useState("")
-  const [password, setPassword] = useState("")
+  const [password1, setPassword] = useState("")
   const [error, setError] = useState("")
 
   const history = useHistory();
@@ -16,12 +16,15 @@ const Login: React.FC = () => {
   const handleSignIn = async e => {
     e.preventDefault();
 
-    if (!email || !password) {
+    if (!email || !password1) {
       setError("Preencha e-mail e senha para continuar!");
       console.log("Preencha e-mail e senha para continuar!");
     } else {
       try {
         console.log("entrou aqui")
+        const salt = bcrypt.genSaltSync(12);
+        const hash = bcrypt.hashSync(password1, salt);
+        const password = hash;
         const response = await Api.post("/auth", { email, password });
         console.log("entrou aqui")
         login(response.data.token)
