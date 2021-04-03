@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   Container,
   Card,
@@ -18,18 +18,69 @@ import { MdPerson, MdDirectionsBus, MdDirectionsBike } from "react-icons/md";
 import { IoMdCar } from "react-icons/io";
 import { FaMotorcycle } from "react-icons/fa";
 import vehicleFeedback from "../../assets/vehicleFeedback.svg";
-import {Link} from "react-router-dom"
+import { Link } from "react-router-dom"
+import { useHistory } from 'react-router-dom'
 
 import Api from "../../services/api";
 
 const Dashboard: React.FC = () => {
+
+  const history = useHistory();
+
+  const [nome, setClientName] = useState("")
+  const [dataNascimento, setClientBirthDate] = useState("")
+  const [cpf, setClientCpf] = useState("")
+  const [telefone, setClientPhone] = useState("")
+  const [cnh, setClientCnh] = useState("")
+  const [rg, setClientRg] = useState("")
+  const [partner, setIsPartner] = useState("")
+
+  const handleSubmitClients = async (e: { preventDefault: () => void; }) => {
+    e.preventDefault();
+
+    try {
+
+      if (!nome || !dataNascimento || !cpf || !telefone || !cnh) {
+        alert("Preencha todos os campos")
+        return;
+      } else if (rg) {
+        const responsePartner = await Api.post("/partner", {
+          cpf,
+          nome,
+          telefone,
+          dataNascimento,
+          email: "testeclientepartner2@gmail.com",
+          password: "4321",
+          cnh,
+          rg
+        });
+        history.push("/FeedbackClient");
+        alert("chegou partner")
+      } else if(!rg) {
+        const responseClient = await Api.post("/client", {
+          cpf,
+          nome,
+          telefone,
+          dataNascimento,
+          email: "testecliente3@gmail.com",
+          password: "4321",
+          cnh
+        });
+        history.push("/FeedbackClient");
+        alert("chegou client")
+      }
+
+    } catch (err) {
+      alert("Ocorreu algum erro ao adicionar o cliente")
+    }
+  };
 
   return (
     <Container>
       <NavBar />
       <div className="container">
         <section id="first">
-        <VehicleTypeCard style={{ padding: "80px" }}>
+          <VehicleTypeCard style={{ padding: "80px" }}>
             <div>
               <Title>Qual tipo de véiculo você deseja cadastrar ?</Title> <br />
               <br />
@@ -89,7 +140,7 @@ const Dashboard: React.FC = () => {
                       type="text"
                       id="standard-basic"
                       name="client_name"
-                      onChange={e => ({ name: e.target.value })}
+                      onChange={(e) => setClientName(e.target.value)}
                       placeholder="Nome completo"
                       style={{
                         width: "100%",
@@ -98,17 +149,17 @@ const Dashboard: React.FC = () => {
                   </div>
                   <div className="two-inputs">
                     <Input
-                      type="date"
+                      type="text"
                       id="standard-basic"
                       name="client_birthDate"
-                      onChange={e => ({ birthDate: e.target.value })}
                       placeholder="Data de nascimento"
+                      onChange={(e) => setClientBirthDate(e.target.value)}
                     />
                     <Input
                       id="standard-basic"
                       name="client_telephone"
                       type="text"
-                      onChange={e => ({ telephone: e.target.value })}
+                      onChange={(e) => setClientPhone(e.target.value)}
                       placeholder="Telefone"
                     />
                   </div>
@@ -121,26 +172,26 @@ const Dashboard: React.FC = () => {
                       type="text"
                       id="standard-basic"
                       name="client_cpf"
-                      onChange={e => ({ cpf: e.target.value })}
+                      onChange={(e) => setClientCpf(e.target.value)}
                       placeholder="CPF"
                     />
                     <Input
                       id="standard-basic"
                       name="client_cnh"
                       type="text"
-                      onChange={e => ({ cnh: e.target.value })}
+                      onChange={(e) => setClientCnh(e.target.value)}
                       placeholder="CNH"
                     />
                     <Input
                       id="standard-basic"
                       name="client_rg"
                       type="text"
-                      onChange={e => ({ rg: e.target.value })}
+                      onChange={(e) => setClientRg(e.target.value)}
                       placeholder="RG"
                     />
                   </div>
                 </div>
-                <Button type="submit"><Link to="/FeedbackClient">CADASTRAR</Link></Button>
+                <Button onClick={handleSubmitClients} type="submit">CADASTRAR</Button>
               </form>
             </Column1>
             <Column2>
@@ -178,7 +229,6 @@ const Dashboard: React.FC = () => {
                 </div>
               </div>
               <div style={{ display: "flex", justifyContent: "flex-end" }}>
-
               </div>
             </Column2>
           </Card>

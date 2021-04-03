@@ -10,6 +10,7 @@ import Dashboard from "../pages/Dashboard";
 import VehicleRegistration from "../pages/VehicleResgistration"
 import FeedbackVehicle from "../pages/FeedbackVehicle/index";
 import FeedbackClient from "../pages/FeedbackClient/index";
+import ClientsRegistration from "../pages/ClientsRegistration";
 
 const PrivateRoute = ({ component: Component, ...rest }) => (
   <Route
@@ -32,6 +33,7 @@ const Routes = () => (
         {/* <Route path="/signup" component={SignUp} /> */}
         <PrivateRoute path="/Dashboard" component={Dashboard} />
         <Route path="/VehicleRegistration" component={VehicleRegistration} />
+        <Route path="/ClientsRegistration" component={ClientsRegistration} />
         <Route path="/FeedbackVehicle" component={FeedbackVehicle} />
         <Route path="/FeedbackClient" component={FeedbackClient} />
 

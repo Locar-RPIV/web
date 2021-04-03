@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
     Container,
     Card,
@@ -19,60 +19,52 @@ import { IoMdCar } from "react-icons/io";
 import { FaMotorcycle } from "react-icons/fa";
 import vehicleFeedback from "../../assets/vehicleFeedback.svg";
 import { Link } from "react-router-dom"
+import { useHistory } from 'react-router-dom'
 
 import Api from "../../services/api";
 
 
 const VehicleRegistration: React.FC = () => {
 
-    const state = {
-        client_name: "",
-        client_birthDate: "",
-        client_telephone: "",
-        client_cpf: "",
-        client_cnh: "",
-        client_rg: ""
-    };
+    const [marca, setVehicleMarca] = useState("")
+    const [modelo, setVehicleModelo] = useState("")
+    const [ano, setVehicleAno] = useState("")
+    const [kilometragem, setVehicleKilometragem] = useState("")
+    const [potencia, setVehiclePotencia] = useState("")
+    const [renavam, setVehicleRenavam] = useState("")
+    const [diaria, setVehicleDiaria] = useState("")
+    const [filial, setVehicleFilial] = useState("")
+
+    const history = useHistory();
 
     const handleSubmit = async (e: { preventDefault: () => void; }) => {
         e.preventDefault();
 
         try {
-            const { client_name, client_birthDate, client_telephone, client_cpf, client_cnh, client_rg } = state;
-
-            console.log(client_name)
-            console.log(client_birthDate)
-            console.log(client_telephone)
-            console.log(client_cpf)
-            console.log(client_cnh)
-            console.log(client_rg)
-
-            if (!client_name || !client_birthDate || !client_telephone || !client_cpf || !client_cnh || !client_rg) {
+            if (!marca || !modelo || !ano || !kilometragem || !potencia || !renavam || !diaria || !filial) {
                 alert("Preencha todos os campos")
                 return;
             } else {
-                const {
-                    data: { id }
-                } = await Api.post("/client", {
-                    client_name,
-                    client_birthDate,
-                    client_telephone,
-                    client_cpf,
-                    client_cnh,
-                    client_rg
+                const response = await Api.post("/automobile", {
+                    marca,
+                    modelo,
+                    ano,
+                    kilometragem,
+                    potencia,
+                    renavam,
+                    diaria,
+                    filial
                 });
-
-                await Api.post(`/client/${id}`);
-                <Link to="/FeedbackVehicle"></Link>
-                alert("entrou aq")
+                    history.push("/FeedbackVehicle");
+                    alert("chegou aq")                    
             }
+            
         } catch (err) {
-            alert("Ocorreu algum erro ao adicionar o imóvel")
+            alert("Ocorreu algum erro ao adicionar o veiculo")
         }
     };
-
+    
     return (
-
         <Container>
             <NavBar />
             <Card style={{ padding: "250px"}}>
@@ -89,12 +81,14 @@ const VehicleRegistration: React.FC = () => {
                                 id="standard-basic"
                                 name="vehicle_marca"
                                 placeholder="Marca"
+                                onChange={(e) => setVehicleMarca(e.target.value)}
                             />
                             <Input
                                 type="text"
                                 id="standard-basic"
                                 name="vehicle_modelo"
                                 placeholder="Modelo"
+                                onChange={(e) => setVehicleModelo(e.target.value)}
                             />
                         </div>
                         <div className="three-inputs">
@@ -103,18 +97,21 @@ const VehicleRegistration: React.FC = () => {
                                 id="standard-basic"
                                 name="vehicle_ano"
                                 placeholder="Ano"
+                                onChange={(e) => setVehicleAno(e.target.value)}
                             />
                             <Input
                                 id="standard-basic"
                                 name="vehicle_kilometragem"
                                 type="text"
                                 placeholder="Kilometragem"
+                                onChange={(e) => setVehicleKilometragem(e.target.value)}
                             />
                             <Input
                                 id="standard-basic"
                                 name="vehicle_potencia"
                                 type="text"
                                 placeholder="Potencia"
+                                onChange={(e) => setVehiclePotencia(e.target.value)}
                             />
                         </div>
                         <div className="one-input">
@@ -124,6 +121,7 @@ const VehicleRegistration: React.FC = () => {
                                 type="text"
                                 placeholder="Renavam"
                                 style={{ width: "100%" }}
+                                onChange={(e) => setVehicleRenavam(e.target.value)}
                             />
                         </div>
                     </div>
@@ -137,12 +135,14 @@ const VehicleRegistration: React.FC = () => {
                                 id="standard-basic"
                                 name="vehicle_diaria"
                                 placeholder="Valor da diária"
+                                onChange={(e) => setVehicleDiaria(e.target.value)}
                             />
                             <Input
                                 id="standard-basic"
                                 type="text"
                                 name="vehicle_filial"
                                 placeholder="Filial de origem"
+                                onChange={(e) => setVehicleFilial(e.target.value)}
                             />
                         </div>
                         <br />
@@ -157,7 +157,7 @@ const VehicleRegistration: React.FC = () => {
                         </div>
                     </div>
                     <div style={{ display: "flex", justifyContent: "flex-end" }}>
-                        <Button onClick={handleSubmit} type="submit"><Link to="/FeedbackVehicle">CADASTRAR</Link></Button>
+                        <Button onClick={handleSubmit} type="submit">CADASTRAR</Button>
                     </div>
                 </Column2>
             </Card>
