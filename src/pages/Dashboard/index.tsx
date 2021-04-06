@@ -88,12 +88,13 @@ const Dashboard: React.FC = () => {
             </div>
             <div className="band">
               <div className="item-1">
-                <div className="card">
+              <Link to="/VehicleRegistration"><div className="card">
                   <div className="thumb"><IoMdCar size={"3em"} /></div>
                   <article>
-                    <h1><Link to="/VehicleRegistration">Carros </Link></h1>
+                    <h1>Carros</h1>
                   </article>
                 </div>
+                </Link>
               </div>
               <div className="item-2">
                 <div className="card">
