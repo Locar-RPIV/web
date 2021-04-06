@@ -32,7 +32,7 @@ const FeedbackClient: React.FC = () => {
             <FeedbackCard style={{ padding: "50px" }}>
                 <div className="column1">
                     <Title >
-                        Cliente cadastrado com sucesso
+                        Usuário cadastrado com sucesso
               </Title>
                     <Subtitle>
                         O que deseja fazer agora?
