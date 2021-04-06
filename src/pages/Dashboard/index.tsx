@@ -55,7 +55,6 @@ const Dashboard: React.FC = () => {
           rg
         });
         history.push("/FeedbackClient");
-        alert("chegou partner")
       } else if(!rg) {
         const responseClient = await Api.post("/client", {
           cpf,
@@ -67,8 +66,20 @@ const Dashboard: React.FC = () => {
           cnh
         });
         history.push("/FeedbackClient");
-        alert("chegou client")
-      }
+      } 
+      // else if (numeroPis) {
+        
+      //   const responseEmployer = await Api.post("/employer", {
+      //     cpf,
+      //     nome,
+      //     telefone,
+      //     dataNascimento,
+      //     email: "testecliente3@gmail.com",
+      //     password: "4321",
+      //     numeroPis
+      //   });
+      //   history.push("/FeedbackClient");
+      // }
 
     } catch (err) {
       alert("Ocorreu algum erro ao adicionar o cliente")
@@ -94,31 +105,34 @@ const Dashboard: React.FC = () => {
                     <h1>Carros</h1>
                   </article>
                 </div>
-                </Link>
+              </Link>
               </div>
               <div className="item-2">
-                <div className="card">
+                <Link to="/VehicleRegistration"><div className="card">
                   <div className="thumb"><MdDirectionsBus size={"3em"} /></div>
                   <article>
-                    <h1><Link to="/VehicleRegistration">Ônibus </Link></h1>
+                    <h1>Ônibus </h1>
                   </article>
                 </div>
+                </Link>
               </div>
               <div className="item-3">
-                <div className="card">
+              <Link to="/VehicleRegistration"><div className="card">
                   <div className="thumb"><MdDirectionsBike size={"3em"} /></div>
                   <article>
-                    <h1><Link to="/VehicleRegistration">Bicicleta </Link></h1>
+                    <h1>Bicicleta </h1>
                   </article>
                 </div>
+              </Link>
               </div>
               <div className="item-4">
-                <div className="card">
+              <Link to="/VehicleRegistration"><div className="card">
                   <div className="thumb"><FaMotorcycle size={"3em"} /></div>
                   <article>
-                    <h1><Link to="/VehicleRegistration">Motocicleta </Link></h1>
+                    <h1>Motocicleta</h1>
                   </article>
                 </div>
+              </Link>
               </div>
             </div>
           </VehicleTypeCard>

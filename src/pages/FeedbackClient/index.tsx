@@ -10,6 +10,7 @@ import {
     Button,
     FeedbackCard,
     VehicleTypeCard,
+    Section,
 } from "./styles";
 
 import NavBar from "../../components/NavBar";
@@ -26,9 +27,9 @@ const FeedbackClient: React.FC = () => {
 
 
     return (
-        <Container>
+        <Section>
             <NavBar />
-            <FeedbackCard style={{ padding: "250px"}}>
+            <FeedbackCard style={{ padding: "50px" }}>
                 <div className="column1">
                     <Title >
                         Cliente cadastrado com sucesso
@@ -48,8 +49,11 @@ const FeedbackClient: React.FC = () => {
                                 color: "#1E90FF",
                                 font: "arial"
                             }}>
-                            <Link to="/Dashboard">Cadastrar outro</Link>
-                </button>
+                            <a href="/Dashboard#second">
+                                <label>Cadastrar outro</label>
+                            </a>
+                            {/* <Link to="/Dashboard#second">Cadastrar outro</Link> */}
+                        </button>
                     </div>
                     <br />
                     <hr />
@@ -65,13 +69,13 @@ const FeedbackClient: React.FC = () => {
                                 font: "arial"
                             }}>
                             <Link to="/Dashboard">Voltar ao inicio</Link>
-                </button>
+                        </button>
                     </div>
                     {/* <Link to= {} /> */}
                 </div>
                 <div className="column2"><img src={clientFeedback} alt="" /></div>
             </FeedbackCard>
-        </Container>
+        </Section>
     )
 }
 export default FeedbackClient;

@@ -64,6 +64,28 @@ export const Container = styled.div`
   }
 `;
 
+export const Section = styled.div`
+
+  position: absolute;
+  top: 0;
+  min-height: calc(var(--vh, 1vh) * 100);
+  width: 0;
+  opacity: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 70px;
+  opacity: 1;
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+  background: var(--secondary-color);
+
+  
+`;
+
 export const Card = styled.div`
   background-color: #000;
   width: 70%;
@@ -111,7 +133,7 @@ export const Card = styled.div`
 export const VehicleTypeCard = styled.div`
   background-color: #fff;
   width: 70%;
-  height: 70%;
+  height: 80%;
   padding: 40px;
   display: grid;
   grid-template-rows: 100px 1fr;
@@ -152,7 +174,7 @@ export const VehicleTypeCard = styled.div`
   .three-inputs {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    grid-gap: 32px;
+    grid-gap: 42px;
     margin: 24px 0px;
   }
 

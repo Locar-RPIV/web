@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import {
     Container,
+    Section,
     Card,
     Title,
     Subtitle,
@@ -22,7 +23,6 @@ import { Link } from "react-router-dom"
 import { useHistory } from 'react-router-dom'
 
 import Api from "../../services/api";
-import { on } from "process";
 
 
 const VehicleRegistration: React.FC = () => {
@@ -69,10 +69,10 @@ const VehicleRegistration: React.FC = () => {
           
 
         try {
-            if (!marca || !modelo || !potencia || !placa || !cor || !ano || !tipoCombustivel || !numeroPortas || !quilometragem  || !renavan || !chassi || !valorLocacao || !carroParceiro || !cpfParceiro || !filial || !imageUrl) {
+            if (!marca || !modelo || !potencia || !placa || !cor || !ano || !tipoCombustivel || !numeroPortas || !quilometragem  || !renavan || !chassi || !valorLocacao  || !filial || !imageUrl) {
                 alert("Preencha todos os campos")
                 return;
-            } else {
+            } else if (carroParceiro === "on" && cpfParceiro) {
                 const response = await Api.post("/automobile", {
                     marca,
                     modelo,
@@ -86,13 +86,32 @@ const VehicleRegistration: React.FC = () => {
                     renavan,
                     chassi,
                     valorLocacao,
-                    carroParceiro,
+                    carroParceiro: true,
                     cpfParceiro,
                     filial,
                     imageUrl
                 });
-                    history.push("/FeedbackVehicle");
-                    alert("chegou aq")                    
+                    history.push("/FeedbackVehicle");   
+            } else if (carroParceiro === "" && !cpfParceiro) {
+                const response = await Api.post("/automobile", {
+                    marca,
+                    modelo,
+                    potencia,
+                    placa,
+                    cor,
+                    ano,
+                    tipoCombustivel,
+                    numeroPortas,
+                    quilometragem,
+                    renavan,
+                    chassi,
+                    valorLocacao,
+                    carroParceiro: false,
+                    cpfParceiro: 0,
+                    filial,
+                    imageUrl
+                });
+                    history.push("/FeedbackVehicle"); 
             }
             
         } catch (err) {
@@ -101,12 +120,9 @@ const VehicleRegistration: React.FC = () => {
     };
     
     return (
-        <Container>
+        <Section>
         <NavBar />
-        <div className="container">
-          <section id="first">
-          <VehicleTypeCard style={{ padding: "80px" }}>
-                
+          <VehicleTypeCard style={{ padding: "30px" }}>
                 <Title>
                     <IoMdCar className="title-icon" size={"1.3em"} />
                     Veículos
@@ -257,9 +273,7 @@ const VehicleRegistration: React.FC = () => {
                     </div>
                 </Column2>
             </VehicleTypeCard>
-            </section>
-            </div>
-        </Container>
+        </Section>
     )
 }
 

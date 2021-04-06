@@ -368,3 +368,23 @@ export const FeedbackCard = styled.div`
   }
 
 `;
+
+export const Section = styled.div`
+
+  position: absolute;
+  top: 0;
+  min-height: calc(var(--vh, 1vh) * 100);
+  width: 0;
+  opacity: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 70px;
+  opacity: 1;
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+  background: var(--secondary-color);
+`;

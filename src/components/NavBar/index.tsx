@@ -9,17 +9,17 @@ const NavBar: React.FC = () => {
   return (
     <StyledNavBar>
       <div className="options">
-        <a href="#first">
+        <a href="/Dashboard#first">
           <i>
             <IoMdCar />
           </i>
         </a>
-        <a href="#second">
+        <a href="/Dashboard#second">
           <i>
             <MdPerson />
           </i>
         </a>
-        <a href="#third">
+        <a href="/Dashboard#third">
           <i>
             <AiFillPieChart />
           </i>

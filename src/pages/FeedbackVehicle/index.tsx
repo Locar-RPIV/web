@@ -1,6 +1,7 @@
 import React from "react";
 import {
     Container,
+    Section,
     Card,
     Title,
     Subtitle,
@@ -25,16 +26,16 @@ import Api from "../../services/api";
 const FeedbackVehicle: React.FC = () => {
 
     return (
-        <Container>
+        <Section>
             <NavBar />
-            <FeedbackCard style={{ padding: "250px"}}>
+            <FeedbackCard style={{ padding: "50px"}}>
                 <div className="column1">
                     <Title >
                         Veículo cadastrado com sucesso
-              </Title>
+                    </Title>
                     <Subtitle>
                         O que deseja fazer agora?
-              </Subtitle>
+                    </Subtitle>
                     <br />
                     <div>
                         <br />
@@ -48,7 +49,7 @@ const FeedbackVehicle: React.FC = () => {
                                 font: "arial"
                             }}>
                             <Link to="/VehicleRegistration">Cadastrar outro</Link>
-                </button>
+                        </button>
                     </div>
                     <br />
                     <hr />
@@ -64,13 +65,12 @@ const FeedbackVehicle: React.FC = () => {
                                 font: "arial"
                             }}>
                             <Link to="/Dashboard">Voltar ao inicio</Link>
-                </button>
+                        </button>
                     </div>
-                    {/* <Link to= {} /> */}
                 </div>
                 <div className="column2"><img src={vehicleFeedback} alt="" /></div>
             </FeedbackCard>
-        </Container>
+        </Section>
     )
 }
 
