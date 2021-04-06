@@ -235,7 +235,7 @@ const Dashboard: React.FC = () => {
         </section>
 
         <section id="third">
-          {/* <VehicleTypeCard style={{ padding: "80px" }}>
+        {/* <VehicleTypeCard style={{ padding: "80px" }}>
             <div>
               <Title>Qual tipo de véiculo você deseja cadastrar ?</Title> <br />
               <br />
@@ -246,7 +246,7 @@ const Dashboard: React.FC = () => {
                 <div className="card">
                   <div className="thumb"><IoMdCar size={"3em"} /></div>
                   <article>
-                    <h1>Carros</h1>
+                    <h1><Link to="/VehicleRegistration">Carros </Link></h1>
                   </article>
                 </div>
               </div>
@@ -254,7 +254,7 @@ const Dashboard: React.FC = () => {
                 <div className="card">
                   <div className="thumb"><MdDirectionsBus size={"3em"} /></div>
                   <article>
-                    <h1>Ônibus</h1>
+                    <h1><Link to="/VehicleRegistration">Ônibus </Link></h1>
                   </article>
                 </div>
               </div>
@@ -262,7 +262,7 @@ const Dashboard: React.FC = () => {
                 <div className="card">
                   <div className="thumb"><MdDirectionsBike size={"3em"} /></div>
                   <article>
-                    <h1>Bicicleta</h1>
+                    <h1><Link to="/VehicleRegistration">Bicicleta </Link></h1>
                   </article>
                 </div>
               </div>
@@ -270,7 +270,7 @@ const Dashboard: React.FC = () => {
                 <div className="card">
                   <div className="thumb"><FaMotorcycle size={"3em"} /></div>
                   <article>
-                    <h1>Motocicleta</h1>
+                    <h1><Link to="/VehicleRegistration">Motocicleta </Link></h1>
                   </article>
                 </div>
               </div>

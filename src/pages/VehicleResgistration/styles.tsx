@@ -65,13 +65,13 @@ export const Container = styled.div`
 `;
 
 export const Card = styled.div`
-  background-color: #fff;
+  background-color: #000;
   width: 70%;
   height: 70%;
   padding: 40px;
   display: grid;
   grid-template-rows: 100px 1fr;
-  grid-template-columns: 1fr;
+  grid-template-columns: 1fr 1fr;
   grid-gap: 0px 72px;
   border-radius: 15px;
   -webkit-box-shadow: 0 5px 6px -6px #777;
