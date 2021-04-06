@@ -102,9 +102,10 @@ const VehicleRegistration: React.FC = () => {
     
     return (
         <Container>
-            <NavBar />
-            <div className="container"> 
-            <Card style={{ padding: "150px"}}>
+        <NavBar />
+        <div className="container">
+          <section id="first">
+          <VehicleTypeCard style={{ padding: "80px" }}>
                 
                 <Title>
                     <IoMdCar className="title-icon" size={"1.3em"} />
@@ -255,7 +256,8 @@ const VehicleRegistration: React.FC = () => {
                         <Button onClick={handleSubmitVehicle} type="submit">CADASTRAR</Button>
                     </div>
                 </Column2>
-            </Card>
+            </VehicleTypeCard>
+            </section>
             </div>
         </Container>
     )
