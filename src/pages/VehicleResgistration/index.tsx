@@ -24,10 +24,11 @@ const VehicleRegistration: React.FC = () => {
   const [marca, setVehicleMarca] = useState("");
   const [modelo, setVehicleModelo] = useState("");
   const [potencia, setVehiclePotencia] = useState("");
+  const [status, setVehicleStatus] = useState("");
   const [placa, setVehiclePlaca] = useState("");
   const [cor, setVehicleCor] = useState("");
   const [ano, setVehicleAno] = useState("");
-  const [tipoCombustivel, setVehicleTipo] = useState("");
+  const [tipoCombustivel, setVehicleTipo] = useState(""); //Alterar
   const [numeroPortas, setVehiclePortas] = useState("");
   const [quilometragem, setVehicleKilometragem] = useState("");
   const [renavan, setVehicleRenavam] = useState("");
@@ -39,23 +40,31 @@ const VehicleRegistration: React.FC = () => {
   const [imageUrl, setVehicleImagemUrl] = useState("");
   const [cilindradas, setVehicleCilindradas] = useState("");
   const [portaMalas, setVehiclePortaMalas] = useState("");
+  const [combustivel, setVehicleCombustivel] = useState("");
 
   const history = useHistory();
 
   const optionsMarcaCarro = [
-    { value: "BMW", label: "BMW" },
-    { value: "Chevrolet", label: "Chevrolet" },
-    { value: "Fiat", label: "Fiat" },
-    { value: "Ford", label: "Ford" },
-    { value: "Honda", label: "Honda" },
-    { value: "Hyundai", label: "Hyundai" },
-    { value: "Jeep", label: "Jeep" },
-    { value: "Kia", label: "Kia" },
-    { value: "Mercedes-Benz", label: "Mercedes-Benz" },
-    { value: "Mitsubishi", label: "Mitsubishi" },
-    { value: "Nissan", label: "Nissan" },
-    { value: "Toyota", label: "Toyota" },
-    { value: "Vokswagen", label: "Vokswagen" },
+    { value: "BMW", label: "BMW" },
+    { value: "Chevrolet", label: "Chevrolet" },
+    { value: "Fiat", label: "Fiat" },
+    { value: "Ford", label: "Ford" },
+    { value: "Honda", label: "Honda" },
+    { value: "Hyundai", label: "Hyundai" },
+    { value: "Jeep", label: "Jeep" },
+    { value: "Kia", label: "Kia" },
+    { value: "Mercedes-Benz", label: "Mercedes-Benz" },
+    { value: "Mitsubishi", label: "Mitsubishi" },
+    { value: "Nissan", label: "Nissan" },
+    { value: "Toyota", label: "Toyota" },
+    { value: "Vokswagen", label: "Vokswagen" },
+  ];
+
+  const optionsStatus = [
+    { value: "Locado", label: "Locado" },
+    { value: "Disponível", label: "Disponível" },
+    { value: "Em manutanção", label: "Em manutanção" },
+    { value: "Em análise", label: "Em análise" },
   ];
 
   const optionsNPortas = [
@@ -64,46 +73,46 @@ const VehicleRegistration: React.FC = () => {
   ];
 
   const optionsTipo = [
-    { value: 0, label: "Bicicleta" },
-    { value: 1, label: "Carro" },
-    { value: 2, label: "Moto" },
-    { value: 3, label: "Ônibus" },
+    { value: 4, label: "Bicicleta" },
+    { value: 1, label: "Carro" },
+    { value: 3, label: "Moto" },
+    { value: 2, label: "Ônibus" },
   ];
 
   const optionsFilial = [
-    { value: "Unidade Alegrete", label: "Unidade Alegrete" },
-    { value: "Unidade Porto Alegre", label: "Unidade Porto Alegre" },
-    { value: "Unidade São Borja", label: "Unidade São Borja" },
-    { value: "Unidade Uruguaiana", label: "Unidade Uruguaiana" },
+    { value: 1, label: "Unidade Alegrete" },
+    { value: 3, label: "Unidade Porto Alegre" },
+    { value: 2, label: "Unidade São Borja" },
+    { value: 4, label: "Unidade Uruguaiana" },
   ];
 
   const optionsModeloCarro = [
-    { value: "Argo", label: "Argo" }, //Fiat
-    { value: "ASX", label: "ASX" }, //Mitsubishi
-    { value: "Cerato", label: "Cerato" }, //Kia
-    { value: "City", label: "City" }, // Honda
-    { value: "Civic", label: "Civic" }, // Honda
-    { value: "Classe C", label: "Classe C" }, //Mercedes-Benz
-    { value: "Fit", label: "Fit" }, // Honda
-    { value: "GLA", label: "GLA" }, //Mercedes-Benz
-    { value: "Gol", label: "Gol" }, //Vokswagen
-    { value: "HB20", label: "HB20" }, //Hyundai
-    { value: "Ka", label: "Ka" }, //Ford
-    { value: "Leaf", label: "Leaf" }, //Nissan / Elétrico
-    { value: "March", label: "March" }, //Nissan
-    { value: "Onix Plus", label: "Onix Plus" }, //Chovrolet
-    { value: "Onix", label: "Onix" }, //Chovrolet
-    { value: "Outlander", label: "Outlander" }, //Mitsubishi
-    { value: "Pajero Sport", label: "Pajero Sport" }, //Mitsubishi
-    { value: "Renegade", label: "Renegade" }, //Jeep
-    { value: "Série 3", label: "Série 3" }, //BMW
-    { value: "Sportage", label: "Sportage" }, //Kia
-    { value: "Strada", label: "Strada" }, //Fiat
-    { value: "SW4", label: "SW4" }, //Toyota
-    { value: "T-Cross", label: "T-Cross" }, //Vokswagen
-    { value: "Toro", label: "Toro" }, //Toro
-    { value: "Versa", label: "Versa" }, //Nissan
-    { value: "X1", label: "X1" }, //BMW
+    { value: "Argo", label: "Argo" }, //Fiat
+    { value: "ASX", label: "ASX" }, //Mitsubishi
+    { value: "Cerato", label: "Cerato" }, //Kia
+    { value: "City", label: "City" }, // Honda
+    { value: "Civic", label: "Civic" }, // Honda
+    { value: "Classe C", label: "Classe C" }, //Mercedes-Benz
+    { value: "Fit", label: "Fit" }, // Honda
+    { value: "GLA", label: "GLA" }, //Mercedes-Benz
+    { value: "Gol", label: "Gol" }, //Vokswagen
+    { value: "HB20", label: "HB20" }, //Hyundai
+    { value: "Ka", label: "Ka" }, //Ford
+    { value: "Leaf", label: "Leaf" }, //Nissan / Elétrico
+    { value: "March", label: "March" }, //Nissan
+    { value: "Onix Plus", label: "Onix Plus" }, //Chovrolet
+    { value: "Onix", label: "Onix" }, //Chovrolet
+    { value: "Outlander", label: "Outlander" }, //Mitsubishi
+    { value: "Pajero Sport", label: "Pajero Sport" }, //Mitsubishi
+    { value: "Renegade", label: "Renegade" }, //Jeep
+    { value: "Série 3", label: "Série 3" }, //BMW
+    { value: "Sportage", label: "Sportage" }, //Kia
+    { value: "Strada", label: "Strada" }, //Fiat
+    { value: "SW4", label: "SW4" }, //Toyota
+    { value: "T-Cross", label: "T-Cross" }, //Vokswagen
+    { value: "Toro", label: "Toro" }, //Toro
+    { value: "Versa", label: "Versa" }, //Nissan
+    { value: "X1", label: "X1" }, //BMW
   ];
 
   const optionsPotencia = [
@@ -152,63 +161,48 @@ const VehicleRegistration: React.FC = () => {
   ];
 
   const optionsAno = [
-    { value: 1990, label: 1990},
-    { value: 1991, label: 1991},
-    { value: 1992, label: 1992},
-    { value: 1993, label: 1993},
-    { value: 1994, label: 1994},
-    { value: 1995, label: 1995},
-    { value: 1996, label: 1996},
-    { value: 1997, label: 1997},
-    { value: 1998, label: 1998},
-    { value: 1999, label: 1999},
-    { value: 2000, label: 2000},
-    { value: 2001, label: 2001},
-    { value: 2002, label: 2002},
-    { value: 2003, label: 2003},
-    { value: 2004, label: 2004},
-    { value: 2005, label: 2005},
-    { value: 2006, label: 2006},
-    { value: 2007, label: 2007},
-    { value: 2008, label: 2008},
-    { value: 2009, label: 2009},
-    { value: 2010, label: 2010},
-    { value: 2011, label: 2011},
-    { value: 2012, label: 2012},
-    { value: 2013, label: 2013},
-    { value: 2014, label: 2014},
-    { value: 2015, label: 2015},
-    { value: 2016, label: 2016},
-    { value: 2017, label: 2017},
-    { value: 2018, label: 2018},
-    { value: 2019, label: 2019},
-    { value: 2020, label: 2020},
-    { value: 2021, label: 2021},
+    { value: 1990, label: 1990 },
+    { value: 1991, label: 1991 },
+    { value: 1992, label: 1992 },
+    { value: 1993, label: 1993 },
+    { value: 1994, label: 1994 },
+    { value: 1995, label: 1995 },
+    { value: 1996, label: 1996 },
+    { value: 1997, label: 1997 },
+    { value: 1998, label: 1998 },
+    { value: 1999, label: 1999 },
+    { value: 2000, label: 2000 },
+    { value: 2001, label: 2001 },
+    { value: 2002, label: 2002 },
+    { value: 2003, label: 2003 },
+    { value: 2004, label: 2004 },
+    { value: 2005, label: 2005 },
+    { value: 2006, label: 2006 },
+    { value: 2007, label: 2007 },
+    { value: 2008, label: 2008 },
+    { value: 2009, label: 2009 },
+    { value: 2010, label: 2010 },
+    { value: 2011, label: 2011 },
+    { value: 2012, label: 2012 },
+    { value: 2013, label: 2013 },
+    { value: 2014, label: 2014 },
+    { value: 2015, label: 2015 },
+    { value: 2016, label: 2016 },
+    { value: 2017, label: 2017 },
+    { value: 2018, label: 2018 },
+    { value: 2019, label: 2019 },
+    { value: 2020, label: 2020 },
+    { value: 2021, label: 2021 },
   ];
 
   const optionsCombustivel = [
-    { value: "Diesel", label: "Diesel" },
-    { value: "Etanol", label: "Etanol" },
-    { value: "Flex", label: "Flex" },
-    { value: "Gasolina", label: "Gasolina" },
-    { value: "GNV", label: "GNV" },
-    { value: "Híbrido/ Elétrico", label: "Híbrido/ Elétrico" },
+    { value: "Diesel", label: "Diesel" },
+    { value: "Etanol", label: "Etanol" },
+    { value: "Flex", label: "Flex" },
+    { value: "Gasolina", label: "Gasolina" },
+    { value: "GNV", label: "GNV" },
+    { value: "Híbrido/ Elétrico", label: "Híbrido/ Elétrico" },
   ];
-
-  //   const optionsCor = [
-  //     { value: "Azul", label: "Azul"},
-  //     { value: "Branco", label: "Branco"},
-  //     { value: "Verde", label: "Verde"},
-  //     { value: "Vermelho", label: "Vermelho"},
-  //     { value: "Prata", label: "Prata"},
-  //     { value: "Cinza", label: "Cinza"},
-  //     { value: "Rosa", label: "Rosa"},
-  //     { value: "Dourado", label: "Dourado"},
-  //     { value: "Laranja", label: "Laranja"},
-  //     { value: "Amarelo", label: "Amarelo"},
-  //     { value: "Roxo", label: "Roxo"},
-  //     { value: "Burro quando foge", label: "Burro quando foge"},
-  // ];
 
   const optionsPortaMalas = [
     { value: "146 Litros", label: "146 Litros" },
@@ -246,7 +240,7 @@ const VehicleRegistration: React.FC = () => {
     { value: "868 Litros", label: "868 Litros" },
     { value: "971 Litros", label: "971 Litros" },
     { value: "1100 Litros", label: "1100 Litros" },
-    { value: "1354 Litros", label: "1354 Litros" },    
+    { value: "1354 Litros", label: "1354 Litros" },
   ];
 
   const optionsCilindradas = [
@@ -301,11 +295,12 @@ const VehicleRegistration: React.FC = () => {
 
     console.log(marca);
     console.log(modelo);
+    console.log(status);
     console.log(potencia);
     console.log(placa);
     console.log(cor);
     console.log(ano);
-    console.log(tipoCombustivel);
+    console.log(tipoCombustivel); //Tipo automovel
     console.log(numeroPortas);
     console.log(quilometragem);
     console.log(renavan);
@@ -315,23 +310,26 @@ const VehicleRegistration: React.FC = () => {
     console.log(cpfParceiro);
     console.log(filial);
     console.log(imageUrl);
-    console.log(cilindradas);
-    console.log(portaMalas);
+    // console.log(cilindradas);
+    // console.log(portaMalas);
+    // console.log(combustivel);
 
     try {
       if (
         !modelo ||
         !potencia ||
+        !status ||
         !placa ||
         !cor ||
         !ano ||
         !tipoCombustivel ||
-        // !numeroPortas ||
+        !numeroPortas ||
         !quilometragem ||
         !renavan ||
         !chassi ||
         !valorLocacao ||
         !filial ||
+        // !combustivel ||
         // !cilindradas ||
         // !portaMalas ||
         !imageUrl
@@ -343,11 +341,12 @@ const VehicleRegistration: React.FC = () => {
           marca,
           modelo,
           potencia,
+          status,
           placa,
           cor,
           ano,
-          tipoCombustivel,
-          // numeroPortas,
+          tipoCombustivel, //Tipo automóvel
+          numeroPortas,
           quilometragem,
           renavan,
           chassi,
@@ -355,6 +354,7 @@ const VehicleRegistration: React.FC = () => {
           carroParceiro: true,
           cpfParceiro,
           filial,
+          // combustivel,
           // cilindradas,
           // portaMalas,
           imageUrl,
@@ -367,11 +367,12 @@ const VehicleRegistration: React.FC = () => {
           marca,
           modelo,
           potencia,
+          status,
           placa,
           cor,
           ano,
           tipoCombustivel,
-          // numeroPortas,
+          numeroPortas,
           quilometragem,
           renavan,
           chassi,
@@ -379,6 +380,7 @@ const VehicleRegistration: React.FC = () => {
           carroParceiro: false,
           cpfParceiro: 0,
           filial,
+          // combustivel,
           // cilindradas,
           // portaMalas,
           imageUrl,
@@ -419,7 +421,7 @@ const VehicleRegistration: React.FC = () => {
                 options={optionsCombustivel}
                 name="vehicle_tipoCombustivel"
                 placeholder="Tipo de Combustível"
-                onChange={(e) => setVehicleTipo(e.value)}
+                onChange={(e) => setVehicleCombustivel(e.value)}
               />
               <Select
                 options={optionsAno}
@@ -458,6 +460,12 @@ const VehicleRegistration: React.FC = () => {
                 name="vehicle_portaMalas"
                 placeholder="Capacidade Porta Malas"
                 onChange={(e) => setVehiclePortaMalas(e.value)}
+              />
+              <Select
+                options={optionsStatus}
+                name="vehicle_status"
+                placeholder="status"
+                onChange={(e) => setVehicleStatus(e.value)}
               />
             </div>
             <div className="three-inputs">
