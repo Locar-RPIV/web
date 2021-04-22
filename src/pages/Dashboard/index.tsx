@@ -106,7 +106,7 @@ const Dashboard: React.FC = () => {
                 </Link>
               </div>
               <div className="item-2">
-                <Link to="/VehicleRegistration"><div className="card">
+                <Link to="/BusRegistration"><div className="card">
                   <div className="thumb"><MdDirectionsBus size={"3em"} /></div>
                   <article>
                     <h1>Ônibus </h1>

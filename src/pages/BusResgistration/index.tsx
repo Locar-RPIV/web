@@ -14,38 +14,38 @@ import {
 
 import NavBar from "../../components/NavBar";
 
-import { IoMdCar } from "react-icons/io";
+import { IoMdBus, IoMdCar } from "react-icons/io";
 
 import { useHistory } from "react-router-dom";
 
 import Api from "../../services/api";
 
-const VehicleRegistration: React.FC = () => {
-  const [marca, setVehicleMarca] = useState("");
-  const [modelo, setVehicleModelo] = useState("");
-  const [potencia, setVehiclePotencia] = useState("");
-  const [status, setVehicleStatus] = useState("");
-  const [placa, setVehiclePlaca] = useState("");
-  const [cor, setVehicleCor] = useState("");
-  const [ano, setVehicleAno] = useState("");
-  const [tipoCombustivel, setVehicleTipo] = useState(""); //Alterar
-  const [numeroPortas, setVehiclePortas] = useState("");
-  const [quilometragem, setVehicleQuilometragem] = useState("");
-  const [renavan, setVehicleRenavam] = useState("");
-  const [chassi, setVehicleChassi] = useState("");
-  const [assentos, setVehicleAssentos] = useState("");
-  const [valorLocacao, setVehicleDiaria] = useState("");
+const BusRegistration: React.FC = () => {
+  const [marca, setBusMarca] = useState("");
+  const [modelo, setBusModelo] = useState("");
+  const [potencia, setBusPotencia] = useState("");
+  const [status, setBusStatus] = useState("Em análise");
+  const [placa, setBusPlaca] = useState("");
+  const [cor, setBusCor] = useState("");
+  const [ano, setBusAno] = useState("");
+  const [tipoCombustivel, setBusTipo] = useState("Ônibus");
+  const [numeroPortas, setBusPortas] = useState("");
+  const [quilometragem, setBusQuilometragem] = useState("");
+  const [renavan, setBusRenavam] = useState("");
+  const [chassi, setBusChassi] = useState("");
+  const [assentos, setBusAssentos] = useState("");
+  const [valorLocacao, setBusDiaria] = useState("");
   const [carroParceiro, setCarroParceiro] = useState("");
-  const [cpfParceiro, setVehicleCpfParceiro] = useState("");
-  const [filial, setVehicleFilial] = useState("");
-  const [imageUrl, setVehicleImagemUrl] = useState("");
-  const [cilindradas, setVehicleCilindradas] = useState("");
-  const [portaMalas, setVehiclePortaMalas] = useState("");
-  const [combustivel, setVehicleCombustivel] = useState("");
+  const [cpfParceiro, setBusCpfParceiro] = useState("");
+  const [filial, setBusFilial] = useState("");
+  const [imageUrl, setBusImagemUrl] = useState("");
+  const [cilindradas, setBusCilindradas] = useState("");
+  const [portaMalas, setBusPortaMalas] = useState("");
+  const [combustivel, setBusCombustivel] = useState("");
 
   const history = useHistory();
 
-  const optionsMarcaCarro = [
+  const optionsMarcaBus = [
     { value: "BMW", label: "BMW" },
     { value: "Chevrolet", label: "Chevrolet" },
     { value: "Fiat", label: "Fiat" },
@@ -291,7 +291,7 @@ const VehicleRegistration: React.FC = () => {
     { value: "387 CV", label: "387 CV" },
   ];
 
-  const handleSubmitVehicle = async (e: { preventDefault: () => void }) => {
+  const handleSubmitBus = async (e: { preventDefault: () => void }) => {
     e.preventDefault();
 
     console.log(marca);
@@ -301,7 +301,7 @@ const VehicleRegistration: React.FC = () => {
     console.log(placa);
     console.log(cor);
     console.log(ano);
-    console.log(tipoCombustivel); //Tipo automovel
+    console.log(tipoCombustivel);
     console.log(numeroPortas);
     console.log(quilometragem);
     console.log(renavan);
@@ -403,133 +403,131 @@ const VehicleRegistration: React.FC = () => {
       <NavBar />
       <VehicleTypeCard style={{ padding: "30px" }}>
         <Title>
-          <IoMdCar className="title-icon" size={"1.3em"} />
-          Carro
+          <IoMdBus className="title-icon" size={"1.3em"} />
+          Ônibus
         </Title>
         <Column1>
           <div>
             <Subtitle>Dados do veículo</Subtitle>
-            <div className="two-inputs">
+            <div className="three-inputs">
               <Select
-                options={optionsMarcaCarro}
-                name="vehicle_marca"
+                options={optionsMarcaBus}
+                name="bus_marca"
                 placeholder="Marca"
-                onChange={(e) => setVehicleMarca(e.value)}
+                onChange={(e) => setBusMarca(e.value)}
               />
               <Select
                 options={optionsModeloCarro}
-                name="vehicle_modelo"
+                name="bus_modelo"
                 placeholder="Modelo"
-                onChange={(e) => setVehicleModelo(e.value)}
+                onChange={(e) => setBusModelo(e.value)}
               />
               <Select
                 options={optionsCombustivel}
-                name="vehicle_tipoCombustivel"
+                name="bus_tipoCombustivel"
                 placeholder="Tipo de Combustível"
-                onChange={(e) => setVehicleCombustivel(e.value)}
+                onChange={(e) => setBusCombustivel(e.value)}
               />
               <Select
                 options={optionsAno}
-                name="vehicle_ano"
+                name="bus_ano"
                 placeholder="Ano"
-                onChange={(e) => setVehicleAno(e.value)}
+                onChange={(e) => setBusAno(e.value)}
               />
-            </div>
-            <div className="three-inputs">
               <Select
                 options={optionsCilindradas}
-                name="vehicle_cilindradas"
+                name="bus_cilindradas"
                 placeholder="Cilindradas"
-                onChange={(e) => setVehicleCilindradas(e.value)}
+                onChange={(e) => setBusCilindradas(e.value)}
               />
               <Select
                 options={optionsPotencia}
-                name="vehicle_potencia"
+                name="bus_potencia"
                 placeholder="Potencia"
-                onChange={(e) => setVehiclePotencia(e.value)}
+                onChange={(e) => setBusPotencia(e.value)}
               />
               <Select
                 options={optionsTipo}
-                name="vehicle_tipo"
+                name="bus_tipo"
                 placeholder="Tipo do Veículo"
-                onChange={(e) => setVehicleTipo(e.value)}
+                onChange={(e) => setBusTipo(e.value)}
               />
               <Select
                 options={optionsNPortas}
-                name="vehicle_nPortas"
+                name="bus_nPortas"
                 placeholder="Nº de Portas"
-                onChange={(e) => setVehiclePortas(e.value)}
+                onChange={(e) => setBusPortas(e.value)}
               />
               <Select
                 options={optionsPortaMalas}
-                name="vehicle_portaMalas"
+                name="bus_portaMalas"
                 placeholder="Capacidade Porta Malas"
-                onChange={(e) => setVehiclePortaMalas(e.value)}
+                onChange={(e) => setBusPortaMalas(e.value)}
               />
             </div>
             <div className="three-inputs">
               <Input
                 type="text"
                 id="standard-basic"
-                name="vehicle_cor"
+                name="bus_cor"
                 placeholder="Cor"
-                onChange={(e) => setVehicleCor(e.target.value)}
+                onChange={(e) => setBusCor(e.target.value)}
               />
               <Input
                 id="standard-basic"
-                name="vehicle_Quilometragem"
+                name="bus_Quilometragem"
                 type="text"
                 placeholder="Quilometragem"
-                onChange={(e) => setVehicleQuilometragem(e.target.value)}
+                onChange={(e) => setBusQuilometragem(e.target.value)}
               />
               <Input
                 id="standard-basic"
-                name="vehicle_placa"
+                name="bus_placa"
                 type="text"
                 placeholder="Placa"
                 style={{ width: "100%" }}
-                onChange={(e) => setVehiclePlaca(e.target.value)}
+                onChange={(e) => setBusPlaca(e.target.value)}
               />
             </div>
             <div className="two-inputs">
               <Input
                 id="standard-basic"
-                name="vehicle_renavam"
+                name="bus_renavam"
                 type="text"
                 placeholder="Renavam"
                 style={{ width: "100%" }}
-                onChange={(e) => setVehicleRenavam(e.target.value)}
+                onChange={(e) => setBusRenavam(e.target.value)}
               />
               <Input
                 type="text"
                 id="standard-basic"
-                name="vehicle_chassi"
+                name="bus_chassi"
                 placeholder="Chassi"
-                onChange={(e) => setVehicleChassi(e.target.value)}
+                onChange={(e) => setBusChassi(e.target.value)}
               />
             </div>
             <div className="three-inputs">
               <Input
                 id="standard-basic"
-                name="vehicle_Assentos"
+                name="bus_Assentos"
                 type="text"
                 placeholder="Nº de Assentos"
                 style={{ width: "100%" }}
-                onChange={(e) => setVehicleAssentos(e.target.value)}
+                onChange={(e) => setBusAssentos(e.target.value)}
               />
               <Input
                 type="text"
                 id="standard-basic"
-                name="vehicle_status"
+                name="bus_status"
                 placeholder="Status"
-                onChange={(e) => setVehicleStatus("Em análise")}
+                onChange={(e) => setBusStatus("Em análise")}
               />
               <Input
                 type="text"
                 id="standard-basic"
-                name="vehicle_imageUrl"
+                name="bus_imageUrl"
                 placeholder="ImagemUrl"
-                onChange={(e) => setVehicleImagemUrl(e.target.value)}
+                onChange={(e) => setBusImagemUrl(e.target.value)}
               />
             </div>
           </div>
@@ -555,7 +553,7 @@ const VehicleRegistration: React.FC = () => {
                 type="text"
                 name="bus_cpfParceiro"
                 placeholder="CPF Parceiro"
-                onChange={(e) => setVehicleCpfParceiro(e.target.value)}
+                onChange={(e) => setBusCpfParceiro(e.target.value)}
               />
             </div>
             <Subtitle>Dados para locação</Subtitle>
@@ -565,20 +563,20 @@ const VehicleRegistration: React.FC = () => {
                 id="standard-basic"
                 name="bus_diaria"
                 placeholder="Valor da diária"
-                onChange={(e) => setVehicleDiaria(e.target.value)}
+                onChange={(e) => setBusDiaria(e.target.value)}
               />
               <Select
                 options={optionsFilial}
                 name="bus_filial"
                 placeholder="Filial de origem"
-                onChange={(e) => setVehicleFilial(e.value)}
+                onChange={(e) => setBusFilial(e.value)}
               />
             </div>
             <br />
             <br />
           </div>
           <div style={{ display: "flex", justifyContent: "flex-end" }}>
-            <Button onClick={handleSubmitVehicle} type="submit">
+            <Button onClick={handleSubmitBus} type="submit">
               CADASTRAR
             </Button>
           </div>
@@ -588,4 +586,4 @@ const VehicleRegistration: React.FC = () => {
   );
 };
 
-export default VehicleRegistration;
+export default BusRegistration;
