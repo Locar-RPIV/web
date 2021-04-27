@@ -9,6 +9,7 @@ import Login from "../pages/Login";
 import Dashboard from "../pages/Dashboard";
 import VehicleRegistration from "../pages/VehicleResgistration"
 import BusRegistration from "../pages/BusResgistration"
+import MotoRegistration from "../pages/MotoResgistration"
 import FeedbackVehicle from "../pages/FeedbackVehicle/index";
 import FeedbackClient from "../pages/FeedbackClient/index";
 import ClientsRegistration from "../pages/ClientsRegistration";
@@ -35,6 +36,7 @@ const Routes = () => (
         <PrivateRoute path="/Dashboard" component={Dashboard} />
         <Route path="/VehicleRegistration" component={VehicleRegistration} />
         <Route path="/BusRegistration" component={BusRegistration} />
+        <Route path="/MotoRegistration" component={MotoRegistration} />
         <Route path="/ClientsRegistration" component={ClientsRegistration} />
         <Route path="/FeedbackVehicle" component={FeedbackVehicle} />
         <Route path="/FeedbackClient" component={FeedbackClient} />

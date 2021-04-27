@@ -24,11 +24,11 @@ const VehicleRegistration: React.FC = () => {
   const [marca, setVehicleMarca] = useState("");
   const [modelo, setVehicleModelo] = useState("");
   const [potencia, setVehiclePotencia] = useState("");
-  const [status, setVehicleStatus] = useState("");
+  const [status, setVehicleStatus] = useState("Em análise");
   const [placa, setVehiclePlaca] = useState("");
   const [cor, setVehicleCor] = useState("");
   const [ano, setVehicleAno] = useState("");
-  const [tipoCombustivel, setVehicleTipo] = useState(""); //Alterar
+  const [tipoVeiculo, setVehicleTipo] = useState("Carro");
   const [numeroPortas, setVehiclePortas] = useState("");
   const [quilometragem, setVehicleQuilometragem] = useState("");
   const [renavan, setVehicleRenavam] = useState("");
@@ -41,7 +41,7 @@ const VehicleRegistration: React.FC = () => {
   const [imageUrl, setVehicleImagemUrl] = useState("");
   const [cilindradas, setVehicleCilindradas] = useState("");
   const [portaMalas, setVehiclePortaMalas] = useState("");
-  const [combustivel, setVehicleCombustivel] = useState("");
+  const [tipoCombustivel, setVehicleCombustivel] = useState("");
 
   const history = useHistory();
 
@@ -76,7 +76,7 @@ const VehicleRegistration: React.FC = () => {
   const optionsTipo = [
     { value: 4, label: "Bicicleta" },
     { value: 1, label: "Carro" },
-    { value: 3, label: "Moto" },
+    { value: 3, label: "Motocicleta" },
     { value: 2, label: "Ônibus" },
   ];
 
@@ -117,48 +117,27 @@ const VehicleRegistration: React.FC = () => {
   ];
 
   const optionsPotencia = [
-    // { value: "1.0", label: "1.0" },
-    // { value: "1.2", label: "1.2" },
-    // { value: "1.3", label: "1.3" },
-    // { value: "1.4", label: "1.4" },
-    // { value: "1.5", label: "1.5" },
-    // { value: "1.6", label: "1.6" },
-    // { value: "1.8", label: "1.8" },
-    // { value: "2.0", label: "2.0" },
-    // { value: "2.2", label: "2.2" },
-    // { value: "2.3", label: "2.3" },
-    // { value: "2.4", label: "2.4" },
-    // { value: "2.5", label: "2.5" },
-    // { value: "2.7", label: "2.7" },
-    // { value: "2.8", label: "2.8" },
-    // { value: "3.0", label: "3.0" },
-    // { value: "3.2", label: "3.2" },
-    // { value: "3.3", label: "3.3" },
-    // { value: "3.5", label: "3.5" },
-    // { value: "3.7", label: "3.7" },
-    // { value: "3.8", label: "3.8" },
-    // { value: "4.0", label: "4.0" },
-    { value: 10, label: 10 },
-    { value: 12, label: 12 },
-    { value: 13, label: 13 },
-    { value: 14, label: 14 },
-    { value: 15, label: 15 },
-    { value: 16, label: 16 },
-    { value: 18, label: 18 },
-    { value: 20, label: 20 },
-    { value: 22, label: 22 },
-    { value: 23, label: 23 },
-    { value: 24, label: 24 },
-    { value: 25, label: 25 },
-    { value: 27, label: 27 },
-    { value: 28, label: 28 },
-    { value: 30, label: 30 },
-    { value: 32, label: 32 },
-    { value: 33, label: 33 },
-    { value: 35, label: 35 },
-    { value: 37, label: 37 },
-    { value: 38, label: 38 },
-    { value: 40, label: 40 },
+    { value: "1.0", label: "1.0" },
+    { value: "1.2", label: "1.2" },
+    { value: "1.3", label: "1.3" },
+    { value: "1.4", label: "1.4" },
+    { value: "1.5", label: "1.5" },
+    { value: "1.6", label: "1.6" },
+    { value: "1.8", label: "1.8" },
+    { value: "2.0", label: "2.0" },
+    { value: "2.2", label: "2.2" },
+    { value: "2.3", label: "2.3" },
+    { value: "2.4", label: "2.4" },
+    { value: "2.5", label: "2.5" },
+    { value: "2.7", label: "2.7" },
+    { value: "2.8", label: "2.8" },
+    { value: "3.0", label: "3.0" },
+    { value: "3.2", label: "3.2" },
+    { value: "3.3", label: "3.3" },
+    { value: "3.5", label: "3.5" },
+    { value: "3.7", label: "3.7" },
+    { value: "3.8", label: "3.8" },
+    { value: "4.0", label: "4.0" },
   ];
 
   const optionsAno = [
@@ -301,20 +280,20 @@ const VehicleRegistration: React.FC = () => {
     console.log(placa);
     console.log(cor);
     console.log(ano);
-    console.log(tipoCombustivel); //Tipo automovel
+    console.log(tipoVeiculo); //Tipo automovel
     console.log(numeroPortas);
     console.log(quilometragem);
     console.log(renavan);
     console.log(chassi);
-    // console.log(assentos);
+    console.log(assentos);
     console.log(valorLocacao);
     console.log(carroParceiro);
     console.log(cpfParceiro);
     console.log(filial);
     console.log(imageUrl);
-    // console.log(cilindradas);
-    // console.log(portaMalas);
-    // console.log(combustivel);
+    console.log(cilindradas);
+    console.log(portaMalas);
+    console.log(tipoCombustivel);
 
     try {
       if (
@@ -324,17 +303,17 @@ const VehicleRegistration: React.FC = () => {
         !placa ||
         !cor ||
         !ano ||
-        !tipoCombustivel ||
+        !tipoVeiculo ||
         !numeroPortas ||
         !quilometragem ||
         !renavan ||
         !chassi ||
-        // !assentos ||
+        !assentos ||
         !valorLocacao ||
         !filial ||
-        // !combustivel ||
-        // !cilindradas ||
-        // !portaMalas ||
+        !tipoCombustivel ||
+        !cilindradas ||
+        !portaMalas ||
         !imageUrl
       ) {
         alert("Preencha todos os campos");
@@ -348,19 +327,19 @@ const VehicleRegistration: React.FC = () => {
           placa,
           cor,
           ano,
-          tipoCombustivel, //Tipo automóvel
+          tipoVeiculo, //Tipo automóvel
           numeroPortas,
           quilometragem,
           renavan,
           chassi,
-          // assentos,
+          assentos,
           valorLocacao,
           carroParceiro: true,
           cpfParceiro,
           filial,
-          // combustivel,
-          // cilindradas,
-          // portaMalas,
+          tipoCombustivel,
+          cilindradas,
+          portaMalas,
           imageUrl,
         });
         history.push("/FeedbackVehicle");
@@ -375,19 +354,19 @@ const VehicleRegistration: React.FC = () => {
           placa,
           cor,
           ano,
-          tipoCombustivel,
+          tipoVeiculo,
           numeroPortas,
           quilometragem,
           renavan,
           chassi,
-          // assentos,
+          assentos,
           valorLocacao,
           carroParceiro: false,
           cpfParceiro: 0,
           filial,
-          // combustivel,
-          // cilindradas,
-          // portaMalas,
+          tipoCombustivel,
+          cilindradas,
+          portaMalas,
           imageUrl,
         });
         history.push("/FeedbackVehicle");
@@ -409,7 +388,8 @@ const VehicleRegistration: React.FC = () => {
         <Column1>
           <div>
             <Subtitle>Dados do veículo</Subtitle>
-            <div className="two-inputs">
+            <div className="form-row"></div>
+            <div className="three-inputs">
               <Select
                 options={optionsMarcaCarro}
                 name="vehicle_marca"
@@ -434,8 +414,6 @@ const VehicleRegistration: React.FC = () => {
                 placeholder="Ano"
                 onChange={(e) => setVehicleAno(e.value)}
               />
-            </div>
-            <div className="three-inputs">
               <Select
                 options={optionsCilindradas}
                 name="vehicle_cilindradas"
@@ -449,20 +427,14 @@ const VehicleRegistration: React.FC = () => {
                 onChange={(e) => setVehiclePotencia(e.value)}
               />
               <Select
-                options={optionsTipo}
-                name="vehicle_tipo"
-                placeholder="Tipo do Veículo"
-                onChange={(e) => setVehicleTipo(e.value)}
-              />
-              <Select
                 options={optionsNPortas}
-                name="vehicle_nPortas"
+                name="bus_nPortas"
                 placeholder="Nº de Portas"
                 onChange={(e) => setVehiclePortas(e.value)}
               />
               <Select
                 options={optionsPortaMalas}
-                name="vehicle_portaMalas"
+                name="bus_portaMalas"
                 placeholder="Capacidade Porta Malas"
                 onChange={(e) => setVehiclePortaMalas(e.value)}
               />
@@ -521,8 +493,8 @@ const VehicleRegistration: React.FC = () => {
                 type="text"
                 id="standard-basic"
                 name="vehicle_status"
-                placeholder="Status"
-                onChange={(e) => setVehicleStatus("Em análise")}
+                placeholder="Status: Em análise"
+                disabled
               />
               <Input
                 type="text"

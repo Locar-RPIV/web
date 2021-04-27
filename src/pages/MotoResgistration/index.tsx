@@ -14,51 +14,43 @@ import {
 
 import NavBar from "../../components/NavBar";
 
-import { MdDirectionsBus } from "react-icons/md";
+import { FaMotorcycle } from "react-icons/fa";
 
 import { useHistory } from "react-router-dom";
 
 import Api from "../../services/api";
 
-const BusRegistration: React.FC = () => {
-  const [marca, setBusMarca] = useState("");
-  const [modelo, setBusModelo] = useState("");
-  const [potencia, setBusPotencia] = useState("");
-  const [status, setBusStatus] = useState("Em análise");
-  const [placa, setBusPlaca] = useState("");
-  const [cor, setBusCor] = useState("");
-  const [ano, setBusAno] = useState("");
-  const [tipoVeiculo, setBusTipo] = useState("Ônibus");
-  const [numeroPortas, setBusPortas] = useState("");
-  const [quilometragem, setBusQuilometragem] = useState("");
-  const [renavan, setBusRenavam] = useState("");
-  const [chassi, setBusChassi] = useState("");
-  const [assentos, setBusAssentos] = useState("");
-  const [valorLocacao, setBusDiaria] = useState("");
+const MotoRegistration: React.FC = () => {
+  const [marca, setMotoMarca] = useState("");
+  const [modelo, setMotoModelo] = useState("");
+  const [potencia, setMotoPotencia] = useState("");
+  const [status, setMotoStatus] = useState("Em análise");
+  const [placa, setMotoPlaca] = useState("");
+  const [cor, setMotoCor] = useState("");
+  const [ano, setMotoAno] = useState("");
+  const [tipoVeiculo, setMotoTipo] = useState("Moto");
+  const [quilometragem, setMotoQuilometragem] = useState("");
+  const [renavan, setMotoRenavam] = useState("");
+  const [chassi, setMotoChassi] = useState("");
+  const [assentos, setMotoAssentos] = useState("");
+  const [valorLocacao, setMotoDiaria] = useState("");
   const [carroParceiro, setCarroParceiro] = useState("");
-  const [cpfParceiro, setBusCpfParceiro] = useState("");
-  const [filial, setBusFilial] = useState("");
-  const [imageUrl, setBusImagemUrl] = useState("");
-  const [cilindradas, setBusCilindradas] = useState("");
-  const [portaMalas, setBusPortaMalas] = useState("");
-  const [tipoCombustivel, setVehicleCombustivel] = useState("");
+  const [cpfParceiro, setMotoCpfParceiro] = useState("");
+  const [filial, setMotoFilial] = useState("");
+  const [imageUrl, setMotoImagemUrl] = useState("");
+  const [cilindradas, setMotoCilindradas] = useState("");
+  const [tipoCombustivel, setMotoCombustivel] = useState("");
+
 
   const history = useHistory();
 
-  const optionsMarcaBus = [
+  const optionsMarcaMoto = [
+    { value: "Honda", label: "Honda" },
+    { value: "Yamaha", label: "Yamaha" },
     { value: "BMW", label: "BMW" },
-    { value: "Chevrolet", label: "Chevrolet" },
-    { value: "Fiat", label: "Fiat" },
     { value: "Ford", label: "Ford" },
     { value: "Honda", label: "Honda" },
-    { value: "Hyundai", label: "Hyundai" },
-    { value: "Jeep", label: "Jeep" },
-    { value: "Kia", label: "Kia" },
-    { value: "Mercedes-Benz", label: "Mercedes-Benz" },
-    { value: "Mitsubishi", label: "Mitsubishi" },
-    { value: "Nissan", label: "Nissan" },
-    { value: "Toyota", label: "Toyota" },
-    { value: "Vokswagen", label: "Vokswagen" },
+    { value: "Suzuki", label: "Suzuki" },
   ];
 
   const optionsStatus = [
@@ -68,16 +60,11 @@ const BusRegistration: React.FC = () => {
     { value: "Em análise", label: "Em análise" },
   ];
 
-  const optionsNPortas = [
-    { value: "2", label: "2" },
-    { value: "4", label: "4" },
-  ];
-
   const optionsTipo = [
     { value: 4, label: "Bicicleta" },
     { value: 1, label: "Carro" },
-    { value: 3, label: "Moto" },
-    { value: 2, label: "Ônibus" },
+    { value: 3, label: "Motocicleta" },
+    { value: 2, label: "ÔniMoto" },
   ];
 
   const optionsFilial = [
@@ -87,38 +74,28 @@ const BusRegistration: React.FC = () => {
     { value: 4, label: "Unidade Uruguaiana" },
   ];
 
-  const optionsModeloCarro = [
-    { value: "Argo", label: "Argo" }, //Fiat
-    { value: "ASX", label: "ASX" }, //Mitsubishi
-    { value: "Cerato", label: "Cerato" }, //Kia
-    { value: "City", label: "City" }, // Honda
-    { value: "Civic", label: "Civic" }, // Honda
-    { value: "Classe C", label: "Classe C" }, //Mercedes-Benz
-    { value: "Fit", label: "Fit" }, // Honda
-    { value: "GLA", label: "GLA" }, //Mercedes-Benz
-    { value: "Gol", label: "Gol" }, //Vokswagen
-    { value: "HB20", label: "HB20" }, //Hyundai
-    { value: "Ka", label: "Ka" }, //Ford
-    { value: "Leaf", label: "Leaf" }, //Nissan / Elétrico
-    { value: "March", label: "March" }, //Nissan
-    { value: "Onix Plus", label: "Onix Plus" }, //Chovrolet
-    { value: "Onix", label: "Onix" }, //Chovrolet
-    { value: "Outlander", label: "Outlander" }, //Mitsubishi
-    { value: "Pajero Sport", label: "Pajero Sport" }, //Mitsubishi
-    { value: "Renegade", label: "Renegade" }, //Jeep
-    { value: "Série 3", label: "Série 3" }, //BMW
-    { value: "Sportage", label: "Sportage" }, //Kia
-    { value: "Strada", label: "Strada" }, //Fiat
-    { value: "SW4", label: "SW4" }, //Toyota
-    { value: "T-Cross", label: "T-Cross" }, //Vokswagen
-    { value: "Toro", label: "Toro" }, //Toro
-    { value: "Versa", label: "Versa" }, //Nissan
-    { value: "X1", label: "X1" }, //BMW
+  const optionsModeloMoto = [
+    { value: "Biz 100", label: "Biz 100" },
+    { value: "Biz 125", label: "Biz 125" },
+    { value: "CG 125", label: "CG 125" },
+    { value: "CG 150", label: "CG 150" },
+    { value: "YBR 125", label: "YBR 125" },
+    { value: "NXR 150", label: "NXR 150" },
+    { value: "CB 300", label: "CB 300" },
+    { value: "XRE 300", label: "XRE 300" },
+    { value: "Fazer 250", label: "Fazer 250" },
+    { value: "Crypton", label: "Crypton" },
+    { value: "Lead 110", label: "Lead 110" },
+    { value: "XTZ 125", label: "XTZ 125" },
+    { value: "XTZ 250", label: "XTZ 250" },
+    { value: "Intruder 125", label: "Intruder 125" },
+    { value: "Burgman 125", label: "Burgman 125" },
+    { value: "Lander", label: "Lander" },
   ];
 
   const optionsPotencia = [
-    { value: "72 CV", label: "72 CV" },
-    { value: "75 CV", label: "75 CV" },
+    { value: "6.43 CV", label: "6.43 CV" },
+    { value: "9.2 CV", label: "9.2 CV" },
     { value: "77 CV", label: "77 CV" },
     { value: "78 CV", label: "78 CV" },
     { value: "80 CV", label: "80 CV" },
@@ -126,41 +103,6 @@ const BusRegistration: React.FC = () => {
     { value: "84 CV", label: "84 CV" },
     { value: "85 CV", label: "85 CV" },
     { value: "88 CV", label: "88 CV" },
-    { value: "101 CV", label: "101 CV" },
-    { value: "104 CV", label: "104 CV" },
-    { value: "109 CV", label: "109 CV" },
-    { value: "110 CV", label: "110 CV" },
-    { value: "111 CV", label: "111 CV" },
-    { value: "114 CV", label: "114 CV" },
-    { value: "115 CV", label: "115 CV" },
-    { value: "116 CV", label: "116 CV" },
-    { value: "120 CV", label: "120 CV" },
-    { value: "123 CV", label: "123 CV" },
-    { value: "128 CV", label: "128 CV" },
-    { value: "130 CV", label: "130 CV" },
-    { value: "135 CV", label: "135 CV" },
-    { value: "136 CV", label: "136 CV" },
-    { value: "139 CV", label: "139 CV" },
-    { value: "149 CV", label: "149 CV" },
-    { value: "150 CV", label: "150 CV" },
-    { value: "155 CV", label: "155 CV" },
-    { value: "156 CV", label: "156 CV" },
-    { value: "157 CV", label: "157 CV" },
-    { value: "160 CV", label: "160 CV" },
-    { value: "163 CV", label: "163 CV" },
-    { value: "165 CV", label: "165 CV" },
-    { value: "167 CV", label: "167 CV" },
-    { value: "170 CV", label: "170 CV" },
-    { value: "171 CV", label: "171 CV" },
-    { value: "184 CV", label: "184 CV" },
-    { value: "190 CV", label: "190 CV" },
-    { value: "192 CV", label: "192 CV" },
-    { value: "204 CV", label: "204 CV" },
-    { value: "211 CV", label: "211 CV" },
-    { value: "231 CV", label: "231 CV" },
-    { value: "240 CV", label: "240 CV" },
-    { value: "292 CV", label: "292 CV" },
-    { value: "387 CV", label: "387 CV" },
   ];
 
   const optionsAno = [
@@ -207,45 +149,6 @@ const BusRegistration: React.FC = () => {
     { value: "Híbrido/ Elétrico", label: "Híbrido/ Elétrico" },
   ];
 
-  const optionsPortaMalas = [
-    { value: "146 Litros", label: "146 Litros" },
-    { value: "180 Litros", label: "180 Litros" },
-    { value: "257 Litros", label: "257 Litros" },
-    { value: "265 Litros", label: "265 Litros" },
-    { value: "275 Litros", label: "275 Litros" },
-    { value: "276 Litros", label: "276 Litros" },
-    { value: "285 Litros", label: "285 Litros" },
-    { value: "289 Litros", label: "289 Litros" },
-    { value: "300 Litros", label: "300 Litros" },
-    { value: "313 Litros", label: "313 Litros" },
-    { value: "320 Litros", label: "320 Litros" },
-    { value: "334 Litros", label: "334 Litros" },
-    { value: "359 Litros", label: "359 Litros" },
-    { value: "363 Litros", label: "363 Litros" },
-    { value: "400 Litros", label: "400 Litros" },
-    { value: "415 Litros", label: "415 Litros" },
-    { value: "420 Litros", label: "420 Litros" },
-    { value: "433 Litros", label: "433 Litros" },
-    { value: "435 Litros", label: "435 Litros" },
-    { value: "445 Litros", label: "445 Litros" },
-    { value: "449 Litros", label: "449 Litros" },
-    { value: "450 Litros", label: "450 Litros" },
-    { value: "460 Litros", label: "460 Litros" },
-    { value: "480 Litros", label: "480 Litros" },
-    { value: "491 Litros", label: "491 Litros" },
-    { value: "505 Litros", label: "505 Litros" },
-    { value: "519 Litros", label: "519 Litros" },
-    { value: "520 Litros", label: "520 Litros" },
-    { value: "560 Litros", label: "560 Litros" },
-    { value: "605 Litros", label: "605 Litros" },
-    { value: "715 Litros", label: "715 Litros" },
-    { value: "820 Litros", label: "820 Litros" },
-    { value: "868 Litros", label: "868 Litros" },
-    { value: "971 Litros", label: "971 Litros" },
-    { value: "1100 Litros", label: "1100 Litros" },
-    { value: "1354 Litros", label: "1354 Litros" },
-  ];
-
   const optionsCilindradas = [
     { value: "1.0", label: "1.0" },
     { value: "1.2", label: "1.2" },
@@ -270,7 +173,7 @@ const BusRegistration: React.FC = () => {
     { value: "4.0", label: "4.0" },
   ];
 
-  const handleSubmitBus = async (e: { preventDefault: () => void }) => {
+  const handleSubmitMoto = async (e: { preventDefault: () => void }) => {
     e.preventDefault();
 
     console.log(marca);
@@ -281,7 +184,6 @@ const BusRegistration: React.FC = () => {
     console.log(cor);
     console.log(ano);
     console.log(tipoVeiculo);
-    console.log(numeroPortas);
     console.log(quilometragem);
     console.log(renavan);
     console.log(chassi);
@@ -292,7 +194,6 @@ const BusRegistration: React.FC = () => {
     console.log(filial);
     console.log(imageUrl);
     console.log(cilindradas);
-    console.log(portaMalas);
     console.log(tipoCombustivel);
 
     try {
@@ -304,7 +205,6 @@ const BusRegistration: React.FC = () => {
         !cor ||
         !ano ||
         !tipoVeiculo ||
-        !numeroPortas ||
         !quilometragem ||
         !renavan ||
         !chassi ||
@@ -313,7 +213,6 @@ const BusRegistration: React.FC = () => {
         !filial ||
         !tipoCombustivel ||
         !cilindradas ||
-        !portaMalas ||
         !imageUrl
       ) {
         alert("Preencha todos os campos");
@@ -328,7 +227,6 @@ const BusRegistration: React.FC = () => {
           cor,
           ano,
           tipoVeiculo, //Tipo automóvel
-          numeroPortas,
           quilometragem,
           renavan,
           chassi,
@@ -339,7 +237,6 @@ const BusRegistration: React.FC = () => {
           filial,
           tipoCombustivel,
           cilindradas,
-          portaMalas,
           imageUrl,
         });
         history.push("/FeedbackVehicle");
@@ -355,7 +252,6 @@ const BusRegistration: React.FC = () => {
           cor,
           ano,
           tipoVeiculo,
-          numeroPortas,
           quilometragem,
           renavan,
           chassi,
@@ -366,7 +262,6 @@ const BusRegistration: React.FC = () => {
           filial,
           tipoCombustivel,
           cilindradas,
-          portaMalas,
           imageUrl,
         });
         history.push("/FeedbackVehicle");
@@ -382,127 +277,124 @@ const BusRegistration: React.FC = () => {
       <NavBar />
       <VehicleTypeCard style={{ padding: "30px" }}>
         <Title>
-          <MdDirectionsBus className="title-icon" size={"1.3em"} />
-          Ônibus
+          <FaMotorcycle className="title-icon" size={"1.3em"} />
+          Motocicleta
         </Title>
         <Column1>
           <div>
             <Subtitle>Dados do veículo</Subtitle>
             <div className="three-inputs">
               <Select
-                options={optionsMarcaBus}
-                name="bus_marca"
+                options={optionsMarcaMoto}
+                name="moto_marca"
                 placeholder="Marca"
-                onChange={(e) => setBusMarca(e.value)}
+                onChange={(e) => setMotoMarca(e.value)}
               />
               <Select
-                options={optionsModeloCarro}
-                name="bus_modelo"
+                options={optionsModeloMoto}
+                name="moto_modelo"
                 placeholder="Modelo"
-                onChange={(e) => setBusModelo(e.value)}
+                onChange={(e) => setMotoModelo(e.value)}
               />
               <Select
                 options={optionsCombustivel}
-                name="bus_tipoCombustivel"
+                name="moto_tipoCombustivel"
                 placeholder="Tipo de Combustível"
-                onChange={(e) => setVehicleCombustivel(e.value)}
+                onChange={(e) => setMotoCombustivel(e.value)}
               />
               <Select
                 options={optionsAno}
-                name="bus_ano"
+                name="moto_ano"
                 placeholder="Ano"
-                onChange={(e) => setBusAno(e.value)}
+                onChange={(e) => setMotoAno(e.value)}
               />
               <Select
                 options={optionsCilindradas}
-                name="bus_cilindradas"
+                name="moto_cilindradas"
                 placeholder="Cilindradas"
-                onChange={(e) => setBusCilindradas(e.value)}
+                onChange={(e) => setMotoCilindradas(e.value)}
               />
               <Select
                 options={optionsPotencia}
-                name="bus_potencia"
+                name="moto_potencia"
                 placeholder="Potencia"
-                onChange={(e) => setBusPotencia(e.value)}
-              />
-              <Select
-                options={optionsNPortas}
-                name="bus_nPortas"
-                placeholder="Nº de Portas"
-                onChange={(e) => setBusPortas(e.value)}
-              />
-              <Select
-                options={optionsPortaMalas}
-                name="bus_portaMalas"
-                placeholder="Capacidade Porta Malas"
-                onChange={(e) => setBusPortaMalas(e.value)}
+                onChange={(e) => setMotoPotencia(e.value)}
               />
             </div>
             <div className="three-inputs">
               <Input
                 type="text"
                 id="standard-basic"
-                name="bus_cor"
+                name="moto_cor"
                 placeholder="Cor"
-                onChange={(e) => setBusCor(e.target.value)}
+                onChange={(e) => setMotoCor(e.target.value)}
               />
               <Input
                 id="standard-basic"
-                name="bus_Quilometragem"
+                name="moto_Quilometragem"
                 type="text"
                 placeholder="Quilometragem"
-                onChange={(e) => setBusQuilometragem(e.target.value)}
+                onChange={(e) => setMotoQuilometragem(e.target.value)}
               />
               <Input
                 id="standard-basic"
-                name="bus_placa"
+                name="moto_placa"
                 type="text"
                 placeholder="Placa"
                 style={{ width: "100%" }}
-                onChange={(e) => setBusPlaca(e.target.value)}
+                onChange={(e) => setMotoPlaca(e.target.value)}
               />
             </div>
             <div className="two-inputs">
               <Input
                 id="standard-basic"
-                name="bus_renavam"
+                name="moto_renavam"
                 type="text"
                 placeholder="Renavam"
                 style={{ width: "100%" }}
-                onChange={(e) => setBusRenavam(e.target.value)}
+                onChange={(e) => setMotoRenavam(e.target.value)}
               />
               <Input
                 type="text"
                 id="standard-basic"
-                name="bus_chassi"
+                name="moto_chassi"
                 placeholder="Chassi"
-                onChange={(e) => setBusChassi(e.target.value)}
+                onChange={(e) => setMotoChassi(e.target.value)}
               />
             </div>
             <div className="three-inputs">
               <Input
                 id="standard-basic"
-                name="bus_Assentos"
+                name="moto_Assentos"
                 type="text"
                 placeholder="Nº de Assentos"
                 style={{ width: "100%" }}
-                onChange={(e) => setBusAssentos(e.target.value)}
+                onChange={(e) => setMotoAssentos(e.target.value)}
               />
               <Input
                 type="text"
                 id="standard-basic"
-                name="bus_status"
-                placeholder="Status: Em análise"
-                disabled
+                name="moto_status"
+                placeholder="Status"
+                onChange={(e) => setMotoStatus("Em análise")}
               />
               <Input
                 type="text"
                 id="standard-basic"
-                name="bus_imageUrl"
+                name="moto_imageUrl"
                 placeholder="ImagemUrl"
-                onChange={(e) => setBusImagemUrl(e.target.value)}
+                onChange={(e) => setMotoImagemUrl(e.target.value)}
               />
             </div>
+            <div className="input-wrapper">
+              <label htmlFor="input-file">Selecionar um arquivo</label>
+              <input id="input-file" type="file" value="" />
+              <span id="file-name"></span>
+            </div>
+            {/* <div>
+              <label className="form-label">Fotos do veículo</label>
+              <input type="file" accept="image/*" />
+            </div> */}
           </div>
         </Column1>
         <Column2>
@@ -524,9 +416,9 @@ const BusRegistration: React.FC = () => {
               <Input
                 id="standard-basic"
                 type="text"
-                name="bus_cpfParceiro"
+                name="moto_cpfParceiro"
                 placeholder="CPF Parceiro"
-                onChange={(e) => setBusCpfParceiro(e.target.value)}
+                onChange={(e) => setMotoCpfParceiro(e.target.value)}
               />
             </div>
             <Subtitle>Dados para locação</Subtitle>
@@ -534,22 +426,22 @@ const BusRegistration: React.FC = () => {
               <Input
                 type="text"
                 id="standard-basic"
-                name="bus_diaria"
+                name="moto_diaria"
                 placeholder="Valor da diária"
-                onChange={(e) => setBusDiaria(e.target.value)}
+                onChange={(e) => setMotoDiaria(e.target.value)}
               />
               <Select
                 options={optionsFilial}
-                name="bus_filial"
+                name="moto_filial"
                 placeholder="Filial de origem"
-                onChange={(e) => setBusFilial(e.value)}
+                onChange={(e) => setMotoFilial(e.value)}
               />
             </div>
             <br />
             <br />
           </div>
           <div style={{ display: "flex", justifyContent: "flex-end" }}>
-            <Button onClick={handleSubmitBus} type="submit">
+            <Button onClick={handleSubmitMoto} type="submit">
               CADASTRAR
             </Button>
           </div>
@@ -559,4 +451,4 @@ const BusRegistration: React.FC = () => {
   );
 };
 
-export default BusRegistration;
+export default MotoRegistration;
