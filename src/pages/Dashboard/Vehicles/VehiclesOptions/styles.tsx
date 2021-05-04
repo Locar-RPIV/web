@@ -173,11 +173,11 @@ export const ListUserCard = styled.div`
   }
 
   td {
-    font-size: 20px;
-
     border-bottom: 1px solid #ccc;
     text-align: left;
     padding: 20px;
+    font-size: 20px;
+    font-weight: lighter;
   }
 `;
 

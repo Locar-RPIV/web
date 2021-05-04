@@ -13,7 +13,7 @@ import {
     VehicleTypeCard,
 } from "./styles";
 
-import NavBar from "../../components/NavBar";
+import NavBar from "../../../../components/NavBar";
 
 import { MdPerson, MdDirectionsBus, MdDirectionsBike } from "react-icons/md";
 import { IoMdCar } from "react-icons/io";
@@ -22,7 +22,7 @@ import vehicleFeedback from "../../assets/vehicleFeedback.svg";
 import { Link } from "react-router-dom"
 import { useHistory } from 'react-router-dom'
 
-import Api from "../../services/api";
+import Api from "../../../../services/api";
 
 
 const VehicleRegistration: React.FC = () => {
