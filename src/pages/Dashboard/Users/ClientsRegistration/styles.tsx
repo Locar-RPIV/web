@@ -108,79 +108,6 @@ export const Card = styled.div`
   }
 `;
 
-export const ListUserCard = styled.div`
-  background-color: #fff;
-  width: 70%;
-  height: 70%;
-  padding: 40px;
-  display: grid;
-  grid-template-rows: 100px 1fr;
-  grid-template-columns: 1fr;
-  border-radius: 15px;
-  -webkit-box-shadow: 0 5px 6px -6px #777;
-  -moz-box-shadow: 0 5px 6px -6px #777;
-  box-shadow: 0 5px 6px -6px #777;
-
-  @media (max-width: 768px) {
-    //padding: 10px;
-  }
-
-  -webkit-box-shadow: 0 5px 6px -6px #777;
-  -moz-box-shadow: 0 5px 6px -6px #777;
-  box-shadow: 0 5px 6px -6px #777;
-
-  .one-input {
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-gap: 32px;
-    margin: 24px 0px;
-  }
-
-  .two-inputs {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-gap: 32px;
-    margin: 24px 0px;
-  }
-
-  .three-inputs {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-gap: 32px;
-    margin: 24px 0px;
-  }
-
-  .table-content {
-    width: 100%;
-    overflow-y: auto;
-    height: 100%;
-  }
-
-  table {
-    font-family: arial, sans-serif;
-    border-collapse: collapse;
-    color: #777;
-    width: 100%;
-  }
-
-  th {
-    color: #eb8712;
-    text-align: left;
-    padding: 20px;
-    padding-bottom: 40px;
-    font-size: 20px;
-    font-weight: lighter;
-  }
-
-  td {
-    font-size: 20px;
-
-    border-bottom: 1px solid #ccc;
-    text-align: left;
-    padding: 20px;
-  }
-`;
-
 export const VehicleTypeCard = styled.div`
   background-color: #fff;
   width: 70%;
@@ -401,6 +328,7 @@ export const Button = styled.button`
   color: #fff;
 `;
 
+
 export const FeedbackCard = styled.div`
   background-color: #fff;
   width: 70%;
@@ -423,6 +351,7 @@ export const FeedbackCard = styled.div`
   -moz-box-shadow: 0 5px 6px -6px #777;
   box-shadow: 0 5px 6px -6px #777;
 
+
   .column1 {
     width: 150%;
     height: 50%;
@@ -437,4 +366,5 @@ export const FeedbackCard = styled.div`
     align-items: center;
     justify-content: center;
   }
+
 `;
