@@ -46,18 +46,12 @@ const BusRegistration: React.FC = () => {
   const history = useHistory();
 
   const optionsMarcaBus = [
-    { value: "BMW", label: "BMW" },
-    { value: "Chevrolet", label: "Chevrolet" },
-    { value: "Fiat", label: "Fiat" },
-    { value: "Ford", label: "Ford" },
-    { value: "Honda", label: "Honda" },
-    { value: "Hyundai", label: "Hyundai" },
-    { value: "Jeep", label: "Jeep" },
-    { value: "Kia", label: "Kia" },
+    { value: "Iveco", label: "Iveco" },
+    { value: "Volvo", label: "Volvo" },
+    { value: "Agrale", label: "Agrale" },
+    { value: "Scania", label: "Scania" },
+    { value: "Jimbei", label: "Jimbei" },
     { value: "Mercedes-Benz", label: "Mercedes-Benz" },
-    { value: "Mitsubishi", label: "Mitsubishi" },
-    { value: "Nissan", label: "Nissan" },
-    { value: "Toyota", label: "Toyota" },
     { value: "Vokswagen", label: "Vokswagen" },
   ];
 
@@ -69,8 +63,11 @@ const BusRegistration: React.FC = () => {
   ];
 
   const optionsNPortas = [
-    { value: "2", label: "2" },
-    { value: "4", label: "4" },
+    { value: 1, label: "1" },
+    { value: 2, label: "2" },
+    { value: 3, label: "3" },
+    { value: 4, label: "4" },
+    { value: 5, label: "5" },
   ];
 
   const optionsTipo = [
@@ -88,79 +85,27 @@ const BusRegistration: React.FC = () => {
   ];
 
   const optionsModeloCarro = [
-    { value: "Argo", label: "Argo" }, //Fiat
-    { value: "ASX", label: "ASX" }, //Mitsubishi
-    { value: "Cerato", label: "Cerato" }, //Kia
-    { value: "City", label: "City" }, // Honda
-    { value: "Civic", label: "Civic" }, // Honda
-    { value: "Classe C", label: "Classe C" }, //Mercedes-Benz
-    { value: "Fit", label: "Fit" }, // Honda
-    { value: "GLA", label: "GLA" }, //Mercedes-Benz
-    { value: "Gol", label: "Gol" }, //Vokswagen
-    { value: "HB20", label: "HB20" }, //Hyundai
-    { value: "Ka", label: "Ka" }, //Ford
-    { value: "Leaf", label: "Leaf" }, //Nissan / Elétrico
-    { value: "March", label: "March" }, //Nissan
-    { value: "Onix Plus", label: "Onix Plus" }, //Chovrolet
-    { value: "Onix", label: "Onix" }, //Chovrolet
-    { value: "Outlander", label: "Outlander" }, //Mitsubishi
-    { value: "Pajero Sport", label: "Pajero Sport" }, //Mitsubishi
-    { value: "Renegade", label: "Renegade" }, //Jeep
-    { value: "Série 3", label: "Série 3" }, //BMW
-    { value: "Sportage", label: "Sportage" }, //Kia
-    { value: "Strada", label: "Strada" }, //Fiat
-    { value: "SW4", label: "SW4" }, //Toyota
-    { value: "T-Cross", label: "T-Cross" }, //Vokswagen
-    { value: "Toro", label: "Toro" }, //Toro
-    { value: "Versa", label: "Versa" }, //Nissan
-    { value: "X1", label: "X1" }, //BMW
+    { value: "Sprinter", label: "Sprinter" },
+    { value: "Volare W9", label: "Volare W9" }, 
+    { value: "Volare W8", label: "Volare W8" }, 
+    { value: "Volare DW9", label: "Volare DW9" }, 
+    { value: "Volare V8", label: "Volare V8" }, 
+    { value: "Volare V6", label: "Volare V6" }, 
+    { value: "Masca Gran Midi", label: "Masca Gran Midi" }, 
+    { value: "Masca Granvia", label: "Masca Granvia" }, 
+    { value: "Comil Campione", label: "Comil Campione" }, 
+    { value: "Comil Versatile", label: "Comil Versatile" }, 
+    { value: "Masca Granvia", label: "Masca Granvia" },
+    { value: "Masca Gran Midi", label: "Masca Gran Midi" },
   ];
 
   const optionsPotencia = [
-    { value: "72 CV", label: "72 CV" },
-    { value: "75 CV", label: "75 CV" },
-    { value: "77 CV", label: "77 CV" },
-    { value: "78 CV", label: "78 CV" },
-    { value: "80 CV", label: "80 CV" },
-    { value: "82 CV", label: "82 CV" },
-    { value: "84 CV", label: "84 CV" },
-    { value: "85 CV", label: "85 CV" },
-    { value: "88 CV", label: "88 CV" },
-    { value: "101 CV", label: "101 CV" },
-    { value: "104 CV", label: "104 CV" },
-    { value: "109 CV", label: "109 CV" },
-    { value: "110 CV", label: "110 CV" },
-    { value: "111 CV", label: "111 CV" },
-    { value: "114 CV", label: "114 CV" },
     { value: "115 CV", label: "115 CV" },
-    { value: "116 CV", label: "116 CV" },
-    { value: "120 CV", label: "120 CV" },
-    { value: "123 CV", label: "123 CV" },
-    { value: "128 CV", label: "128 CV" },
-    { value: "130 CV", label: "130 CV" },
-    { value: "135 CV", label: "135 CV" },
-    { value: "136 CV", label: "136 CV" },
-    { value: "139 CV", label: "139 CV" },
-    { value: "149 CV", label: "149 CV" },
+    { value: "140 CV", label: "140 CV" },
+    { value: "146 CV", label: "146 CV" },
     { value: "150 CV", label: "150 CV" },
-    { value: "155 CV", label: "155 CV" },
-    { value: "156 CV", label: "156 CV" },
-    { value: "157 CV", label: "157 CV" },
-    { value: "160 CV", label: "160 CV" },
-    { value: "163 CV", label: "163 CV" },
-    { value: "165 CV", label: "165 CV" },
-    { value: "167 CV", label: "167 CV" },
-    { value: "170 CV", label: "170 CV" },
-    { value: "171 CV", label: "171 CV" },
-    { value: "184 CV", label: "184 CV" },
-    { value: "190 CV", label: "190 CV" },
-    { value: "192 CV", label: "192 CV" },
-    { value: "204 CV", label: "204 CV" },
-    { value: "211 CV", label: "211 CV" },
-    { value: "231 CV", label: "231 CV" },
-    { value: "240 CV", label: "240 CV" },
-    { value: "292 CV", label: "292 CV" },
-    { value: "387 CV", label: "387 CV" },
+    { value: "163", label: "163 CV" },
+
   ];
 
   const optionsAno = [
@@ -199,12 +144,8 @@ const BusRegistration: React.FC = () => {
   ];
 
   const optionsCombustivel = [
-    { value: "Diesel", label: "Diesel" },
-    { value: "Etanol", label: "Etanol" },
-    { value: "Flex", label: "Flex" },
-    { value: "Gasolina", label: "Gasolina" },
-    { value: "GNV", label: "GNV" },
-    { value: "Híbrido/ Elétrico", label: "Híbrido/ Elétrico" },
+    { value: 1, label: "Diesel" },
+    { value: 6, label: "Híbrido/ Elétrico" },
   ];
 
   const optionsPortaMalas = [
@@ -224,50 +165,13 @@ const BusRegistration: React.FC = () => {
     { value: "363 Litros", label: "363 Litros" },
     { value: "400 Litros", label: "400 Litros" },
     { value: "415 Litros", label: "415 Litros" },
-    { value: "420 Litros", label: "420 Litros" },
-    { value: "433 Litros", label: "433 Litros" },
-    { value: "435 Litros", label: "435 Litros" },
-    { value: "445 Litros", label: "445 Litros" },
-    { value: "449 Litros", label: "449 Litros" },
-    { value: "450 Litros", label: "450 Litros" },
-    { value: "460 Litros", label: "460 Litros" },
-    { value: "480 Litros", label: "480 Litros" },
-    { value: "491 Litros", label: "491 Litros" },
-    { value: "505 Litros", label: "505 Litros" },
-    { value: "519 Litros", label: "519 Litros" },
-    { value: "520 Litros", label: "520 Litros" },
-    { value: "560 Litros", label: "560 Litros" },
-    { value: "605 Litros", label: "605 Litros" },
-    { value: "715 Litros", label: "715 Litros" },
-    { value: "820 Litros", label: "820 Litros" },
-    { value: "868 Litros", label: "868 Litros" },
-    { value: "971 Litros", label: "971 Litros" },
-    { value: "1100 Litros", label: "1100 Litros" },
-    { value: "1354 Litros", label: "1354 Litros" },
   ];
 
   const optionsCilindradas = [
-    { value: "1.0", label: "1.0" },
-    { value: "1.2", label: "1.2" },
-    { value: "1.3", label: "1.3" },
-    { value: "1.4", label: "1.4" },
-    { value: "1.5", label: "1.5" },
-    { value: "1.6", label: "1.6" },
-    { value: "1.8", label: "1.8" },
-    { value: "2.0", label: "2.0" },
-    { value: "2.2", label: "2.2" },
-    { value: "2.3", label: "2.3" },
-    { value: "2.4", label: "2.4" },
-    { value: "2.5", label: "2.5" },
-    { value: "2.7", label: "2.7" },
+    { value: "2.1", label: "2.1" },
     { value: "2.8", label: "2.8" },
-    { value: "3.0", label: "3.0" },
-    { value: "3.2", label: "3.2" },
-    { value: "3.3", label: "3.3" },
-    { value: "3.5", label: "3.5" },
-    { value: "3.7", label: "3.7" },
-    { value: "3.8", label: "3.8" },
-    { value: "4.0", label: "4.0" },
+    { value: "4.3", label: "4.3" },
+    { value: "4.8", label: "4.8" },
   ];
 
   const handleSubmitBus = async (e: { preventDefault: () => void }) => {
@@ -280,12 +184,11 @@ const BusRegistration: React.FC = () => {
     console.log(placa);
     console.log(cor);
     console.log(ano);
-    console.log(tipoVeiculo);
+    console.log(tipoCombustivel);
     console.log(numeroPortas);
     console.log(quilometragem);
     console.log(renavan);
     console.log(chassi);
-    console.log(assentos);
     console.log(valorLocacao);
     console.log(carroParceiro);
     console.log(cpfParceiro);
@@ -293,28 +196,30 @@ const BusRegistration: React.FC = () => {
     console.log(imageUrl);
     console.log(cilindradas);
     console.log(portaMalas);
-    console.log(tipoCombustivel);
+    console.log(tipoVeiculo);
+    console.log(assentos);
+
 
     try {
       if (
         !modelo ||
-        !potencia ||
         !status ||
+        !potencia ||
         !placa ||
         !cor ||
         !ano ||
-        !tipoVeiculo ||
+        !tipoCombustivel ||
         !numeroPortas ||
         !quilometragem ||
         !renavan ||
         !chassi ||
-        !assentos ||
         !valorLocacao ||
-        !filial ||
-        !tipoCombustivel ||
         !cilindradas ||
+        !filial ||
+        !imageUrl ||
         !portaMalas ||
-        !imageUrl
+        !tipoVeiculo ||
+        !assentos
       ) {
         alert("Preencha todos os campos");
         return;
@@ -322,25 +227,25 @@ const BusRegistration: React.FC = () => {
         const response = await Api.post("/automobile", {
           marca,
           modelo,
-          potencia,
           status,
+          potencia,
           placa,
           cor,
           ano,
-          tipoVeiculo, //Tipo automóvel
+          tipoCombustivel,
           numeroPortas,
           quilometragem,
           renavan,
           chassi,
-          assentos,
           valorLocacao,
           carroParceiro: true,
           cpfParceiro,
-          filial,
-          tipoCombustivel,
           cilindradas,
-          portaMalas,
+          filial,
           imageUrl,
+          portaMalas,
+          tipoVeiculo,
+          assentos,
         });
         history.push("/FeedbackVehicle");
 
@@ -349,25 +254,25 @@ const BusRegistration: React.FC = () => {
         const response = await Api.post("/automobile", {
           marca,
           modelo,
-          potencia,
           status,
+          potencia,
           placa,
           cor,
           ano,
-          tipoVeiculo,
+          tipoCombustivel,
           numeroPortas,
           quilometragem,
           renavan,
           chassi,
-          assentos,
           valorLocacao,
           carroParceiro: false,
           cpfParceiro: 0,
-          filial,
-          tipoCombustivel,
           cilindradas,
-          portaMalas,
+          filial,
           imageUrl,
+          portaMalas,
+          tipoVeiculo,
+          assentos,
         });
         history.push("/FeedbackVehicle");
         console.log(response);

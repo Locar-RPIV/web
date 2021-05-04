@@ -17,7 +17,7 @@ import NavBar from "../../components/NavBar";
 import { MdPerson, MdDirectionsBus, MdDirectionsBike } from "react-icons/md";
 import { IoMdCar } from "react-icons/io";
 import { FaMotorcycle } from "react-icons/fa";
-import vehicleFeedback from "../../assets/vehicleFeedback.svg";
+// import vehicleFeedback from "../../assets/vehicleFeedback.svg";
 import { Link } from "react-router-dom"
 import { useHistory } from 'react-router-dom'
 
@@ -115,7 +115,7 @@ const Dashboard: React.FC = () => {
                 </Link>
               </div>
               <div className="item-3">
-                <Link to="/VehicleRegistration"><div className="card">
+                <Link to="/BicicletaRegistration"><div className="card">
                   <div className="thumb"><MdDirectionsBike size={"3em"} /></div>
                   <article>
                     <h1>Bicicleta </h1>

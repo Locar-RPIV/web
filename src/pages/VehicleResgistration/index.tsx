@@ -69,14 +69,14 @@ const VehicleRegistration: React.FC = () => {
   ];
 
   const optionsNPortas = [
-    { value: "2", label: "2" },
-    { value: "4", label: "4" },
+    { value: 2, label: "2" },
+    { value: 4, label: "4" },
   ];
 
   const optionsTipo = [
     { value: 4, label: "Bicicleta" },
     { value: 1, label: "Carro" },
-    { value: 3, label: "Motocicleta" },
+    { value: 3, label: "Moto" },
     { value: 2, label: "Ônibus" },
   ];
 
@@ -117,113 +117,6 @@ const VehicleRegistration: React.FC = () => {
   ];
 
   const optionsPotencia = [
-    { value: "1.0", label: "1.0" },
-    { value: "1.2", label: "1.2" },
-    { value: "1.3", label: "1.3" },
-    { value: "1.4", label: "1.4" },
-    { value: "1.5", label: "1.5" },
-    { value: "1.6", label: "1.6" },
-    { value: "1.8", label: "1.8" },
-    { value: "2.0", label: "2.0" },
-    { value: "2.2", label: "2.2" },
-    { value: "2.3", label: "2.3" },
-    { value: "2.4", label: "2.4" },
-    { value: "2.5", label: "2.5" },
-    { value: "2.7", label: "2.7" },
-    { value: "2.8", label: "2.8" },
-    { value: "3.0", label: "3.0" },
-    { value: "3.2", label: "3.2" },
-    { value: "3.3", label: "3.3" },
-    { value: "3.5", label: "3.5" },
-    { value: "3.7", label: "3.7" },
-    { value: "3.8", label: "3.8" },
-    { value: "4.0", label: "4.0" },
-  ];
-
-  const optionsAno = [
-    { value: 1990, label: 1990 },
-    { value: 1991, label: 1991 },
-    { value: 1992, label: 1992 },
-    { value: 1993, label: 1993 },
-    { value: 1994, label: 1994 },
-    { value: 1995, label: 1995 },
-    { value: 1996, label: 1996 },
-    { value: 1997, label: 1997 },
-    { value: 1998, label: 1998 },
-    { value: 1999, label: 1999 },
-    { value: 2000, label: 2000 },
-    { value: 2001, label: 2001 },
-    { value: 2002, label: 2002 },
-    { value: 2003, label: 2003 },
-    { value: 2004, label: 2004 },
-    { value: 2005, label: 2005 },
-    { value: 2006, label: 2006 },
-    { value: 2007, label: 2007 },
-    { value: 2008, label: 2008 },
-    { value: 2009, label: 2009 },
-    { value: 2010, label: 2010 },
-    { value: 2011, label: 2011 },
-    { value: 2012, label: 2012 },
-    { value: 2013, label: 2013 },
-    { value: 2014, label: 2014 },
-    { value: 2015, label: 2015 },
-    { value: 2016, label: 2016 },
-    { value: 2017, label: 2017 },
-    { value: 2018, label: 2018 },
-    { value: 2019, label: 2019 },
-    { value: 2020, label: 2020 },
-    { value: 2021, label: 2021 },
-  ];
-
-  const optionsCombustivel = [
-    { value: "Diesel", label: "Diesel" },
-    { value: "Etanol", label: "Etanol" },
-    { value: "Flex", label: "Flex" },
-    { value: "Gasolina", label: "Gasolina" },
-    { value: "GNV", label: "GNV" },
-    { value: "Híbrido/ Elétrico", label: "Híbrido/ Elétrico" },
-  ];
-
-  const optionsPortaMalas = [
-    { value: "146 Litros", label: "146 Litros" },
-    { value: "180 Litros", label: "180 Litros" },
-    { value: "257 Litros", label: "257 Litros" },
-    { value: "265 Litros", label: "265 Litros" },
-    { value: "275 Litros", label: "275 Litros" },
-    { value: "276 Litros", label: "276 Litros" },
-    { value: "285 Litros", label: "285 Litros" },
-    { value: "289 Litros", label: "289 Litros" },
-    { value: "300 Litros", label: "300 Litros" },
-    { value: "313 Litros", label: "313 Litros" },
-    { value: "320 Litros", label: "320 Litros" },
-    { value: "334 Litros", label: "334 Litros" },
-    { value: "359 Litros", label: "359 Litros" },
-    { value: "363 Litros", label: "363 Litros" },
-    { value: "400 Litros", label: "400 Litros" },
-    { value: "415 Litros", label: "415 Litros" },
-    { value: "420 Litros", label: "420 Litros" },
-    { value: "433 Litros", label: "433 Litros" },
-    { value: "435 Litros", label: "435 Litros" },
-    { value: "445 Litros", label: "445 Litros" },
-    { value: "449 Litros", label: "449 Litros" },
-    { value: "450 Litros", label: "450 Litros" },
-    { value: "460 Litros", label: "460 Litros" },
-    { value: "480 Litros", label: "480 Litros" },
-    { value: "491 Litros", label: "491 Litros" },
-    { value: "505 Litros", label: "505 Litros" },
-    { value: "519 Litros", label: "519 Litros" },
-    { value: "520 Litros", label: "520 Litros" },
-    { value: "560 Litros", label: "560 Litros" },
-    { value: "605 Litros", label: "605 Litros" },
-    { value: "715 Litros", label: "715 Litros" },
-    { value: "820 Litros", label: "820 Litros" },
-    { value: "868 Litros", label: "868 Litros" },
-    { value: "971 Litros", label: "971 Litros" },
-    { value: "1100 Litros", label: "1100 Litros" },
-    { value: "1354 Litros", label: "1354 Litros" },
-  ];
-
-  const optionsCilindradas = [
     { value: "72 CV", label: "72 CV" },
     { value: "75 CV", label: "75 CV" },
     { value: "77 CV", label: "77 CV" },
@@ -270,6 +163,113 @@ const VehicleRegistration: React.FC = () => {
     { value: "387 CV", label: "387 CV" },
   ];
 
+  const optionsAno = [
+    { value: 1990, label: 1990 },
+    { value: 1991, label: 1991 },
+    { value: 1992, label: 1992 },
+    { value: 1993, label: 1993 },
+    { value: 1994, label: 1994 },
+    { value: 1995, label: 1995 },
+    { value: 1996, label: 1996 },
+    { value: 1997, label: 1997 },
+    { value: 1998, label: 1998 },
+    { value: 1999, label: 1999 },
+    { value: 2000, label: 2000 },
+    { value: 2001, label: 2001 },
+    { value: 2002, label: 2002 },
+    { value: 2003, label: 2003 },
+    { value: 2004, label: 2004 },
+    { value: 2005, label: 2005 },
+    { value: 2006, label: 2006 },
+    { value: 2007, label: 2007 },
+    { value: 2008, label: 2008 },
+    { value: 2009, label: 2009 },
+    { value: 2010, label: 2010 },
+    { value: 2011, label: 2011 },
+    { value: 2012, label: 2012 },
+    { value: 2013, label: 2013 },
+    { value: 2014, label: 2014 },
+    { value: 2015, label: 2015 },
+    { value: 2016, label: 2016 },
+    { value: 2017, label: 2017 },
+    { value: 2018, label: 2018 },
+    { value: 2019, label: 2019 },
+    { value: 2020, label: 2020 },
+    { value: 2021, label: 2021 },
+  ];
+
+  const optionsCombustivel = [
+    { value: 1, label: "Diesel" },
+    { value: 2, label: "Etanol" },
+    { value: 3, label: "Flex" },
+    { value: 4, label: "Gasolina" },
+    { value: 5, label: "GNV" },
+    { value: 6, label: "Híbrido/ Elétrico" },
+  ];
+
+  const optionsPortaMalas = [
+    { value: "146 Litros", label: "146 Litros" },
+    { value: "180 Litros", label: "180 Litros" },
+    { value: "257 Litros", label: "257 Litros" },
+    { value: "265 Litros", label: "265 Litros" },
+    { value: "275 Litros", label: "275 Litros" },
+    { value: "276 Litros", label: "276 Litros" },
+    { value: "285 Litros", label: "285 Litros" },
+    { value: "289 Litros", label: "289 Litros" },
+    { value: "300 Litros", label: "300 Litros" },
+    { value: "313 Litros", label: "313 Litros" },
+    { value: "320 Litros", label: "320 Litros" },
+    { value: "334 Litros", label: "334 Litros" },
+    { value: "359 Litros", label: "359 Litros" },
+    { value: "363 Litros", label: "363 Litros" },
+    { value: "400 Litros", label: "400 Litros" },
+    { value: "415 Litros", label: "415 Litros" },
+    { value: "420 Litros", label: "420 Litros" },
+    { value: "433 Litros", label: "433 Litros" },
+    { value: "435 Litros", label: "435 Litros" },
+    { value: "445 Litros", label: "445 Litros" },
+    { value: "449 Litros", label: "449 Litros" },
+    { value: "450 Litros", label: "450 Litros" },
+    { value: "460 Litros", label: "460 Litros" },
+    { value: "480 Litros", label: "480 Litros" },
+    { value: "491 Litros", label: "491 Litros" },
+    { value: "505 Litros", label: "505 Litros" },
+    { value: "519 Litros", label: "519 Litros" },
+    { value: "520 Litros", label: "520 Litros" },
+    { value: "560 Litros", label: "560 Litros" },
+    { value: "605 Litros", label: "605 Litros" },
+    { value: "715 Litros", label: "715 Litros" },
+    { value: "820 Litros", label: "820 Litros" },
+    { value: "868 Litros", label: "868 Litros" },
+    { value: "971 Litros", label: "971 Litros" },
+    { value: "1100 Litros", label: "1100 Litros" },
+    { value: "1354 Litros", label: "1354 Litros" },
+  ];
+
+  const optionsCilindradas = [
+    { value: "1.0", label: "1.0" },
+    { value: "1.2", label: "1.2" },
+    { value: "1.3", label: "1.3" },
+    { value: "1.4", label: "1.4" },
+    { value: "1.5", label: "1.5" },
+    { value: "1.6", label: "1.6" },
+    { value: "1.8", label: "1.8" },
+    { value: "2.0", label: "2.0" },
+    { value: "2.2", label: "2.2" },
+    { value: "2.3", label: "2.3" },
+    { value: "2.4", label: "2.4" },
+    { value: "2.5", label: "2.5" },
+    { value: "2.7", label: "2.7" },
+    { value: "2.8", label: "2.8" },
+    { value: "3.0", label: "3.0" },
+    { value: "3.2", label: "3.2" },
+    { value: "3.3", label: "3.3" },
+    { value: "3.5", label: "3.5" },
+    { value: "3.7", label: "3.7" },
+    { value: "3.8", label: "3.8" },
+    { value: "4.0", label: "4.0" },
+  ];
+
   const handleSubmitVehicle = async (e: { preventDefault: () => void }) => {
     e.preventDefault();
 
@@ -280,12 +280,11 @@ const VehicleRegistration: React.FC = () => {
     console.log(placa);
     console.log(cor);
     console.log(ano);
-    console.log(tipoVeiculo); //Tipo automovel
+    console.log(tipoCombustivel);
     console.log(numeroPortas);
     console.log(quilometragem);
     console.log(renavan);
     console.log(chassi);
-    console.log(assentos);
     console.log(valorLocacao);
     console.log(carroParceiro);
     console.log(cpfParceiro);
@@ -293,28 +292,30 @@ const VehicleRegistration: React.FC = () => {
     console.log(imageUrl);
     console.log(cilindradas);
     console.log(portaMalas);
-    console.log(tipoCombustivel);
+    console.log(tipoVeiculo);
+    console.log(assentos);
+
 
     try {
       if (
         !modelo ||
-        !potencia ||
         !status ||
+        !potencia ||
         !placa ||
         !cor ||
         !ano ||
-        !tipoVeiculo ||
+        !tipoCombustivel ||
         !numeroPortas ||
         !quilometragem ||
         !renavan ||
         !chassi ||
-        !assentos ||
         !valorLocacao ||
-        !filial ||
-        !tipoCombustivel ||
         !cilindradas ||
+        !filial ||
+        !imageUrl ||
         !portaMalas ||
-        !imageUrl
+        !tipoVeiculo ||
+        !assentos
       ) {
         alert("Preencha todos os campos");
         return;
@@ -322,25 +323,25 @@ const VehicleRegistration: React.FC = () => {
         const response = await Api.post("/automobile", {
           marca,
           modelo,
-          potencia,
           status,
+          potencia,
           placa,
           cor,
           ano,
-          tipoVeiculo, //Tipo automóvel
+          tipoCombustivel,
           numeroPortas,
           quilometragem,
           renavan,
           chassi,
-          assentos,
           valorLocacao,
           carroParceiro: true,
           cpfParceiro,
-          filial,
-          tipoCombustivel,
           cilindradas,
-          portaMalas,
+          filial,
           imageUrl,
+          portaMalas,
+          tipoVeiculo,
+          assentos,
         });
         history.push("/FeedbackVehicle");
 
@@ -349,25 +350,25 @@ const VehicleRegistration: React.FC = () => {
         const response = await Api.post("/automobile", {
           marca,
           modelo,
-          potencia,
           status,
+          potencia,
           placa,
           cor,
           ano,
-          tipoVeiculo,
+          tipoCombustivel,
           numeroPortas,
           quilometragem,
           renavan,
           chassi,
-          assentos,
           valorLocacao,
           carroParceiro: false,
           cpfParceiro: 0,
-          filial,
-          tipoCombustivel,
           cilindradas,
-          portaMalas,
+          filial,
           imageUrl,
+          portaMalas,
+          tipoVeiculo,
+          assentos,
         });
         history.push("/FeedbackVehicle");
         console.log(response);
@@ -525,7 +526,7 @@ const VehicleRegistration: React.FC = () => {
               <Input
                 id="standard-basic"
                 type="text"
-                name="bus_cpfParceiro"
+                name="vehicle_cpfParceiro"
                 placeholder="CPF Parceiro"
                 onChange={(e) => setVehicleCpfParceiro(e.target.value)}
               />
@@ -535,13 +536,13 @@ const VehicleRegistration: React.FC = () => {
               <Input
                 type="text"
                 id="standard-basic"
-                name="bus_diaria"
+                name="vehicle_diaria"
                 placeholder="Valor da diária"
                 onChange={(e) => setVehicleDiaria(e.target.value)}
               />
               <Select
                 options={optionsFilial}
-                name="bus_filial"
+                name="vehicle_filial"
                 placeholder="Filial de origem"
                 onChange={(e) => setVehicleFilial(e.value)}
               />

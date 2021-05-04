@@ -28,7 +28,7 @@ const MotoRegistration: React.FC = () => {
   const [placa, setMotoPlaca] = useState("");
   const [cor, setMotoCor] = useState("");
   const [ano, setMotoAno] = useState("");
-  const [tipoVeiculo, setMotoTipo] = useState("Moto");
+  const [tipoVeiculo, setMotoTipo] = useState("Bicicleta");
   const [quilometragem, setMotoQuilometragem] = useState("");
   const [renavan, setMotoRenavam] = useState("");
   const [chassi, setMotoChassi] = useState("");
@@ -40,7 +40,6 @@ const MotoRegistration: React.FC = () => {
   const [imageUrl, setMotoImagemUrl] = useState("");
   const [cilindradas, setMotoCilindradas] = useState("");
   const [tipoCombustivel, setMotoCombustivel] = useState("");
-
 
   const history = useHistory();
 
@@ -63,8 +62,8 @@ const MotoRegistration: React.FC = () => {
   const optionsTipo = [
     { value: 4, label: "Bicicleta" },
     { value: 1, label: "Carro" },
-    { value: 3, label: "Motocicleta" },
-    { value: 2, label: "ÔniMoto" },
+    { value: 3, label: "Moto" },
+    { value: 2, label: "Ônibus" },
   ];
 
   const optionsFilial = [
@@ -141,12 +140,8 @@ const MotoRegistration: React.FC = () => {
   ];
 
   const optionsCombustivel = [
-    { value: "Diesel", label: "Diesel" },
-    { value: "Etanol", label: "Etanol" },
-    { value: "Flex", label: "Flex" },
-    { value: "Gasolina", label: "Gasolina" },
-    { value: "GNV", label: "GNV" },
-    { value: "Híbrido/ Elétrico", label: "Híbrido/ Elétrico" },
+    { value: 2, label: "Etanol" },
+    { value: 4, label: "Gasolina" },
   ];
 
   const optionsCilindradas = [
@@ -183,37 +178,37 @@ const MotoRegistration: React.FC = () => {
     console.log(placa);
     console.log(cor);
     console.log(ano);
-    console.log(tipoVeiculo);
+    console.log(tipoCombustivel);
     console.log(quilometragem);
     console.log(renavan);
     console.log(chassi);
-    console.log(assentos);
     console.log(valorLocacao);
     console.log(carroParceiro);
     console.log(cpfParceiro);
     console.log(filial);
     console.log(imageUrl);
     console.log(cilindradas);
-    console.log(tipoCombustivel);
+    console.log(tipoVeiculo);
+    console.log(assentos);
 
     try {
       if (
         !modelo ||
-        !potencia ||
         !status ||
+        !potencia ||
         !placa ||
         !cor ||
         !ano ||
-        !tipoVeiculo ||
+        !tipoCombustivel ||
         !quilometragem ||
         !renavan ||
         !chassi ||
-        !assentos ||
         !valorLocacao ||
-        !filial ||
-        !tipoCombustivel ||
         !cilindradas ||
-        !imageUrl
+        !filial ||
+        !imageUrl ||
+        !tipoVeiculo ||
+        !assentos
       ) {
         alert("Preencha todos os campos");
         return;
@@ -221,23 +216,23 @@ const MotoRegistration: React.FC = () => {
         const response = await Api.post("/automobile", {
           marca,
           modelo,
-          potencia,
           status,
+          potencia,
           placa,
           cor,
           ano,
-          tipoVeiculo, //Tipo automóvel
+          tipoCombustivel,
           quilometragem,
           renavan,
           chassi,
-          assentos,
           valorLocacao,
           carroParceiro: true,
           cpfParceiro,
-          filial,
-          tipoCombustivel,
           cilindradas,
+          filial,
           imageUrl,
+          tipoVeiculo,
+          assentos,
         });
         history.push("/FeedbackVehicle");
 
@@ -246,23 +241,23 @@ const MotoRegistration: React.FC = () => {
         const response = await Api.post("/automobile", {
           marca,
           modelo,
-          potencia,
           status,
+          potencia,
           placa,
           cor,
           ano,
-          tipoVeiculo,
+          tipoCombustivel,
           quilometragem,
           renavan,
           chassi,
-          assentos,
           valorLocacao,
           carroParceiro: false,
           cpfParceiro: 0,
-          filial,
-          tipoCombustivel,
           cilindradas,
+          filial,
           imageUrl,
+          tipoVeiculo,
+          assentos,
         });
         history.push("/FeedbackVehicle");
         console.log(response);
@@ -271,7 +266,6 @@ const MotoRegistration: React.FC = () => {
       alert("Ocorreu algum erro ao adicionar o veiculo");
     }
   };
-
   return (
     <Section>
       <NavBar />

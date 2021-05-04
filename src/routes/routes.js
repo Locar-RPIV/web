@@ -10,6 +10,7 @@ import Dashboard from "../pages/Dashboard";
 import VehicleRegistration from "../pages/VehicleResgistration"
 import BusRegistration from "../pages/BusResgistration"
 import MotoRegistration from "../pages/MotoResgistration"
+import BicicletaRegistration from "../pages/BicicletaRegistration"
 import FeedbackVehicle from "../pages/FeedbackVehicle/index";
 import FeedbackClient from "../pages/FeedbackClient/index";
 import ClientsRegistration from "../pages/ClientsRegistration";
@@ -37,6 +38,7 @@ const Routes = () => (
         <Route path="/VehicleRegistration" component={VehicleRegistration} />
         <Route path="/BusRegistration" component={BusRegistration} />
         <Route path="/MotoRegistration" component={MotoRegistration} />
+        <Route path="/BicicletaRegistration" component={BicicletaRegistration} />
         <Route path="/ClientsRegistration" component={ClientsRegistration} />
         <Route path="/FeedbackVehicle" component={FeedbackVehicle} />
         <Route path="/FeedbackClient" component={FeedbackClient} />
