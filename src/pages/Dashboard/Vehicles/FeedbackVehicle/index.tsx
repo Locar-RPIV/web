@@ -13,15 +13,15 @@ import {
     VehicleTypeCard,
 } from "./styles";
 
-import NavBar from "../../components/NavBar";
+import NavBar from "../../../../components/NavBar";
 
 import { MdPerson, MdDirectionsBus, MdDirectionsBike } from "react-icons/md";
 import { IoMdCar } from "react-icons/io";
 import { FaMotorcycle } from "react-icons/fa";
-import vehicleFeedback from "../../assets/vehicleFeedback.svg";
+import vehicleFeedback from "../../../../assets/vehicleFeedback.svg";
 import { Link } from "react-router-dom"
 
-import Api from "../../services/api";
+import Api from "../../../../services/api";
 
 const FeedbackVehicle: React.FC = () => {
 

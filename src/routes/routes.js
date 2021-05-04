@@ -1,19 +1,18 @@
 import React, { Fragment } from "react";
 import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
-
-
 import { isAuthenticated } from "../services/auth";
 
 // import SignUp from "./pages/SignUp";
 import Login from "../pages/Login";
 import Dashboard from "../pages/Dashboard";
-import VehicleRegistration from "../pages/VehicleResgistration"
-import BusRegistration from "../pages/BusResgistration"
-import MotoRegistration from "../pages/MotoResgistration"
-import BicicletaRegistration from "../pages/BicicletaRegistration"
+import BusRegistration from "../pages/BusResgistration";
+import MotoRegistration from "../pages/MotoResgistration";
+import BicicletaRegistration from "../pages/BicicletaRegistration";
 import FeedbackVehicle from "../pages/FeedbackVehicle/index";
 import FeedbackClient from "../pages/FeedbackClient/index";
 import ClientsRegistration from "../pages/ClientsRegistration";
+import VehicleRegistration from "../pages/Dashboard/Vehicles/VehicleRegistration";
+import Users from "../pages/Dashboard/Users";
 
 const PrivateRoute = ({ component: Component, ...rest }) => (
   <Route
@@ -33,8 +32,8 @@ const Routes = () => (
     <Fragment>
       <Switch>
         <Route exact path="/" component={Login} />
-        {/* <Route path="/signup" component={SignUp} /> */}
         <PrivateRoute path="/Dashboard" component={Dashboard} />
+        <Route path="/Users" component={Users} />
         <Route path="/VehicleRegistration" component={VehicleRegistration} />
         <Route path="/BusRegistration" component={BusRegistration} />
         <Route path="/MotoRegistration" component={MotoRegistration} />
