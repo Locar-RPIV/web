@@ -68,6 +68,7 @@ export const Section = styled.div`
 
   position: absolute;
   top: 0;
+  font-size:18px;
   min-height: calc(var(--vh, 1vh) * 100);
   width: 0;
   opacity: 0;
@@ -81,9 +82,7 @@ export const Section = styled.div`
   width: 100%;
   height: 100%;
   z-index: 10;
-  background: var(--secondary-color);
-
-  
+  background: var(--secondary-color);  
 `;
 
 export const Card = styled.div`
