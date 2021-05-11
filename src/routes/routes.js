@@ -5,14 +5,15 @@ import { isAuthenticated } from "../services/auth";
 // import SignUp from "./pages/SignUp";
 import Login from "../pages/Login";
 import Dashboard from "../pages/Dashboard";
-import BusRegistration from "../pages/BusResgistration";
-import MotoRegistration from "../pages/MotoResgistration";
-import BicicletaRegistration from "../pages/BicicletaRegistration";
-import FeedbackVehicle from "../pages/FeedbackVehicle/index";
-import FeedbackClient from "../pages/FeedbackClient/index";
-import ClientsRegistration from "../pages/ClientsRegistration";
+import BusRegistration from "../pages//Dashboard/BusRegistration";
+import MotoRegistration from "../pages/Dashboard/MotoRegistration";
+import BicicletaRegistration from "../pages/Dashboard/BicicletaRegistration";
+import FeedbackVehicle from "../pages/Dashboard/Vehicles/FeedbackVehicle/index";
+import FeedbackClient from "../pages/Dashboard/Users/FeedbackClient";
+import ClientsRegistration from "../pages/Dashboard/Users/ClientsRegistration";
 import VehicleRegistration from "../pages/Dashboard/Vehicles/VehicleRegistration";
 import Users from "../pages/Dashboard/Users";
+import VehicleOptions from "../pages/Dashboard/Vehicles/VehiclesOptions";
 
 const PrivateRoute = ({ component: Component, ...rest }) => (
   <Route
@@ -35,6 +36,7 @@ const Routes = () => (
         <PrivateRoute path="/Dashboard" component={Dashboard} />
         <Route path="/Users" component={Users} />
         <Route path="/VehicleRegistration" component={VehicleRegistration} />
+        <Route path="/VehicleOptions" component={VehicleOptions} />
         <Route path="/BusRegistration" component={BusRegistration} />
         <Route path="/MotoRegistration" component={MotoRegistration} />
         <Route path="/BicicletaRegistration" component={BicicletaRegistration} />

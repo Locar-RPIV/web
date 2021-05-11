@@ -62,7 +62,6 @@ const Login: React.FC = () => {
               Entrar
             </button>
             <hr />
-            {/* <Link to="/signup">Criar conta grátis</Link> */}
           </Form>
         </LoginContainer>
       </Container>

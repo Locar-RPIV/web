@@ -12,13 +12,13 @@ import {
   VehicleTypeCard,
 } from "./styles";
 
-import NavBar from "../../components/NavBar";
+import NavBar from "../../../components/NavBar";
 
 import { FaMotorcycle } from "react-icons/fa";
 
 import { useHistory } from "react-router-dom";
 
-import Api from "../../services/api";
+import Api from "../../../services/api";
 
 const MotoRegistration: React.FC = () => {
   const [marca, setMotoMarca] = useState("");

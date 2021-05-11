@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
-import { ListUserCard, Title } from "./styles";
+import { Button, CardHeader, ListVehiclesCard, Title } from "./styles";
+import { Link } from "react-router-dom";
+
 
 import { IoMdCar } from "react-icons/io";
 import Api from "../../../../services/api";
@@ -21,11 +23,17 @@ const VehicleList = () => {
   }, []);
 
   return (
-    <ListUserCard>
-      <Title>
-        <IoMdCar className="title-icon" size={"1.3em"} />
-        Veículos
-      </Title>
+    <ListVehiclesCard>
+      <CardHeader>
+        <Title>
+          <IoMdCar className="title-icon" size={"1.3em"} />
+          Veículos
+        </Title>
+        <Link to="/VehicleOptions">
+        <Button>Cadastrar novo</Button>
+        </Link>
+      </CardHeader>
+
       <div className="table-content">
         <table>
           <tr>
@@ -53,7 +61,7 @@ const VehicleList = () => {
           })}
         </table>
       </div>
-    </ListUserCard>
+    </ListVehiclesCard>
   );
 };
 

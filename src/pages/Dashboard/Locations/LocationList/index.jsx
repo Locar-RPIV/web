@@ -13,7 +13,6 @@ const LocationList = () => {
     );
     const reservations = data;
     setReservation(reservations);
-    console.log(reservations);
   };
 
   useEffect(() => {
@@ -43,7 +42,7 @@ const LocationList = () => {
                 <tr>
                   <td>{reservation.id}</td>
                   <td>{reservation.user.nome}</td>
-                  <td>{reservation.placa}</td>
+                  <td>{reservation.veiculo.id}</td>
                   <td>{reservation.dataLocacao}</td>
                   <td>{reservation.dataDevolucao}</td>
                   <td>{reservation.valorTotal}</td>
