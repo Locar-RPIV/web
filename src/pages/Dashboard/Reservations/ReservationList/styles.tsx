@@ -93,3 +93,27 @@ export const Title = styled.span`
     margin-right: 20px;
   }
 `;
+
+export const DeleteButton = styled.button`
+  border: none;
+  background-color: transparent;
+  color: #b14d4d;
+  width: auto;
+  height: auto;
+
+  :hover {
+    cursor: pointer;
+  }
+`;
+
+export const EditButton = styled.button`
+  border: none;
+  background-color: transparent;
+  color: #336699;
+  width: auto;
+  height: auto;
+
+  :hover {
+    cursor: pointer;
+  }
+`;

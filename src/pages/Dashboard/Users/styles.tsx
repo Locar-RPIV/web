@@ -1,12 +1,9 @@
 import styled from "styled-components";
 
-const vh = window.innerHeight * 0.01;
-document.documentElement.style.setProperty("--vh", `${vh}px`);
-
-window.addEventListener("resize", () => {
-  const vh = window.innerHeight * 0.01;
-  document.documentElement.style.setProperty("--vh", `${vh}px`);
-});
+export const CardHeader = styled.div`
+  display: flex;
+  justify-content: space-between;
+`
 
 export const Container = styled.div`
   section {
@@ -18,7 +15,6 @@ export const Container = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-left: 50px;
   }
 
   section h1 {

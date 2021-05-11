@@ -1,16 +1,35 @@
 import React, { useState, useEffect } from "react";
-import { Button, CardHeader, ListVehiclesCard, Title } from "./styles";
+import { Button, CardHeader, ListVehiclesCard, Title, EditButton, DeleteButton} from "./styles";
 import { Link } from "react-router-dom";
 
 
+import { FaEdit, FaTrashAlt } from "react-icons/fa";
+
+
 import { IoMdCar } from "react-icons/io";
-import Api from "../../../../services/api";
+import api from "../../../../services/api";
+
+function deleteAuto(automobile) {
+  try {
+    api
+      .delete(
+        `https://apirestful-locar.herokuapp.com/api/automobile/${automobile.id}`
+      )
+      .then((res) => {
+        alert("Automovel deletado com sucesso");
+        window.location.reload();
+      });
+  } catch (e) {
+    console.log(e);
+    alert("Ocorreu um erro ao tentar deletar o automovel");
+  }
+}
 
 const VehicleList = () => {
   const [automobiles, setAuto] = useState([]);
 
   const fetchVehicles = async () => {
-    const { data } = await Api.get(
+    const { data } = await api.get(
       "https://apirestful-locar.herokuapp.com/api/automobile"
     );
     const autos = data;
@@ -43,18 +62,28 @@ const VehicleList = () => {
             <th>Placa</th>
             <th>Valor locação</th>
             <th>Status</th>
+            <th>Ação</th>
           </tr>
 
-          {automobiles.map((user) => {
+          {automobiles.map((automobile) => {
             return [
               <>
                 <tr>
-                  <td>{user.id}</td>
-                  <td>{user.marca}</td>
-                  <td>{user.modelo}</td>
-                  <td>{user.placa}</td>
-                  <td>{user.valorLocacao}</td>
-                  <td>{user.status}</td>
+                  <td>{automobile.id}</td>
+                  <td>{automobile.marca}</td>
+                  <td>{automobile.modelo}</td>
+                  <td>{automobile.placa}</td>
+                  <td>{automobile.valorLocacao}</td>
+                  <td>{automobile.status}</td>
+                  <td>
+                  <EditButton>
+                    <FaEdit size={"2em"}/>
+                  </EditButton>
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+                    <DeleteButton onClick={() => deleteAuto(automobile)}>
+                      <FaTrashAlt size={"2em"}/>
+                    </DeleteButton>
+                  </td>
                 </tr>
               </>,
             ];

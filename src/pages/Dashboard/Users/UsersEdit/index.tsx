@@ -17,7 +17,8 @@ import NavBar from "../../../../components/NavBar";
 
 import Api from "../../../../services/api";
 
-const ClientsRegistration: React.FC = () => {
+function UsersEdit(users) {
+  console.log(users);
   const history = useHistory();
 
   const [nome, setClientName] = useState("");
@@ -190,4 +191,4 @@ const ClientsRegistration: React.FC = () => {
   );
 };
 
-export default ClientsRegistration;
+export default UsersEdit;

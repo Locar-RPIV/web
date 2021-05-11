@@ -18,7 +18,7 @@ export const Section = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-left: 70px;
+
   opacity: 1;
   position: absolute;
   left: 0;

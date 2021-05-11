@@ -14,6 +14,8 @@ import ClientsRegistration from "../pages/Dashboard/Users/ClientsRegistration";
 import VehicleRegistration from "../pages/Dashboard/Vehicles/VehicleRegistration";
 import Users from "../pages/Dashboard/Users";
 import VehicleOptions from "../pages/Dashboard/Vehicles/VehiclesOptions";
+import UsersEdit from "../pages/Dashboard/Users/UsersEdit";
+import AddLocation from "../pages/Dashboard/Locations/AddLocation"
 
 const PrivateRoute = ({ component: Component, ...rest }) => (
   <Route
@@ -43,6 +45,10 @@ const Routes = () => (
         <Route path="/ClientsRegistration" component={ClientsRegistration} />
         <Route path="/FeedbackVehicle" component={FeedbackVehicle} />
         <Route path="/FeedbackClient" component={FeedbackClient} />
+        <Route path="/EditUser" component={UsersEdit} />
+        <Route path="/AddLocation" component={AddLocation} />
+
+
 
         <Route path="*" component={() => <h1>Page not found</h1>} />
       </Switch>

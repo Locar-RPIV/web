@@ -149,7 +149,7 @@ export const Subtitle = styled.div`
 `;
 
 export const Button = styled.button`
-  width: 190px;
+  width: 210px;
   height: 63px;
   background: #eb8712;
   border-radius: 10px;

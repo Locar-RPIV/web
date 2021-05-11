@@ -1,12 +1,9 @@
 import styled from "styled-components";
 
-const vh = window.innerHeight * 0.01;
-document.documentElement.style.setProperty("--vh", `${vh}px`);
-
-window.addEventListener("resize", () => {
-  const vh = window.innerHeight * 0.01;
-  document.documentElement.style.setProperty("--vh", `${vh}px`);
-});
+export const CardHeader = styled.div`
+  display: flex;
+  justify-content: space-between;
+`;
 
 export const ListUserCard = styled.div`
   background-color: #fff;
@@ -74,11 +71,41 @@ export const Title = styled.span`
 `;
 
 export const Button = styled.button`
-  width: 190px;
-  height: 63px;
+  width: 160px;
+  height: 48px;
   background: #eb8712;
   border-radius: 10px;
   border: 0px;
   font-size: 18px;
   color: #fff;
+  font-weight: lighter;
+
+  :hover {
+    cursor: pointer;
+  }
 `;
+
+export const DeleteButton = styled.button`
+  border: none;
+  background-color: transparent;
+  color: #b14d4d;
+  width: auto;
+  height: auto;
+
+  :hover {
+    cursor: pointer;
+  }
+`;
+
+export const EditButton = styled.button`
+  border: none;
+  background-color: transparent;
+  color: #336699;
+  width: auto;
+  height: auto;
+
+  :hover {
+    cursor: pointer;
+  }
+`;
+
