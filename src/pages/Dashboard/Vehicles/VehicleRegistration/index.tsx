@@ -26,7 +26,7 @@ const VehicleRegistration: React.FC = () => {
   const [status, setVehicleStatus] = useState("Em análise");
   const [placa, setVehiclePlaca] = useState("");
   const [cor, setVehicleCor] = useState("");
-  const [ano, setVehicleAno] = useState("");
+  const [ano, setVehicleAno] = useState();
   const [tipoVeiculo, setVehicleTipo] = useState("Carro");
   const [numeroPortas, setVehiclePortas] = useState("");
   const [quilometragem, setVehicleQuilometragem] = useState("");
@@ -337,14 +337,12 @@ const VehicleRegistration: React.FC = () => {
           cpfParceiro,
           cilindradas,
           filial,
-          imageUrl,
+          imageUrl: null,
           portaMalas,
           tipoVeiculo,
           assentos,
         });
         history.push("/FeedbackVehicle");
-
-        console.log(response);
       } else if (carroParceiro === "" && !cpfParceiro) {
         const response = await Api.post("/automobile", {
           marca,
@@ -364,13 +362,12 @@ const VehicleRegistration: React.FC = () => {
           cpfParceiro: 0,
           cilindradas,
           filial,
-          imageUrl,
+          imageUrl:null,
           portaMalas,
           tipoVeiculo,
           assentos,
         });
         history.push("/FeedbackVehicle");
-        console.log(response);
       }
     } catch (err) {
       alert("Ocorreu algum erro ao adicionar o veiculo");

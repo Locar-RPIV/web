@@ -12,13 +12,13 @@ import {
   VehicleTypeCard,
 } from "./styles";
 
-import NavBar from "../../components/NavBar";
+import NavBar from "../../../components/NavBar";
 
 import { MdDirectionsBus } from "react-icons/md";
 
 import { useHistory } from "react-router-dom";
 
-import Api from "../../services/api";
+import Api from "../../../services/api";
 
 const BusRegistration: React.FC = () => {
   const [marca, setBusMarca] = useState("");

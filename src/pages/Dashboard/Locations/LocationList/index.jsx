@@ -1,31 +1,56 @@
 import React, { useState, useEffect } from "react";
-import { ListUserCard, Title } from "./styles";
+import {CardHeader, Button, ListUserCard, Title, EditButton, DeleteButton } from "./styles";
+import { Link } from "react-router-dom";
+
+import { FaEdit, FaTrashAlt } from "react-icons/fa";
 
 import { AiFillPieChart } from "react-icons/ai";
-import Api from "../../../../services/api";
+import api from "../../../../services/api";
+
+function deleteLocation(location) {
+  try {
+    api
+      .delete(
+        `https://apirestful-locar.herokuapp.com/api/location/${location.id}`
+      )
+      .then((res) => {
+        alert("Locação deletada com sucesso");
+        window.location.reload();
+      });
+  } catch (e) {
+    console.log(e);
+    alert("Ocorreu um erro ao tentar deletar a locação");
+  }
+}
 
 const LocationList = () => {
-  const [reservations, setReservation] = useState([]);
+  const [locations, setLocation] = useState([]);
 
-  const fetchUsers = async () => {
-    const { data } = await Api.get(
+  const fetchLocations = async () => {
+    const { data } = await api.get(
       "https://apirestful-locar.herokuapp.com/api/location"
     );
-    const reservations = data;
-    setReservation(reservations);
-    console.log(reservations);
+    const locations = data;
+    setLocation(locations);
+
   };
 
   useEffect(() => {
-    fetchUsers();
+    fetchLocations();
   }, []);
 
   return (
     <ListUserCard>
-      <Title>
-        <AiFillPieChart className="title-icon" size={"1.3em"} />
-        Locações
-      </Title>
+      <CardHeader>
+        <Title>
+          <AiFillPieChart className="title-icon" size={"1.3em"} />
+          Locações
+        </Title>
+        <Link to="/AddLocation">
+          <Button>Cadastrar novo</Button>
+        </Link>
+      </CardHeader>
+
       <div className="table-content">
         <table>
           <tr>
@@ -35,18 +60,28 @@ const LocationList = () => {
             <th>Data da retirada</th>
             <th>Data da devolução</th>
             <th>Valor Total</th>
+            <th>Ações</th>
           </tr>
 
-          {reservations.map((reservation) => {
+          {locations.map((location) => {
             return [
               <>
                 <tr>
-                  <td>{reservation.id}</td>
-                  <td>{reservation.user.nome}</td>
-                  <td>{reservation.placa}</td>
-                  <td>{reservation.dataLocacao}</td>
-                  <td>{reservation.dataDevolucao}</td>
-                  <td>{reservation.valorTotal}</td>
+                  <td>{location.id}</td>
+                  <td>{location.reserva.user.nome}</td>
+                  <td>{location.reserva.veiculo.placa}</td>
+                  <td>{location.dataLocacao}</td>
+                  <td>{location.dataDevolucao}</td>
+                  <td>{location.valorTotal}</td>
+                  <td>
+                    <EditButton>
+                      <FaEdit size={"2em"} />
+                    </EditButton>
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+                    <DeleteButton onClick={() => deleteLocation(location)}>
+                      <FaTrashAlt size={"2em"} />
+                    </DeleteButton>
+                  </td>
                 </tr>
               </>,
             ];

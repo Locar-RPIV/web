@@ -8,62 +8,6 @@ window.addEventListener("resize", () => {
   document.documentElement.style.setProperty("--vh", `${vh}px`);
 });
 
-export const Container = styled.div`
-  section {
-    position: absolute;
-    top: 0;
-    min-height: calc(var(--vh, 1vh) * 100);
-    width: 0;
-    opacity: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-left: 50px;
-  }
-
-  section h1 {
-    color: #fff;
-    font-size: 50px;
-    opacity: 0;
-  }
-
-  /* Styles applied on trigger */
-  section:target {
-    opacity: 1;
-    position: absolute;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 10;
-  }
-
-  section:target h1 {
-    opacity: 0;
-    animation: 2s fadeIn forwards 0.5s;
-  }
-
-  #first {
-    background: var(--secondary-color);
-  }
-  #second {
-    background: var(--secondary-color);
-  }
-
-  #third {
-    background: var(--secondary-color);
-  }
-
-  #fourth {
-    background: var(--secondary-color);
-  }
-
-  @keyframes fadeIn {
-    100% {
-      opacity: 1;
-    }
-  }
-`;
-
 export const Section = styled.div`
 
   position: absolute;
@@ -75,7 +19,6 @@ export const Section = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-left: 70px;
   opacity: 1;
   position: absolute;
   left: 0;
@@ -85,54 +28,10 @@ export const Section = styled.div`
   background: var(--secondary-color);  
 `;
 
-export const Card = styled.div`
-  background-color: #000;
-  width: 70%;
-  height: 70%;
-  padding: 40px;
-  display: grid;
-  grid-template-rows: 100px 1fr;
-  grid-template-columns: 1fr 1fr;
-  grid-gap: 0px 72px;
-  border-radius: 15px;
-  -webkit-box-shadow: 0 5px 6px -6px #777;
-  -moz-box-shadow: 0 5px 6px -6px #777;
-  box-shadow: 0 5px 6px -6px #777;
-
-  @media (max-width: 768px) {
-    //padding: 10px;
-  }
-
-  -webkit-box-shadow: 0 5px 6px -6px #777;
-  -moz-box-shadow: 0 5px 6px -6px #777;
-  box-shadow: 0 5px 6px -6px #777;
-
-  .one-input {
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-gap: 32px;
-    margin: 24px 0px;
-  }
-
-  .two-inputs {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-gap: 32px;
-    margin: 24px 0px;
-  }
-
-  .three-inputs {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-gap: 32px;
-    margin: 24px 0px;
-  }
-`;
-
 export const VehicleTypeCard = styled.div`
   background-color: #fff;
   width: 70%;
-  height: 80%;
+  height: auto;
   padding: 40px;
   display: grid;
   grid-template-rows: 100px 1fr;

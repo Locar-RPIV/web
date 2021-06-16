@@ -12,11 +12,11 @@ import {
   VehicleTypeCard,
 } from "./styles";
 
-import NavBar from "../../components/NavBar";
+import NavBar from "../../../components/NavBar";
 
 import { useHistory } from "react-router-dom";
 
-import Api from "../../services/api";
+import Api from "../../../services/api";
 import { MdDirectionsBike } from "react-icons/md";
 
 const BicicletaRegistration: React.FC = () => {

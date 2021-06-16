@@ -1,4 +1,4 @@
-import { Title, Subtitle, VehicleTypeCard } from "./styles";
+import { Section, Title, Subtitle, VehicleTypeCard } from "./styles";
 
 import { MdDirectionsBus, MdDirectionsBike } from "react-icons/md";
 import { IoMdCar } from "react-icons/io";
@@ -6,8 +6,13 @@ import { FaMotorcycle } from "react-icons/fa";
 
 import { Link } from "react-router-dom";
 
+import NavBar from "../../../../components/NavBar";
+
+
 const VehicleOptions = () => {
   return (
+    <Section>
+      <NavBar />
     <VehicleTypeCard style={{ padding: "80px" }}>
       <div>
         <Title>Qual tipo de véiculo você deseja cadastrar ?</Title> <br />
@@ -65,6 +70,7 @@ const VehicleOptions = () => {
         </div>
       </div>
     </VehicleTypeCard>
+    </Section>
   );
 };
 

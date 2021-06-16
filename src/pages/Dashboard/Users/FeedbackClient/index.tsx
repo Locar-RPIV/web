@@ -47,7 +47,7 @@ const FeedbackClient: React.FC = () => {
                 font: "arial",
               }}
             >
-              <Link to="/Dashboard">Voltar ao inicio</Link>
+              <Link to="/Dashboard#second">Voltar ao inicio</Link>
             </button>
           </div>
           {/* <Link to= {} /> */}
