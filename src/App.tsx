@@ -1,11 +1,11 @@
-import React from 'react';
-import LandingPage from "./pages/LandingPage";
+import React from "react";
+import Routes from "./routes/routes";
+import GlobalStyles from "./styles/GlobalStyles";
 
-
-function App() {
-  return (
-    <LandingPage />
-  );
-}
-
+const App = () => (
+  <>
+    <Routes />
+    <GlobalStyles />
+  </>
+);
 export default App;
