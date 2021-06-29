@@ -7,7 +7,7 @@ import Login from "../pages/Login";
 import Dashboard from "../pages/Dashboard";
 import BusRegistration from "../pages//Dashboard/BusRegistration";
 import MotorcycleRegistration from "../pages/Dashboard/MotorcycleRegistration";
-import BicicletaRegistration from "../pages/Dashboard/BicicletaRegistration";
+import BicicletaRegistration from "../pages/Dashboard/BikecycleRegistration";
 import FeedbackVehicle from "../pages/Dashboard/Vehicles/FeedbackVehicle/index";
 import FeedbackClient from "../pages/Dashboard/Users/FeedbackClient";
 import ClientsRegistration from "../pages/Dashboard/Users/ClientsRegistration";

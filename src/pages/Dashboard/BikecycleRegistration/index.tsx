@@ -19,7 +19,7 @@ import { useHistory } from "react-router-dom";
 import Api from "../../../services/api";
 import { MdDirectionsBike } from "react-icons/md";
 
-const BicicletaRegistration: React.FC = () => {
+const BikecycleRegistration: React.FC = () => {
   const [marca, setBicicletaMarca] = useState("");
   const [modelo, setBicicletaModelo] = useState("");
   const [status, setBicicletaStatus] = useState("Em análise");
@@ -287,4 +287,4 @@ const BicicletaRegistration: React.FC = () => {
   );
 };
 
-export default BicicletaRegistration;
+export default BikecycleRegistration;
