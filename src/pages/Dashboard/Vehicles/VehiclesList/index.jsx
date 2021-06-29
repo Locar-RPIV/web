@@ -86,7 +86,7 @@ const VehicleList = () => {
       <div className="table-content">
         <table>
           <tr>
-            <th>Código</th>
+            <th>Identificação</th>
             <th>Tipo</th>
             <th>Marca</th>
             <th>Modelo</th>
@@ -99,7 +99,7 @@ const VehicleList = () => {
             return [
               <>
                 <tr>
-                  <td>{cars.id}</td>
+                  <td>{cars.placa}</td>
                   <td>Carro</td>
                   <td>{cars.marca}</td>
                   <td>{cars.modelo}</td>
@@ -122,7 +122,7 @@ const VehicleList = () => {
             return [
               <>
                 <tr>
-                  <td>{motorcycle.id}</td>
+                  <td>{motorcycle.placa}</td>
                   <td>Moto</td>
                   <td>{motorcycle.marca}</td>
                   <td>{motorcycle.modelo}</td>
@@ -145,7 +145,7 @@ const VehicleList = () => {
             return [
               <>
                 <tr>
-                  <td>{bikes.id}</td>
+                  <td>{bikes.placa}</td>
                   <td>Bicicleta</td>
                   <td>{bikes.marca}</td>
                   <td>{bikes.modelo}</td>
@@ -164,22 +164,22 @@ const VehicleList = () => {
               </>,
             ];
           })}
-          {bus.map((bikes) => {
+          {bus.map((bus) => {
             return [
               <>
                 <tr>
-                  <td>{bikes.id}</td>
+                  <td>{bus.placa}</td>
                   <td>Ônibus</td>
-                  <td>{bikes.marca}</td>
-                  <td>{bikes.modelo}</td>
-                  <td>{bikes.valorLocacao}</td>
-                  <td>{bikes.status}</td>
+                  <td>{bus.marca}</td>
+                  <td>{bus.modelo}</td>
+                  <td>{bus.valorLocacao}</td>
+                  <td>{bus.status}</td>
                   <td>
                     <EditButton>
                       <FaEdit size={"2em"} />
                     </EditButton>
                     &nbsp;&nbsp;&nbsp;&nbsp;
-                    <DeleteButton onClick={() => deleteAuto(bikes)}>
+                    <DeleteButton onClick={() => deleteAuto(bus)}>
                       <FaTrashAlt size={"2em"} />
                     </DeleteButton>
                   </td>
