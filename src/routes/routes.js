@@ -6,7 +6,7 @@ import { isAuthenticated } from "../services/auth";
 import Login from "../pages/Login";
 import Dashboard from "../pages/Dashboard";
 import BusRegistration from "../pages//Dashboard/BusRegistration";
-import MotoRegistration from "../pages/Dashboard/MotoRegistration";
+import MotorcycleRegistration from "../pages/Dashboard/MotorcycleRegistration";
 import BicicletaRegistration from "../pages/Dashboard/BicicletaRegistration";
 import FeedbackVehicle from "../pages/Dashboard/Vehicles/FeedbackVehicle/index";
 import FeedbackClient from "../pages/Dashboard/Users/FeedbackClient";
@@ -40,7 +40,7 @@ const Routes = () => (
         <Route path="/VehicleRegistration" component={VehicleRegistration} />
         <Route path="/VehicleOptions" component={VehicleOptions} />
         <Route path="/BusRegistration" component={BusRegistration} />
-        <Route path="/MotoRegistration" component={MotoRegistration} />
+        <Route path="/MotoRegistration" component={MotorcycleRegistration} />
         <Route path="/BicicletaRegistration" component={BicicletaRegistration} />
         <Route path="/ClientsRegistration" component={ClientsRegistration} />
         <Route path="/FeedbackVehicle" component={FeedbackVehicle} />
