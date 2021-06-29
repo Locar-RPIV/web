@@ -23,9 +23,9 @@ const VehicleRegistration: React.FC = () => {
   const [status] = useState("Em análise");
   const [placa, setVehiclePlaca] = useState("");
   const [cor, setVehicleCor] = useState("");
-  const [ano, setVehicleAno] = useState();
+  const [ano, setVehicleAno] = useState(0);
   const [tipoVeiculo] = useState("Carro");
-  const [numeroPortas, setVehiclePortas] = useState("");
+  const [numeroPortas, setVehiclePortas] = useState(0);
   const [quilometragem, setVehicleQuilometragem] = useState("");
   const [renavan, setVehicleRenavam] = useState("");
   const [chassi, setVehicleChassi] = useState("");
@@ -33,11 +33,11 @@ const VehicleRegistration: React.FC = () => {
   const [valorLocacao, setVehicleDiaria] = useState("");
   const [carroParceiro, setCarroParceiro] = useState("");
   const [cpfParceiro, setVehicleCpfParceiro] = useState("");
-  const [filial, setVehicleFilial] = useState("");
+  const [filial, setVehicleFilial] = useState(0);
   const [imageUrl, setVehicleImagemUrl] = useState("");
   const [cilindradas, setVehicleCilindradas] = useState("");
   const [portaMalas, setVehiclePortaMalas] = useState("");
-  const [tipoCombustivel, setVehicleCombustivel] = useState("");
+  const [tipoCombustivel, setVehicleCombustivel] = useState(0);
 
   const history = useHistory();
 
@@ -351,49 +351,49 @@ const VehicleRegistration: React.FC = () => {
                 options={optionsMarcaCarro}
                 name="vehicle_marca"
                 placeholder="Marca"
-                onChange={(e) => setVehicleMarca(e.value)}
+                onChange={(e) => setVehicleMarca(e!.value)}
               />
               <Select
                 options={optionsModeloCarro}
                 name="vehicle_modelo"
                 placeholder="Modelo"
-                onChange={(e) => setVehicleModelo(e.value)}
+                onChange={(e) => setVehicleModelo(e!.value)}
               />
               <Select
                 options={optionsCombustivel}
                 name="vehicle_tipoCombustivel"
                 placeholder="Tipo de Combustível"
-                onChange={(e) => setVehicleCombustivel(e.value)}
+                onChange={(e) => setVehicleCombustivel(e!.value)}
               />
               <Select
                 options={optionsAno}
                 name="vehicle_ano"
                 placeholder="Ano"
-                onChange={(e) => setVehicleAno(e.value)}
+                onChange={(e) => setVehicleAno(e!.value)}
               />
               <Select
                 options={optionsCilindradas}
                 name="vehicle_cilindradas"
                 placeholder="Cilindradas"
-                onChange={(e) => setVehicleCilindradas(e.value)}
+                onChange={(e) => setVehicleCilindradas(e!.value)}
               />
               <Select
                 options={optionsPotencia}
                 name="vehicle_potencia"
                 placeholder="Potencia"
-                onChange={(e) => setVehiclePotencia(e.value)}
+                onChange={(e) => setVehiclePotencia(e!.value)}
               />
               <Select
                 options={optionsNPortas}
                 name="bus_nPortas"
                 placeholder="Nº de Portas"
-                onChange={(e) => setVehiclePortas(e.value)}
+                onChange={(e) => setVehiclePortas(e!.value)}
               />
               <Select
                 options={optionsPortaMalas}
                 name="bus_portaMalas"
                 placeholder="Capacidade Porta Malas"
-                onChange={(e) => setVehiclePortaMalas(e.value)}
+                onChange={(e) => setVehiclePortaMalas(e!.value)}
               />
             </div>
             <div className="three-inputs">
@@ -500,9 +500,7 @@ const VehicleRegistration: React.FC = () => {
                 options={optionsFilial}
                 name="vehicle_filial"
                 placeholder="Filial de origem"
-                onChange={(e: { value: React.SetStateAction<string> }) =>
-                  setVehicleFilial(e.value)
-                }
+                onChange={(e) => setVehicleFilial(e!.value)}
               />
             </div>
             <br />
