@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import { AiFillPieChart } from "react-icons/ai";
 
+import NavBar from "../../../../components/NavBar";
+import Api from "../../../../services/api";
 import {
   Section,
   Card,
@@ -12,8 +14,6 @@ import {
   Input,
   Button,
 } from "./styles";
-import NavBar from "../../../../components/NavBar";
-import Api from "../../../../services/api";
 
 const AddLocation = () => {
   const history = useHistory();
@@ -28,9 +28,7 @@ const AddLocation = () => {
   const [quilometragemLocacao, setQuilometragemInicio] = useState("");
   const [quilometragemDevolucao, setQuilometragemFim] = useState("");
 
-  const handleSubmitLocations = async (e) => {
-    e.preventDefault();
-
+  const handleSubmitLocations = async () => {
     try {
       if (
         !reserva ||
