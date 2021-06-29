@@ -1,7 +1,7 @@
 import React from "react";
 import { MdPerson } from "react-icons/md";
-import NavBar from "../../../components/NavBar";
 
+import NavBar from "../../../components/NavBar";
 import {
   Container,
   Card,
