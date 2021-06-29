@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Select from "react-select";
+import { useHistory } from "react-router-dom";
 
 import {
   Section,
@@ -11,23 +12,19 @@ import {
   Button,
   VehicleTypeCard,
 } from "./styles";
-
 import NavBar from "../../../../components/NavBar";
-
 import { IoMdCar } from "react-icons/io";
-
-import { useHistory } from "react-router-dom";
 import Api from "../../../../services/api";
 
 const VehicleRegistration: React.FC = () => {
   const [marca, setVehicleMarca] = useState("");
   const [modelo, setVehicleModelo] = useState("");
   const [potencia, setVehiclePotencia] = useState("");
-  const [status, setVehicleStatus] = useState("Em análise");
+  const [status] = useState("Em análise");
   const [placa, setVehiclePlaca] = useState("");
   const [cor, setVehicleCor] = useState("");
   const [ano, setVehicleAno] = useState();
-  const [tipoVeiculo, setVehicleTipo] = useState("Carro");
+  const [tipoVeiculo] = useState("Carro");
   const [numeroPortas, setVehiclePortas] = useState("");
   const [quilometragem, setVehicleQuilometragem] = useState("");
   const [renavan, setVehicleRenavam] = useState("");
@@ -60,23 +57,9 @@ const VehicleRegistration: React.FC = () => {
     { value: "Vokswagen", label: "Vokswagen" },
   ];
 
-  const optionsStatus = [
-    { value: "Locado", label: "Locado" },
-    { value: "Disponível", label: "Disponível" },
-    { value: "Em manutanção", label: "Em manutanção" },
-    { value: "Em análise", label: "Em análise" },
-  ];
-
   const optionsNPortas = [
     { value: 2, label: "2" },
     { value: 4, label: "4" },
-  ];
-
-  const optionsTipo = [
-    { value: 4, label: "Bicicleta" },
-    { value: 1, label: "Carro" },
-    { value: 3, label: "Moto" },
-    { value: 2, label: "Ônibus" },
   ];
 
   const optionsFilial = [
@@ -272,29 +255,6 @@ const VehicleRegistration: React.FC = () => {
   const handleSubmitVehicle = async (e: { preventDefault: () => void }) => {
     e.preventDefault();
 
-    console.log(marca);
-    console.log(modelo);
-    console.log(status);
-    console.log(potencia);
-    console.log(placa);
-    console.log(cor);
-    console.log(ano);
-    console.log(tipoCombustivel);
-    console.log(numeroPortas);
-    console.log(quilometragem);
-    console.log(renavan);
-    console.log(chassi);
-    console.log(valorLocacao);
-    console.log(carroParceiro);
-    console.log(cpfParceiro);
-    console.log(filial);
-    console.log(imageUrl);
-    console.log(cilindradas);
-    console.log(portaMalas);
-    console.log(tipoVeiculo);
-    console.log(assentos);
-
-
     try {
       if (
         !modelo ||
@@ -319,7 +279,7 @@ const VehicleRegistration: React.FC = () => {
         alert("Preencha todos os campos");
         return;
       } else if (carroParceiro === "on" && cpfParceiro) {
-        const response = await Api.post("/automobile", {
+        await Api.post("/automobile", {
           marca,
           modelo,
           status,
@@ -344,7 +304,7 @@ const VehicleRegistration: React.FC = () => {
         });
         history.push("/FeedbackVehicle");
       } else if (carroParceiro === "" && !cpfParceiro) {
-        const response = await Api.post("/automobile", {
+        await Api.post("/automobile", {
           marca,
           modelo,
           status,
@@ -362,7 +322,7 @@ const VehicleRegistration: React.FC = () => {
           cpfParceiro: 0,
           cilindradas,
           filial,
-          imageUrl:null,
+          imageUrl: null,
           portaMalas,
           tipoVeiculo,
           assentos,
@@ -540,7 +500,9 @@ const VehicleRegistration: React.FC = () => {
                 options={optionsFilial}
                 name="vehicle_filial"
                 placeholder="Filial de origem"
-                onChange={(e) => setVehicleFilial(e.value)}
+                onChange={(e: { value: React.SetStateAction<string> }) =>
+                  setVehicleFilial(e.value)
+                }
               />
             </div>
             <br />
