@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { IoMdCar } from "react-icons/io";
-
 import { FaEdit, FaTrashAlt } from "react-icons/fa";
+
+import api from "../../../../services/api";
 import {
   Button,
   CardHeader,
@@ -12,7 +13,6 @@ import {
   DeleteButton,
 } from "./styles";
 
-import api from "../../../../services/api";
 
 function deleteAuto(automobile) {
   try {
@@ -25,7 +25,6 @@ function deleteAuto(automobile) {
         window.location.reload();
       });
   } catch (e) {
-    console.log(e);
     alert("Ocorreu um erro ao tentar deletar o automovel");
   }
 }
