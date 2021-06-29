@@ -151,6 +151,8 @@ const MotorcycleRegistration: React.FC = () => {
   ];
 
   const handleSubmitMoto = async (e: { preventDefault: () => void }) => {
+    e.preventDefault();
+    
     try {
       if (
         !modelo ||

@@ -156,6 +156,8 @@ const BusRegistration: React.FC = () => {
   ];
 
   const handleSubmitBus = async (e: { preventDefault: () => void }) => {
+    e.preventDefault();
+
     try {
       if (
         !modelo ||

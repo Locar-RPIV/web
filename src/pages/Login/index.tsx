@@ -11,14 +11,16 @@ const Login: React.FC = () => {
 
   const history = useHistory();
 
-  const handleSignIn = async (e: { preventDefault: () => void; }) => {
+  const handleSignIn = async (e: { preventDefault: () => void }) => {
+    e.preventDefault();
+    
     if (!email || !password) {
       alert("Preencha e-mail e senha para continuar!");
     } else {
       try {
         const response = await Api.post("/auth", { email, password });
         login(response.data.token);
-        history.push("/Dashboard");
+        history.push('/Dashboard');
       } catch (err) {
         alert(
           "Houve um problema com o login, verifique suas credenciais. T.T"

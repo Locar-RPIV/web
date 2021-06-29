@@ -28,6 +28,8 @@ const ClientsRegistration: React.FC = () => {
   const [numeroPis, setEmployerNumeroPis] = useState("");
 
   const handleSubmitClients = async (e: { preventDefault: () => void }) => {
+    e.preventDefault();
+    
     try {
       if (!nome || !dataNascimento || !cpf || !telefone || !email) {
         alert("Preencha todos os campos");

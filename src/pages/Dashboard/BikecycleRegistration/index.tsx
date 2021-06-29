@@ -65,6 +65,8 @@ const BikecycleRegistration: React.FC = () => {
   ];
 
   const handleSubmitBicicleta = async (e: { preventDefault: () => void }) => {
+    e.preventDefault();
+    
     try {
       if (
         !modelo ||
