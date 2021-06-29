@@ -1,8 +1,9 @@
-import React, { useState, useEffect } from "react";
-
+import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
-import Select from "react-select";
+import { AiFillPieChart } from "react-icons/ai";
 
+import NavBar from "../../../../components/NavBar";
+import Api from "../../../../services/api";
 import {
   Section,
   Card,
@@ -13,12 +14,6 @@ import {
   Input,
   Button,
 } from "./styles";
-
-import NavBar from "../../../../components/NavBar";
-
-import Api from "../../../../services/api";
-import { AiFillPieChart } from "react-icons/ai";
-import api from "../../../../services/api";
 
 const AddLocation = () => {
   const history = useHistory();
@@ -33,30 +28,7 @@ const AddLocation = () => {
   const [quilometragemLocacao, setQuilometragemInicio] = useState("");
   const [quilometragemDevolucao, setQuilometragemFim] = useState("");
 
-  const [reservations, setReservation] = useState([]);
-
-  // const fetchReservations = async () => {
-  //   const { data } = await api.get(
-  //     "https://apirestful-locar.herokuapp.com/api/reservation"
-  //   );
-  //   const reservations = data;
-  //   setReservation(reservations);
-  // };
-
-  // useEffect(() => {
-  //   fetchReservations();
-  // }, []);
-
-  function selectReservationsOptions() {
-    const res = reservations.map((reservation) => reservation);
-
-    console.log(res);
-    return res;
-  }
-
-  const handleSubmitLocations = async (e) => {
-    e.preventDefault();
-
+  const handleSubmitLocations = async () => {
     try {
       if (
         !reserva ||
@@ -74,20 +46,10 @@ const AddLocation = () => {
         let total = Number(duracao * valorLocacao) + Number(valorCaucao);
 
         setValorTotal(total);
-       
-        console.log(reserva);
-        console.log(dataLocacao);
-        console.log(valorLocacao);
-        console.log(valorCaucao);
-        console.log(valorTotal);
-        console.log(duracao);
-        console.log(quilometragemLocacao);
-        console.log(quilometragemDevolucao);
 
-
-        const responseLocation = await Api.post("/location", {
+        await Api.post("/location", {
           reserva: {
-            "id": reserva
+            id: reserva,
           },
           dataLocacao,
           dataDevolucao,
@@ -184,7 +146,6 @@ const AddLocation = () => {
               type="text"
               onChange={(e) => setValorLocacao(e.target.value)}
               placeholder="Valor locação"
-
             />
             <Input
               id="standard-basic"
@@ -195,7 +156,6 @@ const AddLocation = () => {
             />
             <Input
               id="standard-basic"
-
               name="valorTotal"
               type="text"
               style={{
@@ -203,10 +163,11 @@ const AddLocation = () => {
               }}
               placeholder="Valor Total"
               onChange={(e) => setValorTotal(e.target.value)}
-              
             />
           </div>
-          <Button type="submit" onClick={handleSubmitLocations}>FINALIZAR LOCAÇÃO</Button>
+          <Button type="submit" onClick={handleSubmitLocations}>
+            FINALIZAR LOCAÇÃO
+          </Button>
           <div style={{ display: "flex", justifyContent: "flex-end" }}></div>
         </Column2>
       </Card>

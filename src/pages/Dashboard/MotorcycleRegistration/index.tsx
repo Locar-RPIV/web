@@ -1,6 +1,10 @@
 import React, { useState } from "react";
 import Select from "react-select";
+import { useHistory } from "react-router-dom";
+import { FaMotorcycle } from "react-icons/fa";
 
+import NavBar from "../../../components/NavBar";
+import Api from "../../../services/api";
 import {
   Section,
   Title,
@@ -12,23 +16,15 @@ import {
   VehicleTypeCard,
 } from "./styles";
 
-import NavBar from "../../../components/NavBar";
-
-import { FaMotorcycle } from "react-icons/fa";
-
-import { useHistory } from "react-router-dom";
-
-import Api from "../../../services/api";
-
-const MotoRegistration: React.FC = () => {
+const MotorcycleRegistration: React.FC = () => {
   const [marca, setMotoMarca] = useState("");
   const [modelo, setMotoModelo] = useState("");
   const [potencia, setMotoPotencia] = useState("");
   const [status, setMotoStatus] = useState("Em análise");
   const [placa, setMotoPlaca] = useState("");
   const [cor, setMotoCor] = useState("");
-  const [ano, setMotoAno] = useState("");
-  const [tipoVeiculo, setMotoTipo] = useState("Bicicleta");
+  const [ano, setMotoAno] = useState(0);
+  const [tipoVeiculo] = useState("Bicicleta");
   const [quilometragem, setMotoQuilometragem] = useState("");
   const [renavan, setMotoRenavam] = useState("");
   const [chassi, setMotoChassi] = useState("");
@@ -36,10 +32,10 @@ const MotoRegistration: React.FC = () => {
   const [valorLocacao, setMotoDiaria] = useState("");
   const [carroParceiro, setCarroParceiro] = useState("");
   const [cpfParceiro, setMotoCpfParceiro] = useState("");
-  const [filial, setMotoFilial] = useState("");
+  const [filial, setMotoFilial] = useState(0);
   const [imageUrl, setMotoImagemUrl] = useState("");
   const [cilindradas, setMotoCilindradas] = useState("");
-  const [tipoCombustivel, setMotoCombustivel] = useState("");
+  const [tipoCombustivel, setMotoCombustivel] = useState(0);
 
   const history = useHistory();
 
@@ -50,20 +46,6 @@ const MotoRegistration: React.FC = () => {
     { value: "Ford", label: "Ford" },
     { value: "Honda", label: "Honda" },
     { value: "Suzuki", label: "Suzuki" },
-  ];
-
-  const optionsStatus = [
-    { value: "Locado", label: "Locado" },
-    { value: "Disponível", label: "Disponível" },
-    { value: "Em manutanção", label: "Em manutanção" },
-    { value: "Em análise", label: "Em análise" },
-  ];
-
-  const optionsTipo = [
-    { value: 4, label: "Bicicleta" },
-    { value: 1, label: "Carro" },
-    { value: 3, label: "Moto" },
-    { value: 2, label: "Ônibus" },
   ];
 
   const optionsFilial = [
@@ -169,28 +151,6 @@ const MotoRegistration: React.FC = () => {
   ];
 
   const handleSubmitMoto = async (e: { preventDefault: () => void }) => {
-    e.preventDefault();
-
-    console.log(marca);
-    console.log(modelo);
-    console.log(status);
-    console.log(potencia);
-    console.log(placa);
-    console.log(cor);
-    console.log(ano);
-    console.log(tipoCombustivel);
-    console.log(quilometragem);
-    console.log(renavan);
-    console.log(chassi);
-    console.log(valorLocacao);
-    console.log(carroParceiro);
-    console.log(cpfParceiro);
-    console.log(filial);
-    console.log(imageUrl);
-    console.log(cilindradas);
-    console.log(tipoVeiculo);
-    console.log(assentos);
-
     try {
       if (
         !modelo ||
@@ -213,7 +173,7 @@ const MotoRegistration: React.FC = () => {
         alert("Preencha todos os campos");
         return;
       } else if (carroParceiro === "on" && cpfParceiro) {
-        const response = await Api.post("/automobile", {
+        await Api.post("/automobile", {
           marca,
           modelo,
           status,
@@ -235,10 +195,8 @@ const MotoRegistration: React.FC = () => {
           assentos,
         });
         history.push("/FeedbackVehicle");
-
-        console.log(response);
       } else if (carroParceiro === "" && !cpfParceiro) {
-        const response = await Api.post("/automobile", {
+        await Api.post("/automobile", {
           marca,
           modelo,
           status,
@@ -260,7 +218,6 @@ const MotoRegistration: React.FC = () => {
           assentos,
         });
         history.push("/FeedbackVehicle");
-        console.log(response);
       }
     } catch (err) {
       alert("Ocorreu algum erro ao adicionar o veiculo");
@@ -282,37 +239,37 @@ const MotoRegistration: React.FC = () => {
                 options={optionsMarcaMoto}
                 name="moto_marca"
                 placeholder="Marca"
-                onChange={(e) => setMotoMarca(e.value)}
+                onChange={(e) => setMotoMarca(e!.value)}
               />
               <Select
                 options={optionsModeloMoto}
                 name="moto_modelo"
                 placeholder="Modelo"
-                onChange={(e) => setMotoModelo(e.value)}
+                onChange={(e) => setMotoModelo(e!.value)}
               />
               <Select
                 options={optionsCombustivel}
                 name="moto_tipoCombustivel"
                 placeholder="Tipo de Combustível"
-                onChange={(e) => setMotoCombustivel(e.value)}
+                onChange={(e) => setMotoCombustivel(e!.value)}
               />
               <Select
                 options={optionsAno}
                 name="moto_ano"
                 placeholder="Ano"
-                onChange={(e) => setMotoAno(e.value)}
+                onChange={(e) => setMotoAno(e!.value)}
               />
               <Select
                 options={optionsCilindradas}
                 name="moto_cilindradas"
                 placeholder="Cilindradas"
-                onChange={(e) => setMotoCilindradas(e.value)}
+                onChange={(e) => setMotoCilindradas(e!.value)}
               />
               <Select
                 options={optionsPotencia}
                 name="moto_potencia"
                 placeholder="Potencia"
-                onChange={(e) => setMotoPotencia(e.value)}
+                onChange={(e) => setMotoPotencia(e!.value)}
               />
             </div>
             <div className="three-inputs">
@@ -428,7 +385,7 @@ const MotoRegistration: React.FC = () => {
                 options={optionsFilial}
                 name="moto_filial"
                 placeholder="Filial de origem"
-                onChange={(e) => setMotoFilial(e.value)}
+                onChange={(e) => setMotoFilial(e!.value)}
               />
             </div>
             <br />
@@ -445,4 +402,4 @@ const MotoRegistration: React.FC = () => {
   );
 };
 
-export default MotoRegistration;
+export default MotorcycleRegistration;

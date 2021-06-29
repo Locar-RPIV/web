@@ -1,10 +1,9 @@
 import React from "react";
-import { Title, Subtitle, FeedbackCard, Section } from "./styles";
+import { Link } from "react-router-dom";
 
 import NavBar from "../../../../components/NavBar";
-
 import clientFeedback from "../../../../assets/clientFeedback.svg";
-import { Link } from "react-router-dom";
+import { Title, Subtitle, FeedbackCard, Section } from "./styles";
 
 const FeedbackClient: React.FC = () => {
   return (

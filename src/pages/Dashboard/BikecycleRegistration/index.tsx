@@ -1,6 +1,10 @@
 import React, { useState } from "react";
+import { useHistory } from "react-router-dom";
 import Select from "react-select";
 
+import Api from "../../../services/api";
+import { MdDirectionsBike } from "react-icons/md";
+import NavBar from "../../../components/NavBar";
 import {
   Section,
   Title,
@@ -12,26 +16,19 @@ import {
   VehicleTypeCard,
 } from "./styles";
 
-import NavBar from "../../../components/NavBar";
-
-import { useHistory } from "react-router-dom";
-
-import Api from "../../../services/api";
-import { MdDirectionsBike } from "react-icons/md";
-
-const BicicletaRegistration: React.FC = () => {
+const BikecycleRegistration: React.FC = () => {
   const [marca, setBicicletaMarca] = useState("");
   const [modelo, setBicicletaModelo] = useState("");
   const [status, setBicicletaStatus] = useState("Em análise");
   const [cor, setBicicletaCor] = useState("");
-  const [tipoVeiculo, setBicicletaTipo] = useState("Bicicleta");
+  const [tipoVeiculo] = useState("Bicicleta");
   const [assentos, setBicicletaAssentos] = useState("");
   const [valorLocacao, setBicicletaDiaria] = useState("");
   const [carroParceiro, setCarroParceiro] = useState("");
   const [cpfParceiro, setBicicletaCpfParceiro] = useState("");
-  const [filial, setBicicletaFilial] = useState("");
+  const [filial, setBicicletaFilial] = useState(0);
   const [imageUrl, setBicicletaImagemUrl] = useState("");
-  const [tipoAro, setTipoAro] = useState("");
+  const [, setTipoAro] = useState("");
   const [marcha, setMarcha] = useState("");
 
   const history = useHistory();
@@ -43,20 +40,6 @@ const BicicletaRegistration: React.FC = () => {
     { value: "Vikingx", label: "Vikingx" },
     { value: "Lotus", label: "Lotus" },
     { value: "Monark", label: "Monark" },
-  ];
-
-  const optionsStatus = [
-    { value: "Locado", label: "Locado" },
-    { value: "Disponível", label: "Disponível" },
-    { value: "Em manutanção", label: "Em manutanção" },
-    { value: "Em análise", label: "Em análise" },
-  ];
-
-  const optionsTipo = [
-    { value: 4, label: "Bicicleta" },
-    { value: 1, label: "Carro" },
-    { value: 3, label: "Moto" },
-    { value: 2, label: "Ônibus" },
   ];
 
   const optionsFilial = [
@@ -82,21 +65,6 @@ const BicicletaRegistration: React.FC = () => {
   ];
 
   const handleSubmitBicicleta = async (e: { preventDefault: () => void }) => {
-    e.preventDefault();
-
-    console.log(marca);
-    console.log(modelo);
-    console.log(status);
-    console.log(cor);
-    console.log(valorLocacao);
-    console.log(carroParceiro);
-    console.log(cpfParceiro);
-    console.log(filial);
-    console.log(imageUrl);
-    console.log(tipoVeiculo);
-    console.log(assentos);
-    console.log(marcha);
-
     try {
       if (
         !modelo ||
@@ -112,7 +80,7 @@ const BicicletaRegistration: React.FC = () => {
         alert("Preencha todos os campos");
         return;
       } else if (carroParceiro === "on" && cpfParceiro) {
-        const response = await Api.post("/automobile", {
+        await Api.post("/automobile", {
           marca,
           modelo,
           status,
@@ -127,10 +95,8 @@ const BicicletaRegistration: React.FC = () => {
           marcha,
         });
         history.push("/FeedbackVehicle");
-
-        console.log(response);
       } else if (carroParceiro === "" && !cpfParceiro) {
-        const response = await Api.post("/automobile", {
+        await Api.post("/automobile", {
           marca,
           modelo,
           status,
@@ -145,7 +111,6 @@ const BicicletaRegistration: React.FC = () => {
           marcha,
         });
         history.push("/FeedbackVehicle");
-        console.log(response);
       }
     } catch (err) {
       alert("Ocorreu algum erro ao adicionar o veiculo");
@@ -167,19 +132,19 @@ const BicicletaRegistration: React.FC = () => {
                 options={optionsMarcaBicicleta}
                 name="bicicleta_marca"
                 placeholder="Marca"
-                onChange={(e) => setBicicletaMarca(e.value)}
+                onChange={(e) => setBicicletaMarca(e!.value)}
               />
               <Select
                 options={optionsModeloBicicleta}
                 name="bicicleta_modelo"
                 placeholder="Modelo"
-                onChange={(e) => setBicicletaModelo(e.value)}
+                onChange={(e) => setBicicletaModelo(e!.value)}
               />
               <Select
                 options={optionsMarcha}
                 name="bicicleta_marcha"
                 placeholder="Possui Marcha"
-                onChange={(e) => setMarcha(e.value)}
+                onChange={(e) => setMarcha(e!.value)}
               />
             </div>
             <div className="three-inputs">
@@ -227,10 +192,6 @@ const BicicletaRegistration: React.FC = () => {
               <input id="input-file" type="file" value="" />
               <span id="file-name"></span>
             </div>
-            {/* <div>
-              <label className="form-label">Fotos do veículo</label>
-              <input type="file" accept="image/*" />
-            </div> */}
           </div>
         </Column1>
         <Column2>
@@ -270,7 +231,7 @@ const BicicletaRegistration: React.FC = () => {
                 options={optionsFilial}
                 name="bicicleta_filial"
                 placeholder="Filial de origem"
-                onChange={(e) => setBicicletaFilial(e.value)}
+                onChange={(e) => setBicicletaFilial(e!.value)}
               />
             </div>
             <br />
@@ -287,4 +248,4 @@ const BicicletaRegistration: React.FC = () => {
   );
 };
 
-export default BicicletaRegistration;
+export default BikecycleRegistration;

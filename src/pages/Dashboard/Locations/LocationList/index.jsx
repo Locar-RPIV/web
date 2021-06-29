@@ -1,11 +1,17 @@
 import React, { useState, useEffect } from "react";
-import {CardHeader, Button, ListUserCard, Title, EditButton, DeleteButton } from "./styles";
 import { Link } from "react-router-dom";
-
 import { FaEdit, FaTrashAlt } from "react-icons/fa";
 
 import { AiFillPieChart } from "react-icons/ai";
 import api from "../../../../services/api";
+import {
+  CardHeader,
+  Button,
+  ListUserCard,
+  Title,
+  EditButton,
+  DeleteButton,
+} from "./styles";
 
 function deleteLocation(location) {
   try {
@@ -18,7 +24,6 @@ function deleteLocation(location) {
         window.location.reload();
       });
   } catch (e) {
-    console.log(e);
     alert("Ocorreu um erro ao tentar deletar a locação");
   }
 }
@@ -30,9 +35,7 @@ const LocationList = () => {
     const { data } = await api.get(
       "https://apirestful-locar.herokuapp.com/api/location"
     );
-    const locations = data;
-    setLocation(locations);
-
+    setLocation(data);
   };
 
   useEffect(() => {
