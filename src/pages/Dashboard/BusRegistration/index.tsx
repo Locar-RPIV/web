@@ -1,6 +1,10 @@
 import React, { useState } from "react";
 import Select from "react-select";
+import { useHistory } from "react-router-dom";
+import { MdDirectionsBus } from "react-icons/md";
 
+import Api from "../../../services/api";
+import NavBar from "../../../components/NavBar";
 import {
   Section,
   Title,
@@ -12,24 +16,16 @@ import {
   VehicleTypeCard,
 } from "./styles";
 
-import NavBar from "../../../components/NavBar";
-
-import { MdDirectionsBus } from "react-icons/md";
-
-import { useHistory } from "react-router-dom";
-
-import Api from "../../../services/api";
-
 const BusRegistration: React.FC = () => {
   const [marca, setBusMarca] = useState("");
   const [modelo, setBusModelo] = useState("");
   const [potencia, setBusPotencia] = useState("");
-  const [status, setBusStatus] = useState("Em análise");
+  const [status] = useState("Em análise");
   const [placa, setBusPlaca] = useState("");
   const [cor, setBusCor] = useState("");
-  const [ano, setBusAno] = useState("");
-  const [tipoVeiculo, setBusTipo] = useState("Ônibus");
-  const [numeroPortas, setBusPortas] = useState("");
+  const [ano, setBusAno] = useState(0);
+  const [tipoVeiculo] = useState("Ônibus");
+  const [numeroPortas, setBusPortas] = useState(0);
   const [quilometragem, setBusQuilometragem] = useState("");
   const [renavan, setBusRenavam] = useState("");
   const [chassi, setBusChassi] = useState("");
@@ -37,11 +33,11 @@ const BusRegistration: React.FC = () => {
   const [valorLocacao, setBusDiaria] = useState("");
   const [carroParceiro, setCarroParceiro] = useState("");
   const [cpfParceiro, setBusCpfParceiro] = useState("");
-  const [filial, setBusFilial] = useState("");
+  const [filial, setBusFilial] = useState(0);
   const [imageUrl, setBusImagemUrl] = useState("");
   const [cilindradas, setBusCilindradas] = useState("");
   const [portaMalas, setBusPortaMalas] = useState("");
-  const [tipoCombustivel, setVehicleCombustivel] = useState("");
+  const [tipoCombustivel, setVehicleCombustivel] = useState(0);
 
   const history = useHistory();
 
@@ -55,26 +51,12 @@ const BusRegistration: React.FC = () => {
     { value: "Vokswagen", label: "Vokswagen" },
   ];
 
-  const optionsStatus = [
-    { value: "Locado", label: "Locado" },
-    { value: "Disponível", label: "Disponível" },
-    { value: "Em manutanção", label: "Em manutanção" },
-    { value: "Em análise", label: "Em análise" },
-  ];
-
   const optionsNPortas = [
     { value: 1, label: "1" },
     { value: 2, label: "2" },
     { value: 3, label: "3" },
     { value: 4, label: "4" },
     { value: 5, label: "5" },
-  ];
-
-  const optionsTipo = [
-    { value: 4, label: "Bicicleta" },
-    { value: 1, label: "Carro" },
-    { value: 3, label: "Moto" },
-    { value: 2, label: "Ônibus" },
   ];
 
   const optionsFilial = [
@@ -86,15 +68,15 @@ const BusRegistration: React.FC = () => {
 
   const optionsModeloCarro = [
     { value: "Sprinter", label: "Sprinter" },
-    { value: "Volare W9", label: "Volare W9" }, 
-    { value: "Volare W8", label: "Volare W8" }, 
-    { value: "Volare DW9", label: "Volare DW9" }, 
-    { value: "Volare V8", label: "Volare V8" }, 
-    { value: "Volare V6", label: "Volare V6" }, 
-    { value: "Masca Gran Midi", label: "Masca Gran Midi" }, 
-    { value: "Masca Granvia", label: "Masca Granvia" }, 
-    { value: "Comil Campione", label: "Comil Campione" }, 
-    { value: "Comil Versatile", label: "Comil Versatile" }, 
+    { value: "Volare W9", label: "Volare W9" },
+    { value: "Volare W8", label: "Volare W8" },
+    { value: "Volare DW9", label: "Volare DW9" },
+    { value: "Volare V8", label: "Volare V8" },
+    { value: "Volare V6", label: "Volare V6" },
+    { value: "Masca Gran Midi", label: "Masca Gran Midi" },
+    { value: "Masca Granvia", label: "Masca Granvia" },
+    { value: "Comil Campione", label: "Comil Campione" },
+    { value: "Comil Versatile", label: "Comil Versatile" },
     { value: "Masca Granvia", label: "Masca Granvia" },
     { value: "Masca Gran Midi", label: "Masca Gran Midi" },
   ];
@@ -105,7 +87,6 @@ const BusRegistration: React.FC = () => {
     { value: "146 CV", label: "146 CV" },
     { value: "150 CV", label: "150 CV" },
     { value: "163", label: "163 CV" },
-
   ];
 
   const optionsAno = [
@@ -175,31 +156,6 @@ const BusRegistration: React.FC = () => {
   ];
 
   const handleSubmitBus = async (e: { preventDefault: () => void }) => {
-    e.preventDefault();
-
-    console.log(marca);
-    console.log(modelo);
-    console.log(status);
-    console.log(potencia);
-    console.log(placa);
-    console.log(cor);
-    console.log(ano);
-    console.log(tipoCombustivel);
-    console.log(numeroPortas);
-    console.log(quilometragem);
-    console.log(renavan);
-    console.log(chassi);
-    console.log(valorLocacao);
-    console.log(carroParceiro);
-    console.log(cpfParceiro);
-    console.log(filial);
-    console.log(imageUrl);
-    console.log(cilindradas);
-    console.log(portaMalas);
-    console.log(tipoVeiculo);
-    console.log(assentos);
-
-
     try {
       if (
         !modelo ||
@@ -224,7 +180,7 @@ const BusRegistration: React.FC = () => {
         alert("Preencha todos os campos");
         return;
       } else if (carroParceiro === "on" && cpfParceiro) {
-        const response = await Api.post("/automobile", {
+        await Api.post("/automobile", {
           marca,
           modelo,
           status,
@@ -248,10 +204,8 @@ const BusRegistration: React.FC = () => {
           assentos,
         });
         history.push("/FeedbackVehicle");
-
-        console.log(response);
       } else if (carroParceiro === "" && !cpfParceiro) {
-        const response = await Api.post("/automobile", {
+        await Api.post("/automobile", {
           marca,
           modelo,
           status,
@@ -275,7 +229,6 @@ const BusRegistration: React.FC = () => {
           assentos,
         });
         history.push("/FeedbackVehicle");
-        console.log(response);
       }
     } catch (err) {
       alert("Ocorreu algum erro ao adicionar o veiculo");
@@ -298,49 +251,49 @@ const BusRegistration: React.FC = () => {
                 options={optionsMarcaBus}
                 name="bus_marca"
                 placeholder="Marca"
-                onChange={(e) => setBusMarca(e.value)}
+                onChange={(e) => setBusMarca(e!.value)}
               />
               <Select
                 options={optionsModeloCarro}
                 name="bus_modelo"
                 placeholder="Modelo"
-                onChange={(e) => setBusModelo(e.value)}
+                onChange={(e) => setBusModelo(e!.value)}
               />
               <Select
                 options={optionsCombustivel}
                 name="bus_tipoCombustivel"
                 placeholder="Tipo de Combustível"
-                onChange={(e) => setVehicleCombustivel(e.value)}
+                onChange={(e) => setVehicleCombustivel(e!.value)}
               />
               <Select
                 options={optionsAno}
                 name="bus_ano"
                 placeholder="Ano"
-                onChange={(e) => setBusAno(e.value)}
+                onChange={(e) => setBusAno(e!.value)}
               />
               <Select
                 options={optionsCilindradas}
                 name="bus_cilindradas"
                 placeholder="Cilindradas"
-                onChange={(e) => setBusCilindradas(e.value)}
+                onChange={(e) => setBusCilindradas(e!.value)}
               />
               <Select
                 options={optionsPotencia}
                 name="bus_potencia"
                 placeholder="Potencia"
-                onChange={(e) => setBusPotencia(e.value)}
+                onChange={(e) => setBusPotencia(e!.value)}
               />
               <Select
                 options={optionsNPortas}
                 name="bus_nPortas"
                 placeholder="Nº de Portas"
-                onChange={(e) => setBusPortas(e.value)}
+                onChange={(e) => setBusPortas(e!.value)}
               />
               <Select
                 options={optionsPortaMalas}
                 name="bus_portaMalas"
                 placeholder="Capacidade Porta Malas"
-                onChange={(e) => setBusPortaMalas(e.value)}
+                onChange={(e) => setBusPortaMalas(e!.value)}
               />
             </div>
             <div className="three-inputs">
@@ -447,7 +400,7 @@ const BusRegistration: React.FC = () => {
                 options={optionsFilial}
                 name="bus_filial"
                 placeholder="Filial de origem"
-                onChange={(e) => setBusFilial(e.value)}
+                onChange={(e) => setBusFilial(e!.value)}
               />
             </div>
             <br />
