@@ -1,12 +1,17 @@
 import React, { useState, useEffect } from "react";
-import { Button, CardHeader, ListVehiclesCard, Title, EditButton, DeleteButton} from "./styles";
 import { Link } from "react-router-dom";
-
+import { IoMdCar } from "react-icons/io";
 
 import { FaEdit, FaTrashAlt } from "react-icons/fa";
+import {
+  Button,
+  CardHeader,
+  ListVehiclesCard,
+  Title,
+  EditButton,
+  DeleteButton,
+} from "./styles";
 
-
-import { IoMdCar } from "react-icons/io";
 import api from "../../../../services/api";
 
 function deleteAuto(automobile) {
@@ -26,19 +31,44 @@ function deleteAuto(automobile) {
 }
 
 const VehicleList = () => {
-  const [automobiles, setAuto] = useState([]);
+  const [cars, setCars] = useState([]);
+  const [bus, setBus] = useState([]);
+  const [bikes, setBikes] = useState([]);
+  const [motorcycle, setMotorcycle] = useState([]);
 
-  const fetchVehicles = async () => {
+  const fetchCars = async () => {
     const { data } = await api.get(
-      "https://apirestful-locar.herokuapp.com/api/automobile"
+      "https://apirestful-locar.herokuapp.com/api/car"
     );
-    const autos = data;
-    setAuto(autos);
-    console.log(autos);
+    setCars(data);
+  };
+
+  const fetchBus = async () => {
+    const { data } = await api.get(
+      "https://apirestful-locar.herokuapp.com/api/bus"
+    );
+    setBus(data);
+  };
+
+  const fetchBikes = async () => {
+    const { data } = await api.get(
+      "https://apirestful-locar.herokuapp.com/api/bikes"
+    );
+    setBikes(data);
+  };
+
+  const fetchMotorcycle = async () => {
+    const { data } = await api.get(
+      "https://apirestful-locar.herokuapp.com/api/motorcycle"
+    );
+    setMotorcycle(data);
   };
 
   useEffect(() => {
-    fetchVehicles();
+    fetchCars();
+    fetchBus();
+    fetchBikes();
+    fetchMotorcycle();
   }, []);
 
   return (
@@ -49,7 +79,7 @@ const VehicleList = () => {
           Veículos
         </Title>
         <Link to="/VehicleOptions">
-        <Button>Cadastrar novo</Button>
+          <Button>Cadastrar novo</Button>
         </Link>
       </CardHeader>
 
@@ -57,31 +87,100 @@ const VehicleList = () => {
         <table>
           <tr>
             <th>Código</th>
+            <th>Tipo</th>
             <th>Marca</th>
             <th>Modelo</th>
-            <th>Placa</th>
             <th>Valor locação</th>
             <th>Status</th>
             <th>Ação</th>
           </tr>
 
-          {automobiles.map((automobile) => {
+          {cars.map((cars) => {
             return [
               <>
                 <tr>
-                  <td>{automobile.id}</td>
-                  <td>{automobile.marca}</td>
-                  <td>{automobile.modelo}</td>
-                  <td>{automobile.placa}</td>
-                  <td>{automobile.valorLocacao}</td>
-                  <td>{automobile.status}</td>
+                  <td>{cars.id}</td>
+                  <td>Carro</td>
+                  <td>{cars.marca}</td>
+                  <td>{cars.modelo}</td>
+                  <td>{cars.valorLocacao}</td>
+                  <td>{cars.status}</td>
                   <td>
-                  <EditButton>
-                    <FaEdit size={"2em"}/>
-                  </EditButton>
+                    <EditButton>
+                      <FaEdit size={"2em"} />
+                    </EditButton>
                     &nbsp;&nbsp;&nbsp;&nbsp;
-                    <DeleteButton onClick={() => deleteAuto(automobile)}>
-                      <FaTrashAlt size={"2em"}/>
+                    <DeleteButton onClick={() => deleteAuto(cars)}>
+                      <FaTrashAlt size={"2em"} />
+                    </DeleteButton>
+                  </td>
+                </tr>
+              </>,
+            ];
+          })}
+          {motorcycle.map((motorcycle) => {
+            return [
+              <>
+                <tr>
+                  <td>{motorcycle.id}</td>
+                  <td>Moto</td>
+                  <td>{motorcycle.marca}</td>
+                  <td>{motorcycle.modelo}</td>
+                  <td>{motorcycle.valorLocacao}</td>
+                  <td>{motorcycle.status}</td>
+                  <td>
+                    <EditButton>
+                      <FaEdit size={"2em"} />
+                    </EditButton>
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+                    <DeleteButton onClick={() => deleteAuto(motorcycle)}>
+                      <FaTrashAlt size={"2em"} />
+                    </DeleteButton>
+                  </td>
+                </tr>
+              </>,
+            ];
+          })}
+          {bikes.map((bikes) => {
+            return [
+              <>
+                <tr>
+                  <td>{bikes.id}</td>
+                  <td>Bicicleta</td>
+                  <td>{bikes.marca}</td>
+                  <td>{bikes.modelo}</td>
+                  <td>{bikes.valorLocacao}</td>
+                  <td>{bikes.status}</td>
+                  <td>
+                    <EditButton>
+                      <FaEdit size={"2em"} />
+                    </EditButton>
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+                    <DeleteButton onClick={() => deleteAuto(bikes)}>
+                      <FaTrashAlt size={"2em"} />
+                    </DeleteButton>
+                  </td>
+                </tr>
+              </>,
+            ];
+          })}
+          {bus.map((bikes) => {
+            return [
+              <>
+                <tr>
+                  <td>{bikes.id}</td>
+                  <td>Ônibus</td>
+                  <td>{bikes.marca}</td>
+                  <td>{bikes.modelo}</td>
+                  <td>{bikes.valorLocacao}</td>
+                  <td>{bikes.status}</td>
+                  <td>
+                    <EditButton>
+                      <FaEdit size={"2em"} />
+                    </EditButton>
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+                    <DeleteButton onClick={() => deleteAuto(bikes)}>
+                      <FaTrashAlt size={"2em"} />
                     </DeleteButton>
                   </td>
                 </tr>
