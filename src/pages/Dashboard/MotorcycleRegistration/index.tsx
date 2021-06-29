@@ -16,7 +16,7 @@ import {
   VehicleTypeCard,
 } from "./styles";
 
-const MotoRegistration: React.FC = () => {
+const MotorcycleRegistration: React.FC = () => {
   const [marca, setMotoMarca] = useState("");
   const [modelo, setMotoModelo] = useState("");
   const [potencia, setMotoPotencia] = useState("");
@@ -402,4 +402,4 @@ const MotoRegistration: React.FC = () => {
   );
 };
 
-export default MotoRegistration;
+export default MotorcycleRegistration;
