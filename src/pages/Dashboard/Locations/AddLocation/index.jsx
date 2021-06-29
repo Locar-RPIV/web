@@ -98,6 +98,7 @@ const AddLocation = () => {
           quilometragemLocacao,
           quilometragemDevolucao,
         });
+        history.push("/Dashboard#fourth");
       }
     } catch (err) {
       alert("Ocorreu algum erro ao finalizar a locação");
