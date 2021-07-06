@@ -3,24 +3,23 @@ import { Link } from "react-router-dom";
 import { FaEdit, FaTrashAlt } from "react-icons/fa";
 import { MdPerson } from "react-icons/md";
 
-import Api from "../../../../services/api";
 import api from "../../../../services/api";
 import UsersEdit from "../UsersEdit";
+import Card from "../../../../components/Card";
 import {
   CardHeader,
-  ListUserCard,
-  Button,
   Title,
+  Button,
   DeleteButton,
   EditButton,
-} from "./styles";
+} from "../../../../components/Card/styles";
 
 const UsersList = () => {
   const [clients, setClients] = useState([]);
   const [employers, setEmployers] = useState([]);
 
   const fetchClients = async () => {
-    const { data } = await Api.get(
+    const { data } = await api.get(
       "https://apirestful-locar.herokuapp.com/api/client"
     );
     const clients = data;
@@ -28,7 +27,7 @@ const UsersList = () => {
   };
 
   const fetchEmployers = async () => {
-    const { data } = await Api.get(
+    const { data } = await api.get(
       "https://apirestful-locar.herokuapp.com/api/employer"
     );
     const employers = data;
@@ -84,7 +83,7 @@ const UsersList = () => {
   }
 
   return (
-    <ListUserCard>
+    <Card>
       <CardHeader>
         <Title>
           <MdPerson className="title-icon" size={"1.3em"} />
@@ -153,7 +152,7 @@ const UsersList = () => {
           })}
         </table>
       </div>
-    </ListUserCard>
+    </Card>
   );
 };
 

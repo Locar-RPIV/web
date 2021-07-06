@@ -1,17 +1,17 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { FaEdit, FaTrashAlt } from "react-icons/fa";
-
 import { AiFillPieChart } from "react-icons/ai";
+
 import api from "../../../../services/api";
+import Card from "../../../../components/Card";
 import {
   CardHeader,
-  Button,
-  ListUserCard,
   Title,
-  EditButton,
+  Button,
   DeleteButton,
-} from "./styles";
+  EditButton,
+} from "../../../../components/Card/styles";
 
 function deleteLocation(location) {
   try {
@@ -43,7 +43,7 @@ const LocationList = () => {
   }, []);
 
   return (
-    <ListUserCard>
+    <Card>
       <CardHeader>
         <Title>
           <AiFillPieChart className="title-icon" size={"1.3em"} />
@@ -91,7 +91,7 @@ const LocationList = () => {
           })}
         </table>
       </div>
-    </ListUserCard>
+    </Card>
   );
 };
 

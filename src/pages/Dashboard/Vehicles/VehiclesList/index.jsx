@@ -3,16 +3,16 @@ import { Link } from "react-router-dom";
 import { IoMdCar } from "react-icons/io";
 import { FaEdit, FaTrashAlt } from "react-icons/fa";
 
-import api from "../../../../services/api";
+import Card from "../../../../components/Card";
 import {
-  Button,
   CardHeader,
-  ListVehiclesCard,
   Title,
-  EditButton,
+  Button,
   DeleteButton,
-} from "./styles";
+  EditButton,
+} from "../../../../components/Card/styles";
 
+import api from "../../../../services/api";
 
 function deleteAuto(automobile) {
   try {
@@ -71,7 +71,7 @@ const VehicleList = () => {
   }, []);
 
   return (
-    <ListVehiclesCard>
+    <Card>
       <CardHeader>
         <Title>
           <IoMdCar className="title-icon" size={"1.3em"} />
@@ -188,7 +188,7 @@ const VehicleList = () => {
           })}
         </table>
       </div>
-    </ListVehiclesCard>
+    </Card>
   );
 };
 

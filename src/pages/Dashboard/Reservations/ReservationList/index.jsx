@@ -3,7 +3,14 @@ import { IoTicket } from "react-icons/io5";
 import { FaEdit, FaTrashAlt } from "react-icons/fa";
 
 import api from "../../../../services/api";
-import { ListUserCard, Title, EditButton, DeleteButton } from "./styles";
+
+import Card from "../../../../components/Card";
+import {
+  CardHeader,
+  Title,
+  DeleteButton,
+  EditButton,
+} from "../../../../components/Card/styles";
 
 const ReservationList = () => {
   const [reservations, setReservation] = useState([]);
@@ -35,11 +42,13 @@ const ReservationList = () => {
   }
 
   return (
-    <ListUserCard>
-      <Title>
-        <IoTicket className="title-icon" size={"1.3em"} />
-        Reservas
-      </Title>
+    <Card>
+      <CardHeader>
+        <Title>
+          <IoTicket className="title-icon" size={"1.3em"} />
+          Reservas
+        </Title>
+      </CardHeader>
       <div className="table-content">
         <table>
           <tr>
@@ -75,7 +84,7 @@ const ReservationList = () => {
           })}
         </table>
       </div>
-    </ListUserCard>
+    </Card>
   );
 };
 
