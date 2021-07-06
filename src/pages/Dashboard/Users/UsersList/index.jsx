@@ -1,18 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { FaEdit, FaTrashAlt } from "react-icons/fa";
 import { MdPerson } from "react-icons/md";
 
 import api from "../../../../services/api";
 import UsersEdit from "../UsersEdit";
 import Card from "../../../../components/Card";
-import {
-  CardHeader,
-  Title,
-  Button,
-  DeleteButton,
-  EditButton,
-} from "../../../../components/Card/styles";
+import { CardHeader, Title, Button } from "../../../../components/Card/styles";
+import EditButton from "../../../../components/Buttons/Edit";
+import DeleteButton from "../../../../components/Buttons/Delete";
 
 const UsersList = () => {
   const [clients, setClients] = useState([]);
@@ -113,13 +108,9 @@ const UsersList = () => {
                   <td>{employers.cpf}</td>
                   <td>Funcionários</td>
                   <td>
-                    <EditButton onClick={() => UsersEdit(employers)}>
-                      <FaEdit size={"2em"} />
-                    </EditButton>
+                    <EditButton onClick={() => UsersEdit(employers)} />
                     &nbsp;&nbsp;&nbsp;&nbsp;
-                    <DeleteButton onClick={() => deleteEmployer(employers)}>
-                      <FaTrashAlt size={"2em"} />
-                    </DeleteButton>
+                    <DeleteButton onClick={() => deleteEmployer(employers)} />
                   </td>
                 </tr>
               </>,
@@ -134,17 +125,13 @@ const UsersList = () => {
                   <td>{user.cpf}</td>
                   <td>{user.rg ? "Cliente parceiro" : "Cliente"}</td>
                   <td>
-                    <EditButton onClick={() => UsersEdit(user)}>
-                      <FaEdit size={"2em"} />
-                    </EditButton>
+                    <EditButton onClick={() => UsersEdit(user)} />
                     &nbsp;&nbsp;&nbsp;&nbsp;
                     <DeleteButton
                       onClick={() =>
                         user.rg ? deletePartner(user) : deleteUser(user)
                       }
-                    >
-                      <FaTrashAlt size={"2em"} />
-                    </DeleteButton>
+                    />
                   </td>
                 </tr>
               </>,

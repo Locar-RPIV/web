@@ -1,17 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { FaEdit, FaTrashAlt } from "react-icons/fa";
 import { AiFillPieChart } from "react-icons/ai";
 
 import api from "../../../../services/api";
 import Card from "../../../../components/Card";
-import {
-  CardHeader,
-  Title,
-  Button,
-  DeleteButton,
-  EditButton,
-} from "../../../../components/Card/styles";
+import { CardHeader, Title, Button } from "../../../../components/Card/styles";
+import EditButton from "../../../../components/Buttons/Edit";
+import DeleteButton from "../../../../components/Buttons/Delete";
 
 function deleteLocation(location) {
   try {
@@ -77,13 +72,9 @@ const LocationList = () => {
                   <td>{location.dataDevolucao}</td>
                   <td>{location.valorTotal}</td>
                   <td>
-                    <EditButton>
-                      <FaEdit size={"2em"} />
-                    </EditButton>
+                    <EditButton />
                     &nbsp;&nbsp;&nbsp;&nbsp;
-                    <DeleteButton onClick={() => deleteLocation(location)}>
-                      <FaTrashAlt size={"2em"} />
-                    </DeleteButton>
+                    <DeleteButton onClick={() => deleteLocation(location)} />
                   </td>
                 </tr>
               </>,

@@ -1,16 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { IoTicket } from "react-icons/io5";
-import { FaEdit, FaTrashAlt } from "react-icons/fa";
 
 import api from "../../../../services/api";
-
 import Card from "../../../../components/Card";
-import {
-  CardHeader,
-  Title,
-  DeleteButton,
-  EditButton,
-} from "../../../../components/Card/styles";
+import { CardHeader, Title } from "../../../../components/Card/styles";
+import EditButton from "../../../../components/Buttons/Edit";
+import DeleteButton from "../../../../components/Buttons/Delete";
 
 const ReservationList = () => {
   const [reservations, setReservation] = useState([]);
@@ -68,15 +63,11 @@ const ReservationList = () => {
                   <td>{reservation.veiculo.placa}</td>
                   <td>{reservation.dataRetirada}</td>
                   <td>
-                    <EditButton>
-                      <FaEdit size={"2em"} />
-                    </EditButton>
+                    <EditButton />
                     &nbsp;&nbsp;&nbsp;&nbsp;
                     <DeleteButton
                       onClick={() => deleteReservation(reservation)}
-                    >
-                      <FaTrashAlt size={"2em"} />
-                    </DeleteButton>
+                    />
                   </td>
                 </tr>
               </>,
