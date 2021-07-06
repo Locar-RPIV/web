@@ -14,14 +14,14 @@ import {
 
 import api from "../../../../services/api";
 
-function deleteAuto(automobile) {
+function deleteAuto(car) {
   try {
     api
       .delete(
-        `https://apirestful-locar.herokuapp.com/api/automobile/${automobile.id}`
+        `https://apirestful-locar.herokuapp.com/api/car/${car.id}`
       )
       .then((res) => {
-        alert("Automovel deletado com sucesso");
+        alert("Carro deletado com sucesso");
         window.location.reload();
       });
   } catch (e) {

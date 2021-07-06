@@ -82,7 +82,7 @@ const BikecycleRegistration: React.FC = () => {
         alert("Preencha todos os campos");
         return;
       } else if (carroParceiro === "on" && cpfParceiro) {
-        await Api.post("/automobile", {
+        await Api.post("/bike", {
           marca,
           modelo,
           status,
@@ -98,7 +98,7 @@ const BikecycleRegistration: React.FC = () => {
         });
         history.push("/FeedbackVehicle");
       } else if (carroParceiro === "" && !cpfParceiro) {
-        await Api.post("/automobile", {
+        await Api.post("/bike", {
           marca,
           modelo,
           status,

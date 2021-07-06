@@ -279,7 +279,7 @@ const VehicleRegistration: React.FC = () => {
         alert("Preencha todos os campos");
         return;
       } else if (carroParceiro === "on" && cpfParceiro) {
-        await Api.post("/automobile", {
+        await Api.post("/car", {
           marca,
           modelo,
           status,
@@ -304,7 +304,7 @@ const VehicleRegistration: React.FC = () => {
         });
         history.push("/FeedbackVehicle");
       } else if (carroParceiro === "" && !cpfParceiro) {
-        await Api.post("/automobile", {
+        await Api.post("/car", {
           marca,
           modelo,
           status,
