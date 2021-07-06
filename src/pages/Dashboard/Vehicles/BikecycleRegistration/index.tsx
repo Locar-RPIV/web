@@ -2,9 +2,9 @@ import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import Select from "react-select";
 
-import Api from "../../../services/api";
+import Api from "../../../../services/api";
 import { MdDirectionsBike } from "react-icons/md";
-import NavBar from "../../../components/NavBar";
+import NavBar from "../../../../components/NavBar";
 import {
   Section,
   Title,
