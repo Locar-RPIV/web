@@ -3,8 +3,8 @@ import Select from "react-select";
 import { useHistory } from "react-router-dom";
 import { FaMotorcycle } from "react-icons/fa";
 
-import NavBar from "../../../components/NavBar";
-import Api from "../../../services/api";
+import NavBar from "../../../../components/NavBar";
+import Api from "../../../../services/api";
 import {
   Section,
   Title,
@@ -175,7 +175,7 @@ const MotorcycleRegistration: React.FC = () => {
         alert("Preencha todos os campos");
         return;
       } else if (carroParceiro === "on" && cpfParceiro) {
-        await Api.post("/automobile", {
+        await Api.post("/motorcycle", {
           marca,
           modelo,
           status,
@@ -198,7 +198,7 @@ const MotorcycleRegistration: React.FC = () => {
         });
         history.push("/FeedbackVehicle");
       } else if (carroParceiro === "" && !cpfParceiro) {
-        await Api.post("/automobile", {
+        await Api.post("/motorcycle", {
           marca,
           modelo,
           status,

@@ -1,26 +1,20 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { FaEdit, FaTrashAlt } from "react-icons/fa";
 import { MdPerson } from "react-icons/md";
 
-import Api from "../../../../services/api";
 import api from "../../../../services/api";
 import UsersEdit from "../UsersEdit";
-import {
-  CardHeader,
-  ListUserCard,
-  Button,
-  Title,
-  DeleteButton,
-  EditButton,
-} from "./styles";
+import Card from "../../../../components/Card";
+import { CardHeader, Title, Button } from "../../../../components/Card/styles";
+import EditButton from "../../../../components/Buttons/Edit";
+import DeleteButton from "../../../../components/Buttons/Delete";
 
 const UsersList = () => {
   const [clients, setClients] = useState([]);
   const [employers, setEmployers] = useState([]);
 
   const fetchClients = async () => {
-    const { data } = await Api.get(
+    const { data } = await api.get(
       "https://apirestful-locar.herokuapp.com/api/client"
     );
     const clients = data;
@@ -28,7 +22,7 @@ const UsersList = () => {
   };
 
   const fetchEmployers = async () => {
-    const { data } = await Api.get(
+    const { data } = await api.get(
       "https://apirestful-locar.herokuapp.com/api/employer"
     );
     const employers = data;
@@ -84,7 +78,7 @@ const UsersList = () => {
   }
 
   return (
-    <ListUserCard>
+    <Card>
       <CardHeader>
         <Title>
           <MdPerson className="title-icon" size={"1.3em"} />
@@ -114,13 +108,9 @@ const UsersList = () => {
                   <td>{employers.cpf}</td>
                   <td>Funcionários</td>
                   <td>
-                    <EditButton onClick={() => UsersEdit(employers)}>
-                      <FaEdit size={"2em"} />
-                    </EditButton>
+                    <EditButton onClick={() => UsersEdit(employers)} />
                     &nbsp;&nbsp;&nbsp;&nbsp;
-                    <DeleteButton onClick={() => deleteEmployer(employers)}>
-                      <FaTrashAlt size={"2em"} />
-                    </DeleteButton>
+                    <DeleteButton onClick={() => deleteEmployer(employers)} />
                   </td>
                 </tr>
               </>,
@@ -135,17 +125,13 @@ const UsersList = () => {
                   <td>{user.cpf}</td>
                   <td>{user.rg ? "Cliente parceiro" : "Cliente"}</td>
                   <td>
-                    <EditButton onClick={() => UsersEdit(user)}>
-                      <FaEdit size={"2em"} />
-                    </EditButton>
+                    <EditButton onClick={() => UsersEdit(user)} />
                     &nbsp;&nbsp;&nbsp;&nbsp;
                     <DeleteButton
                       onClick={() =>
                         user.rg ? deletePartner(user) : deleteUser(user)
                       }
-                    >
-                      <FaTrashAlt size={"2em"} />
-                    </DeleteButton>
+                    />
                   </td>
                 </tr>
               </>,
@@ -153,7 +139,7 @@ const UsersList = () => {
           })}
         </table>
       </div>
-    </ListUserCard>
+    </Card>
   );
 };
 

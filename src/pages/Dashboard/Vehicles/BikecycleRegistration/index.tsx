@@ -2,9 +2,9 @@ import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import Select from "react-select";
 
-import Api from "../../../services/api";
+import Api from "../../../../services/api";
 import { MdDirectionsBike } from "react-icons/md";
-import NavBar from "../../../components/NavBar";
+import NavBar from "../../../../components/NavBar";
 import {
   Section,
   Title,
@@ -82,7 +82,7 @@ const BikecycleRegistration: React.FC = () => {
         alert("Preencha todos os campos");
         return;
       } else if (carroParceiro === "on" && cpfParceiro) {
-        await Api.post("/automobile", {
+        await Api.post("/bike", {
           marca,
           modelo,
           status,
@@ -98,7 +98,7 @@ const BikecycleRegistration: React.FC = () => {
         });
         history.push("/FeedbackVehicle");
       } else if (carroParceiro === "" && !cpfParceiro) {
-        await Api.post("/automobile", {
+        await Api.post("/bike", {
           marca,
           modelo,
           status,

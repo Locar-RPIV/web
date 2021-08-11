@@ -3,8 +3,8 @@ import Select from "react-select";
 import { useHistory } from "react-router-dom";
 import { MdDirectionsBus } from "react-icons/md";
 
-import Api from "../../../services/api";
-import NavBar from "../../../components/NavBar";
+import Api from "../../../../services/api";
+import NavBar from "../../../../components/NavBar";
 import {
   Section,
   Title,
@@ -182,7 +182,7 @@ const BusRegistration: React.FC = () => {
         alert("Preencha todos os campos");
         return;
       } else if (carroParceiro === "on" && cpfParceiro) {
-        await Api.post("/automobile", {
+        await Api.post("/bus", {
           marca,
           modelo,
           status,
@@ -207,7 +207,7 @@ const BusRegistration: React.FC = () => {
         });
         history.push("/FeedbackVehicle");
       } else if (carroParceiro === "" && !cpfParceiro) {
-        await Api.post("/automobile", {
+        await Api.post("/bus", {
           marca,
           modelo,
           status,

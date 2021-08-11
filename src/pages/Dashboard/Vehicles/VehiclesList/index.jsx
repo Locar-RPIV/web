@@ -1,27 +1,19 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { IoMdCar } from "react-icons/io";
-import { FaEdit, FaTrashAlt } from "react-icons/fa";
 
 import api from "../../../../services/api";
-import {
-  Button,
-  CardHeader,
-  ListVehiclesCard,
-  Title,
-  EditButton,
-  DeleteButton,
-} from "./styles";
+import Card from "../../../../components/Card";
+import { CardHeader, Title, Button } from "../../../../components/Card/styles";
+import EditButton from "../../../../components/Buttons/Edit";
+import DeleteButton from "../../../../components/Buttons/Delete";
 
-
-function deleteAuto(automobile) {
+function deleteAuto(car) {
   try {
     api
-      .delete(
-        `https://apirestful-locar.herokuapp.com/api/automobile/${automobile.id}`
-      )
+      .delete(`https://apirestful-locar.herokuapp.com/api/car/${car.id}`)
       .then((res) => {
-        alert("Automovel deletado com sucesso");
+        alert("Carro deletado com sucesso");
         window.location.reload();
       });
   } catch (e) {
@@ -71,7 +63,7 @@ const VehicleList = () => {
   }, []);
 
   return (
-    <ListVehiclesCard>
+    <Card>
       <CardHeader>
         <Title>
           <IoMdCar className="title-icon" size={"1.3em"} />
@@ -105,13 +97,9 @@ const VehicleList = () => {
                   <td>{cars.valorLocacao}</td>
                   <td>{cars.status}</td>
                   <td>
-                    <EditButton>
-                      <FaEdit size={"2em"} />
-                    </EditButton>
+                    <EditButton />
                     &nbsp;&nbsp;&nbsp;&nbsp;
-                    <DeleteButton onClick={() => deleteAuto(cars)}>
-                      <FaTrashAlt size={"2em"} />
-                    </DeleteButton>
+                    <DeleteButton onClick={() => deleteAuto(cars)} />
                   </td>
                 </tr>
               </>,
@@ -128,13 +116,9 @@ const VehicleList = () => {
                   <td>{motorcycle.valorLocacao}</td>
                   <td>{motorcycle.status}</td>
                   <td>
-                    <EditButton>
-                      <FaEdit size={"2em"} />
-                    </EditButton>
+                    <EditButton />
                     &nbsp;&nbsp;&nbsp;&nbsp;
-                    <DeleteButton onClick={() => deleteAuto(motorcycle)}>
-                      <FaTrashAlt size={"2em"} />
-                    </DeleteButton>
+                    <DeleteButton onClick={() => deleteAuto(motorcycle)} />
                   </td>
                 </tr>
               </>,
@@ -151,13 +135,9 @@ const VehicleList = () => {
                   <td>{bikes.valorLocacao}</td>
                   <td>{bikes.status}</td>
                   <td>
-                    <EditButton>
-                      <FaEdit size={"2em"} />
-                    </EditButton>
+                    <EditButton />
                     &nbsp;&nbsp;&nbsp;&nbsp;
-                    <DeleteButton onClick={() => deleteAuto(bikes)}>
-                      <FaTrashAlt size={"2em"} />
-                    </DeleteButton>
+                    <DeleteButton onClick={() => deleteAuto(bikes)} />
                   </td>
                 </tr>
               </>,
@@ -174,13 +154,9 @@ const VehicleList = () => {
                   <td>{bus.valorLocacao}</td>
                   <td>{bus.status}</td>
                   <td>
-                    <EditButton>
-                      <FaEdit size={"2em"} />
-                    </EditButton>
+                    <EditButton />
                     &nbsp;&nbsp;&nbsp;&nbsp;
-                    <DeleteButton onClick={() => deleteAuto(bus)}>
-                      <FaTrashAlt size={"2em"} />
-                    </DeleteButton>
+                    <DeleteButton onClick={() => deleteAuto(bus)} />
                   </td>
                 </tr>
               </>,
@@ -188,7 +164,7 @@ const VehicleList = () => {
           })}
         </table>
       </div>
-    </ListVehiclesCard>
+    </Card>
   );
 };
 
