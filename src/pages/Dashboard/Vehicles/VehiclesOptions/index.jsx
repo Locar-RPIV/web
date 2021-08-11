@@ -1,11 +1,9 @@
-import { Section, Title, Subtitle, VehicleTypeCard } from "./styles";
-
-import { MdDirectionsBus, MdDirectionsBike } from "react-icons/md";
+import { Link } from "react-router-dom";
 import { IoMdCar } from "react-icons/io";
 import { FaMotorcycle } from "react-icons/fa";
+import { MdDirectionsBus, MdDirectionsBike } from "react-icons/md";
 
-import { Link } from "react-router-dom";
-
+import { Section, Title, Subtitle, VehicleTypeCard } from "./styles";
 import NavBar from "../../../../components/NavBar";
 
 

@@ -1,11 +1,6 @@
 import styled from "styled-components";
 
-export const CardHeader = styled.div`
-  display: flex;
-  justify-content: space-between;
-`
-
-export const ListUserCard = styled.div`
+export const StyledCard = styled.div`
   background-color: #fff;
   width: 70%;
   height: 70%;
@@ -14,14 +9,6 @@ export const ListUserCard = styled.div`
   grid-template-rows: 100px 1fr;
   grid-template-columns: 1fr;
   border-radius: 15px;
-  -webkit-box-shadow: 0 5px 6px -6px #777;
-  -moz-box-shadow: 0 5px 6px -6px #777;
-  box-shadow: 0 5px 6px -6px #777;
-
-  @media (max-width: 768px) {
-    //padding: 10px;
-  }
-
   -webkit-box-shadow: 0 5px 6px -6px #777;
   -moz-box-shadow: 0 5px 6px -6px #777;
   box-shadow: 0 5px 6px -6px #777;
@@ -57,6 +44,11 @@ export const ListUserCard = styled.div`
   }
 `;
 
+export const CardHeader = styled.div`
+  display: flex;
+  justify-content: space-between;
+`;
+
 export const Title = styled.span`
   grid-column: span 2;
   color: #369;
@@ -85,26 +77,5 @@ export const Button = styled.button`
   }
 `;
 
-export const DeleteButton = styled.button`
-  border: none;
-  background-color: transparent;
-  color: #b14d4d;
-  width: auto;
-  height: auto;
 
-  :hover {
-    cursor: pointer;
-  }
-`;
 
-export const EditButton = styled.button`
-  border: none;
-  background-color: transparent;
-  color: #336699;
-  width: auto;
-  height: auto;
-
-  :hover {
-    cursor: pointer;
-  }
-`;

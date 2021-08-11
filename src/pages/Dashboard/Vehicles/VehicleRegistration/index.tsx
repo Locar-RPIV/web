@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Select from "react-select";
+import { useHistory } from "react-router-dom";
 
 import {
   Section,
@@ -11,24 +12,20 @@ import {
   Button,
   VehicleTypeCard,
 } from "./styles";
-
 import NavBar from "../../../../components/NavBar";
-
 import { IoMdCar } from "react-icons/io";
-
-import { useHistory } from "react-router-dom";
 import Api from "../../../../services/api";
 
 const VehicleRegistration: React.FC = () => {
   const [marca, setVehicleMarca] = useState("");
   const [modelo, setVehicleModelo] = useState("");
   const [potencia, setVehiclePotencia] = useState("");
-  const [status, setVehicleStatus] = useState("Em análise");
+  const [status] = useState("Em análise");
   const [placa, setVehiclePlaca] = useState("");
   const [cor, setVehicleCor] = useState("");
-  const [ano, setVehicleAno] = useState();
-  const [tipoVeiculo, setVehicleTipo] = useState("Carro");
-  const [numeroPortas, setVehiclePortas] = useState("");
+  const [ano, setVehicleAno] = useState(0);
+  const [tipoVeiculo] = useState("Carro");
+  const [numeroPortas, setVehiclePortas] = useState(0);
   const [quilometragem, setVehicleQuilometragem] = useState("");
   const [renavan, setVehicleRenavam] = useState("");
   const [chassi, setVehicleChassi] = useState("");
@@ -36,11 +33,11 @@ const VehicleRegistration: React.FC = () => {
   const [valorLocacao, setVehicleDiaria] = useState("");
   const [carroParceiro, setCarroParceiro] = useState("");
   const [cpfParceiro, setVehicleCpfParceiro] = useState("");
-  const [filial, setVehicleFilial] = useState("");
+  const [filial, setVehicleFilial] = useState(0);
   const [imageUrl, setVehicleImagemUrl] = useState("");
   const [cilindradas, setVehicleCilindradas] = useState("");
   const [portaMalas, setVehiclePortaMalas] = useState("");
-  const [tipoCombustivel, setVehicleCombustivel] = useState("");
+  const [tipoCombustivel, setVehicleCombustivel] = useState(0);
 
   const history = useHistory();
 
@@ -60,23 +57,9 @@ const VehicleRegistration: React.FC = () => {
     { value: "Vokswagen", label: "Vokswagen" },
   ];
 
-  const optionsStatus = [
-    { value: "Locado", label: "Locado" },
-    { value: "Disponível", label: "Disponível" },
-    { value: "Em manutanção", label: "Em manutanção" },
-    { value: "Em análise", label: "Em análise" },
-  ];
-
   const optionsNPortas = [
     { value: 2, label: "2" },
     { value: 4, label: "4" },
-  ];
-
-  const optionsTipo = [
-    { value: 4, label: "Bicicleta" },
-    { value: 1, label: "Carro" },
-    { value: 3, label: "Moto" },
-    { value: 2, label: "Ônibus" },
   ];
 
   const optionsFilial = [
@@ -272,29 +255,6 @@ const VehicleRegistration: React.FC = () => {
   const handleSubmitVehicle = async (e: { preventDefault: () => void }) => {
     e.preventDefault();
 
-    console.log(marca);
-    console.log(modelo);
-    console.log(status);
-    console.log(potencia);
-    console.log(placa);
-    console.log(cor);
-    console.log(ano);
-    console.log(tipoCombustivel);
-    console.log(numeroPortas);
-    console.log(quilometragem);
-    console.log(renavan);
-    console.log(chassi);
-    console.log(valorLocacao);
-    console.log(carroParceiro);
-    console.log(cpfParceiro);
-    console.log(filial);
-    console.log(imageUrl);
-    console.log(cilindradas);
-    console.log(portaMalas);
-    console.log(tipoVeiculo);
-    console.log(assentos);
-
-
     try {
       if (
         !modelo ||
@@ -319,7 +279,7 @@ const VehicleRegistration: React.FC = () => {
         alert("Preencha todos os campos");
         return;
       } else if (carroParceiro === "on" && cpfParceiro) {
-        const response = await Api.post("/automobile", {
+        await Api.post("/car", {
           marca,
           modelo,
           status,
@@ -344,7 +304,7 @@ const VehicleRegistration: React.FC = () => {
         });
         history.push("/FeedbackVehicle");
       } else if (carroParceiro === "" && !cpfParceiro) {
-        const response = await Api.post("/automobile", {
+        await Api.post("/car", {
           marca,
           modelo,
           status,
@@ -362,7 +322,7 @@ const VehicleRegistration: React.FC = () => {
           cpfParceiro: 0,
           cilindradas,
           filial,
-          imageUrl:null,
+          imageUrl: null,
           portaMalas,
           tipoVeiculo,
           assentos,
@@ -391,49 +351,49 @@ const VehicleRegistration: React.FC = () => {
                 options={optionsMarcaCarro}
                 name="vehicle_marca"
                 placeholder="Marca"
-                onChange={(e) => setVehicleMarca(e.value)}
+                onChange={(e) => setVehicleMarca(e!.value)}
               />
               <Select
                 options={optionsModeloCarro}
                 name="vehicle_modelo"
                 placeholder="Modelo"
-                onChange={(e) => setVehicleModelo(e.value)}
+                onChange={(e) => setVehicleModelo(e!.value)}
               />
               <Select
                 options={optionsCombustivel}
                 name="vehicle_tipoCombustivel"
                 placeholder="Tipo de Combustível"
-                onChange={(e) => setVehicleCombustivel(e.value)}
+                onChange={(e) => setVehicleCombustivel(e!.value)}
               />
               <Select
                 options={optionsAno}
                 name="vehicle_ano"
                 placeholder="Ano"
-                onChange={(e) => setVehicleAno(e.value)}
+                onChange={(e) => setVehicleAno(e!.value)}
               />
               <Select
                 options={optionsCilindradas}
                 name="vehicle_cilindradas"
                 placeholder="Cilindradas"
-                onChange={(e) => setVehicleCilindradas(e.value)}
+                onChange={(e) => setVehicleCilindradas(e!.value)}
               />
               <Select
                 options={optionsPotencia}
                 name="vehicle_potencia"
                 placeholder="Potencia"
-                onChange={(e) => setVehiclePotencia(e.value)}
+                onChange={(e) => setVehiclePotencia(e!.value)}
               />
               <Select
                 options={optionsNPortas}
                 name="bus_nPortas"
                 placeholder="Nº de Portas"
-                onChange={(e) => setVehiclePortas(e.value)}
+                onChange={(e) => setVehiclePortas(e!.value)}
               />
               <Select
                 options={optionsPortaMalas}
                 name="bus_portaMalas"
                 placeholder="Capacidade Porta Malas"
-                onChange={(e) => setVehiclePortaMalas(e.value)}
+                onChange={(e) => setVehiclePortaMalas(e!.value)}
               />
             </div>
             <div className="three-inputs">
@@ -540,7 +500,7 @@ const VehicleRegistration: React.FC = () => {
                 options={optionsFilial}
                 name="vehicle_filial"
                 placeholder="Filial de origem"
-                onChange={(e) => setVehicleFilial(e.value)}
+                onChange={(e) => setVehicleFilial(e!.value)}
               />
             </div>
             <br />

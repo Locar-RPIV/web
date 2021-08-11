@@ -1,7 +1,7 @@
 import React from "react";
-import { Container } from "./styles";
-
 import { FaGooglePlay, FaApple } from "react-icons/fa";
+
+import { Container } from "./styles";
 
 const LandingPage: React.FC = () => {
   return (

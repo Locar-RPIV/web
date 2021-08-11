@@ -1,12 +1,10 @@
 import React from "react";
-import { StyledNavBar } from "./styles";
-
 import { MdPerson} from "react-icons/md";
 import { IoMdCar} from "react-icons/io";
 import { IoTicket} from "react-icons/io5";
 import { AiFillPieChart } from "react-icons/ai";
 
-
+import { StyledNavBar } from "./styles";
 
 const NavBar: React.FC = () => {
   return (

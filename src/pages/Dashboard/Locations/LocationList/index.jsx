@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from "react";
-import {CardHeader, Button, ListUserCard, Title, EditButton, DeleteButton } from "./styles";
 import { Link } from "react-router-dom";
-
-import { FaEdit, FaTrashAlt } from "react-icons/fa";
-
 import { AiFillPieChart } from "react-icons/ai";
+
 import api from "../../../../services/api";
+import Card from "../../../../components/Card";
+import { CardHeader, Title, Button } from "../../../../components/Card/styles";
+import EditButton from "../../../../components/Buttons/Edit";
+import DeleteButton from "../../../../components/Buttons/Delete";
 
 function deleteLocation(location) {
   try {
@@ -18,7 +19,6 @@ function deleteLocation(location) {
         window.location.reload();
       });
   } catch (e) {
-    console.log(e);
     alert("Ocorreu um erro ao tentar deletar a locação");
   }
 }
@@ -30,9 +30,7 @@ const LocationList = () => {
     const { data } = await api.get(
       "https://apirestful-locar.herokuapp.com/api/location"
     );
-    const locations = data;
-    setLocation(locations);
-
+    setLocation(data);
   };
 
   useEffect(() => {
@@ -40,7 +38,7 @@ const LocationList = () => {
   }, []);
 
   return (
-    <ListUserCard>
+    <Card>
       <CardHeader>
         <Title>
           <AiFillPieChart className="title-icon" size={"1.3em"} />
@@ -74,13 +72,9 @@ const LocationList = () => {
                   <td>{location.dataDevolucao}</td>
                   <td>{location.valorTotal}</td>
                   <td>
-                    <EditButton>
-                      <FaEdit size={"2em"} />
-                    </EditButton>
+                    <EditButton />
                     &nbsp;&nbsp;&nbsp;&nbsp;
-                    <DeleteButton onClick={() => deleteLocation(location)}>
-                      <FaTrashAlt size={"2em"} />
-                    </DeleteButton>
+                    <DeleteButton onClick={() => deleteLocation(location)} />
                   </td>
                 </tr>
               </>,
@@ -88,7 +82,7 @@ const LocationList = () => {
           })}
         </table>
       </div>
-    </ListUserCard>
+    </Card>
   );
 };
 

@@ -1,88 +1,162 @@
 import React, { useState, useEffect } from "react";
-import { Button, CardHeader, ListVehiclesCard, Title, EditButton, DeleteButton} from "./styles";
 import { Link } from "react-router-dom";
-
-
-import { FaEdit, FaTrashAlt } from "react-icons/fa";
-
-
 import { IoMdCar } from "react-icons/io";
-import api from "../../../../services/api";
 
-function deleteAuto(automobile) {
+import api from "../../../../services/api";
+import Card from "../../../../components/Card";
+import { CardHeader, Title, Button } from "../../../../components/Card/styles";
+import EditButton from "../../../../components/Buttons/Edit";
+import DeleteButton from "../../../../components/Buttons/Delete";
+
+function deleteAuto(car) {
   try {
     api
-      .delete(
-        `https://apirestful-locar.herokuapp.com/api/automobile/${automobile.id}`
-      )
+      .delete(`https://apirestful-locar.herokuapp.com/api/car/${car.id}`)
       .then((res) => {
-        alert("Automovel deletado com sucesso");
+        alert("Carro deletado com sucesso");
         window.location.reload();
       });
   } catch (e) {
-    console.log(e);
     alert("Ocorreu um erro ao tentar deletar o automovel");
   }
 }
 
 const VehicleList = () => {
-  const [automobiles, setAuto] = useState([]);
+  const [cars, setCars] = useState([]);
+  const [bus, setBus] = useState([]);
+  const [bikes, setBikes] = useState([]);
+  const [motorcycle, setMotorcycle] = useState([]);
 
-  const fetchVehicles = async () => {
+  const fetchCars = async () => {
     const { data } = await api.get(
-      "https://apirestful-locar.herokuapp.com/api/automobile"
+      "https://apirestful-locar.herokuapp.com/api/car"
     );
-    const autos = data;
-    setAuto(autos);
-    console.log(autos);
+    setCars(data);
+  };
+
+  const fetchBus = async () => {
+    const { data } = await api.get(
+      "https://apirestful-locar.herokuapp.com/api/bus"
+    );
+    setBus(data);
+  };
+
+  const fetchBikes = async () => {
+    const { data } = await api.get(
+      "https://apirestful-locar.herokuapp.com/api/bikes"
+    );
+    setBikes(data);
+  };
+
+  const fetchMotorcycle = async () => {
+    const { data } = await api.get(
+      "https://apirestful-locar.herokuapp.com/api/motorcycle"
+    );
+    setMotorcycle(data);
   };
 
   useEffect(() => {
-    fetchVehicles();
+    fetchCars();
+    fetchBus();
+    fetchBikes();
+    fetchMotorcycle();
   }, []);
 
   return (
-    <ListVehiclesCard>
+    <Card>
       <CardHeader>
         <Title>
           <IoMdCar className="title-icon" size={"1.3em"} />
           Veículos
         </Title>
         <Link to="/VehicleOptions">
-        <Button>Cadastrar novo</Button>
+          <Button>Cadastrar novo</Button>
         </Link>
       </CardHeader>
 
       <div className="table-content">
         <table>
           <tr>
-            <th>Código</th>
+            <th>Identificação</th>
+            <th>Tipo</th>
             <th>Marca</th>
             <th>Modelo</th>
-            <th>Placa</th>
             <th>Valor locação</th>
             <th>Status</th>
             <th>Ação</th>
           </tr>
 
-          {automobiles.map((automobile) => {
+          {cars.map((cars) => {
             return [
               <>
                 <tr>
-                  <td>{automobile.id}</td>
-                  <td>{automobile.marca}</td>
-                  <td>{automobile.modelo}</td>
-                  <td>{automobile.placa}</td>
-                  <td>{automobile.valorLocacao}</td>
-                  <td>{automobile.status}</td>
+                  <td>{cars.placa}</td>
+                  <td>Carro</td>
+                  <td>{cars.marca}</td>
+                  <td>{cars.modelo}</td>
+                  <td>{cars.valorLocacao}</td>
+                  <td>{cars.status}</td>
                   <td>
-                  <EditButton>
-                    <FaEdit size={"2em"}/>
-                  </EditButton>
+                    <EditButton />
                     &nbsp;&nbsp;&nbsp;&nbsp;
-                    <DeleteButton onClick={() => deleteAuto(automobile)}>
-                      <FaTrashAlt size={"2em"}/>
-                    </DeleteButton>
+                    <DeleteButton onClick={() => deleteAuto(cars)} />
+                  </td>
+                </tr>
+              </>,
+            ];
+          })}
+          {motorcycle.map((motorcycle) => {
+            return [
+              <>
+                <tr>
+                  <td>{motorcycle.placa}</td>
+                  <td>Moto</td>
+                  <td>{motorcycle.marca}</td>
+                  <td>{motorcycle.modelo}</td>
+                  <td>{motorcycle.valorLocacao}</td>
+                  <td>{motorcycle.status}</td>
+                  <td>
+                    <EditButton />
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+                    <DeleteButton onClick={() => deleteAuto(motorcycle)} />
+                  </td>
+                </tr>
+              </>,
+            ];
+          })}
+          {bikes.map((bikes) => {
+            return [
+              <>
+                <tr>
+                  <td>{bikes.placa}</td>
+                  <td>Bicicleta</td>
+                  <td>{bikes.marca}</td>
+                  <td>{bikes.modelo}</td>
+                  <td>{bikes.valorLocacao}</td>
+                  <td>{bikes.status}</td>
+                  <td>
+                    <EditButton />
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+                    <DeleteButton onClick={() => deleteAuto(bikes)} />
+                  </td>
+                </tr>
+              </>,
+            ];
+          })}
+          {bus.map((bus) => {
+            return [
+              <>
+                <tr>
+                  <td>{bus.placa}</td>
+                  <td>Ônibus</td>
+                  <td>{bus.marca}</td>
+                  <td>{bus.modelo}</td>
+                  <td>{bus.valorLocacao}</td>
+                  <td>{bus.status}</td>
+                  <td>
+                    <EditButton />
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+                    <DeleteButton onClick={() => deleteAuto(bus)} />
                   </td>
                 </tr>
               </>,
@@ -90,7 +164,7 @@ const VehicleList = () => {
           })}
         </table>
       </div>
-    </ListVehiclesCard>
+    </Card>
   );
 };
 

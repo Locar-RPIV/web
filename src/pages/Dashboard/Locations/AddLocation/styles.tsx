@@ -1,8 +1,6 @@
 import styled from "styled-components";
 
-
 export const Section = styled.div`
-
   position: absolute;
   top: 0;
   font-size:18px;
